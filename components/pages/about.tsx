@@ -3,6 +3,7 @@ import {BiLinkExternal} from "react-icons/bi";
 import { Slide } from "@/components/animations/Slide";
 import { Badge } from "../ui/badge";
 import Education from "./education-flow";
+import Experience from "./experience";
 
 export default async function AboutPage() {
 
@@ -33,6 +34,14 @@ export default async function AboutPage() {
                   </h1>< br/>
                   <div className="px-4">
                     <Education />
+                  </div>
+                </Slide>
+                <Slide delay={0.14}>
+                  <h1 className="font-incognito font-semibold tracking-tight sm:text-3xl text-xl lg:leading-tight basis-1/2 mb-4">
+                    Experience
+                  </h1>< br/>
+                  <div className="px-4">
+                    <Experience />
                   </div>
                 </Slide>
               </div>
