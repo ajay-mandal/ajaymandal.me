@@ -1,11 +1,14 @@
+"use client";
 import Image from "next/image";
 import {BiLinkExternal} from "react-icons/bi";
 import { Slide } from "@/components/animations/Slide";
 import { Badge } from "../ui/badge";
 import Education from "./education-flow";
 import Experience from "./experience";
+import { WobbleCard } from "../animations/wobble-card";
+import CursorGif from "../animations/cursor";
 
-export default async function AboutPage() {
+export default  function AboutPage() {
 
   return (
     <main className="relative lg:max-w-7xl mx-auto max-w-3xl md:px-16 px-6">
@@ -16,25 +19,25 @@ export default async function AboutPage() {
                   <h1 className="font-incognito font-semibold tracking-tight sm:text-4xl text-2xl lg:leading-tight basis-1/2 mb-4">
                     I&apos;m Ajay Kumar Mandal
                   </h1>
-                  <p className="text-gray-200/80">I am a dedicated and career-focused software developer specializing
+                  {/* <CursorGif src="/sad.gif">
+                    Hello
+                  </CursorGif> */}
+                  <div className="text-gray-200/80">I am a dedicated and career-focused software developer specializing
                     in full-stack development and open-source contributions. My expertise
                     is in building interactive web applications on the client side, utilizing
                     technologies such as JavaScript, Next.js, TypeScript and advance backends using
-                    serverless architectures and deployments.<br/><br/><br/>
-                    <span className="flex items-center justify-center gap-x-4 px-4 bg-cyan-800/10 border border-transparent  rounded-md py-4">
-                    If you ever spot me in the wild, don&apos;t hesitate to say hello!
-                    Let&apos;s grab a drink and geek-out over the latest advancements in full-stack development
-                    or discuss the new trending topic in 0-1 world. ✨
-                    </span>
-                    </p>
-                </Slide>
-                <Slide delay={0.14}>
-                  <h1 className="font-incognito font-semibold tracking-tight sm:text-3xl text-xl lg:leading-tight basis-1/2 mb-4">
-                    Education
-                  </h1>< br/>
-                  <div className="px-4">
-                    <Education />
-                  </div>
+                    serverless architectures and deployments.<br/><br/>
+                    <WobbleCard
+                      containerClassName="col-span-1 lg:col-span-2 h-full bg-cyan-800/90 min-h-fit lg:min-h-full"
+                      className=""
+                    >
+                      <div className="w-full flex items-center justify-center ">
+                      If you ever spot me in the wild, don&apos;t hesitate to say hello!
+                      Let&apos;s grab a drink and geek-out over the latest advancements in full-stack development
+                      or discuss the new trending topic in 0-1 world. ✨
+                      </div>
+                    </WobbleCard>
+                    </div>
                 </Slide>
                 <Slide delay={0.14}>
                   <h1 className="font-incognito font-semibold tracking-tight sm:text-3xl text-xl lg:leading-tight basis-1/2 mb-4">
@@ -42,6 +45,14 @@ export default async function AboutPage() {
                   </h1>< br/>
                   <div className="px-4">
                     <Experience />
+                  </div>
+                </Slide>
+                <Slide delay={0.18}>
+                  <h1 className="font-incognito font-semibold tracking-tight sm:text-3xl text-xl lg:leading-tight basis-1/2 mb-4">
+                    Education
+                  </h1>< br/>
+                  <div className="px-4">
+                    <Education />
                   </div>
                 </Slide>
               </div>
