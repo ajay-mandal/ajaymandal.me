@@ -6,7 +6,7 @@ import { Badge } from "../ui/badge";
 import Education from "./education-flow";
 import Experience from "./experience";
 import { WobbleCard } from "../animations/wobble-card";
-import CursorGif from "../animations/cursor";
+import { ImageWobble } from "../animations/image-wobbler";
 
 export default  function AboutPage() {
 
@@ -17,16 +17,12 @@ export default  function AboutPage() {
               <div className="order-1 lg:order-none grid gap-y-20">
                 <Slide delay={0.1}>
                   <h1 className="font-incognito font-semibold tracking-tight sm:text-4xl text-2xl lg:leading-tight basis-1/2 mb-4">
-                    I&apos;m Ajay Kumar Mandal
+                    Hey, I&apos;m Ajay Kumar Mandal
                   </h1>
-                  {/* <CursorGif src="/sad.gif">
-                    Hello
-                  </CursorGif> */}
-                  <div className="text-gray-200/80">I am a dedicated and career-focused software developer specializing
-                    in full-stack development and open-source contributions. My expertise
-                    is in building interactive web applications on the client side, utilizing
-                    technologies such as JavaScript, Next.js, TypeScript and advance backends using
-                    serverless architectures and deployments.<br/><br/>
+                  <div className="text-gray-200/80">I am a full stack developer from Nepal currently residing in Bengaluru, India. I started my journey
+                  in full-stack from December 2023. Before this, I was busy solving HackTheBox and PortSwigger Challenges. I like riding bike and watching anime.
+                  I am a foodie and love to try new dishes. I am not a book person, rather a traveller who love to read a place and its story of civilization.
+                   <br/><br/>
                     <WobbleCard
                       containerClassName="col-span-1 lg:col-span-2 h-full bg-cyan-800/90 min-h-fit lg:min-h-full"
                       className=""
@@ -42,7 +38,7 @@ export default  function AboutPage() {
                 <Slide delay={0.14}>
                   <h1 className="font-incognito font-semibold tracking-tight sm:text-3xl text-xl lg:leading-tight basis-1/2 mb-4">
                     Experience
-                  </h1>< br/>
+                  </h1>
                   <div className="px-4">
                     <Experience />
                   </div>
@@ -50,7 +46,7 @@ export default  function AboutPage() {
                 <Slide delay={0.18}>
                   <h1 className="font-incognito font-semibold tracking-tight sm:text-3xl text-xl lg:leading-tight basis-1/2 mb-4">
                     Education
-                  </h1>< br/>
+                  </h1>
                   <div className="px-4">
                     <Education />
                   </div>
@@ -60,6 +56,7 @@ export default  function AboutPage() {
               <aside className="flex flex-col lg:justify-self-center justify-self-start gap-y-8 lg:order-1 order-none mb-12">
                 <Slide delay={0.1}>
                   <div className="sticky top-10">
+                    <ImageWobble>
                     <Image
                       className="rounded-2xl mb-4 object-cover max-h-96 min-h-96 bg-top"
                       src="/new-1.jpeg"
@@ -68,7 +65,7 @@ export default  function AboutPage() {
                       quality={100}
                       alt="profile"
                     />
-
+                    </ImageWobble>
                     <div className="flex flex-col text-center gap-y-4">
                       <div className="flex items-center gap-x-3">
                         <a
@@ -77,7 +74,6 @@ export default  function AboutPage() {
                           target="_blank"
                           className="flex items-center justify-center text-center gap-x-2 basis-[90%] bg-gray-800/40 border border-transparent hover:border-zinc-400  rounded-md py-2 text-lg font-incognito font-semibold"
                         >
-
                           View Resume <BiLinkExternal className="text-base " />
                         </a>
                         <a

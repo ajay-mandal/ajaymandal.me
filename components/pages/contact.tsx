@@ -65,7 +65,7 @@ export default function ContactForm() {
                 className="space-y-6"
                 onSubmit={form.handleSubmit(onSubmit)}>
                     <div className="space-y-10">
-                        <div className="grid grid-cols-2 gap-6">
+                        <div className="grid sm:grid-cols-2 gap-6 grid-cols-1">
                             <FormField
                             control={form.control}
                             name="name"

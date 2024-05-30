@@ -4,6 +4,7 @@ import PageHeading from "../shared/PageHeading";
 import { Slide } from "../animations/Slide";
 import EmptyState from "../animations/EmptyState";
 import { PROJECT } from "@/data/Projects";
+import { ProjectWobble } from "../animations/project-wobbler";
 
 
 export default async function Project() {
@@ -19,10 +20,13 @@ export default async function Project() {
         {PROJECT.length > 0 ? (
           <section className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mb-12">
             {PROJECT.map((project) => (
+              <ProjectWobble
+                key={project.slug}
+                >
               <Link
                 href={`/projects/${project.slug}`}
                 key={project.slug}
-                className="flex items-center gap-x-4 bg-primary-bg border border-transparent hover:border-zinc-700  p-4 rounded-lg"
+                className="flex items-center gap-x-4 bg-primary-bg border border-transparent p-4"
               >
                 <Image
                   src={project.logo}
@@ -38,6 +42,7 @@ export default async function Project() {
                   </div>
                 </div>
               </Link>
+              </ProjectWobble>
             ))}
           </section>
         ) : (
