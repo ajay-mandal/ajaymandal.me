@@ -1,41 +1,54 @@
-import { FaUniversity } from "react-icons/fa";
-import { FaSchoolFlag } from "react-icons/fa6";
-import { BiSolidSchool } from "react-icons/bi";
+import Image from "next/image";
+import { Slide } from "../animations/Slide";
+import { EDUCATIONS } from "@/data/education";
 import { Badge } from "../ui/badge";
 
+export default function Job() {
 
-export default function Education() {
-    return (
-        <ol className="relative border-s  border-gray-700">
-            <li className="mb-10 ms-6">
-                <span className="absolute flex items-center justify-center w-7 h-7  rounded-full -start-3 bg-cyan-700">
-                <FaUniversity className="h-4 w-4"/>
-                </span>
-                <h3 className="flex items-center mb-1 text-lg font-semibold text-white">Jain University</h3>
-                <time className="block text-sm font-normal text-gray-500">October 2020 - July 2024</time>
-                <p className="mb-4 text-base font-normal text-gray-400">I completed my Bachelor of Technology (B.Tech) in Computer Science and Engineering at Jain (Deemed-to-be University), Bengaluru</p>
-                <Badge className="h-6 bg-cyan-600">CGPA 8.8</Badge>
-            </li>
-            <li className="mb-10 ms-6">
-                <span className="absolute flex items-center justify-center w-7 h-7  rounded-full -start-3 bg-cyan-700">
-                <BiSolidSchool className="h-4 w-4"/>
-                </span>
-                <h3 className="mb-1 text-lg font-semibold text-white">Kathmandu Model Higher Secondary School</h3>
-                <time className="block text-sm font-normal text-gray-500">March 2018 - April 2020</time>
-                <p className="mb-4 text-base font-normal text-gray-400">I completed my Higher Studies in Mathematics and Computer Science at Kathmandu Model College, Bag bazar, Nepal</p>
-                <Badge className="h-6 bg-cyan-600">GPA 3.39</Badge>
-            </li>
-            <li className="ms-6">
-                <span className="absolute flex items-center justify-center w-7 h-7  rounded-full -start-3 bg-cyan-700">
-                <FaSchoolFlag className="h-4 w-4"/>
-                </span>
-                <h3 className="mb-1 text-lg font-semibold text-white">Mother Teresa Public School</h3>
-                <time className="block text-sm font-normal text-gray-500">2009 - 2018</time>
-                <p className="mb-4 text-base font-normal text-gray-400">I completed my Primary Education at Mother Teresa Public School, Janakpur, Nepal</p>
-                <Badge className="h-6 bg-cyan-600">GPA 3.70</Badge>
-            </li>
-        </ol>
-
-
-    )
+  return (
+    <section>
+      <Slide delay={0.18}>
+        <div className="grid grid-cols-1 gap-x-12 gap-y-5">
+          {EDUCATIONS.map((data) => (
+            <div
+              key={data.id}
+              className="flex items-start lg:gap-x-6 gap-x-4 max-w-2xl relative before:absolute before:bottom-0 before:top-[4rem] before:left-9 before:w-[1px] before:h-[calc(100%-70px)] before:bg-zinc-700"
+            >
+              <a
+                href={data.url}
+                rel="hello"
+                target="_blank"
+                className="grid place-items-center bg-white border border-zinc-800 min-h-[65px] min-w-[65px] p-2 rounded-md overflow-clip relative"
+              >
+                <Image
+                  src={data.logo}
+                  className="object-cover duration-300"
+                  alt={`${data.name} logo`}
+                  width={60}
+                  height={60}
+                />
+              </a>
+              <div className="flex flex-col items-start">
+                <h3 className="text-xl font-semibold">{data.name}</h3>
+                <time className="text-sm text-zinc-500 mt-2 tracking-widest uppercase">
+                  {data.startDate} -{" "}
+                  {data.endDate ? (
+                    data.endDate
+                  ) : (
+                    <span className="text-cyan-500">
+                      Present
+                    </span>
+                  )}
+                </time>
+                <p className="tracking-tight text-zinc-400  my-4">
+                  {data.description}
+                </p>
+                <Badge className="h-6 bg-cyan-700">{data.CGPA}</Badge>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Slide>
+    </section>
+  );
 }

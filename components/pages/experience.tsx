@@ -1,28 +1,54 @@
-import { FaUniversity } from "react-icons/fa";
-import { FaSchoolFlag } from "react-icons/fa6";
-import { BiSolidSchool } from "react-icons/bi";
-import { Badge } from "../ui/badge";
 import Image from "next/image";
+import { Slide } from "../animations/Slide";
+import { JOBS } from "@/data/job";
+import { formatDate } from "@/lib/date";
 
+export default function Job() {
 
-export default function Experience() {
-    return (
-        <ol className="relative border-s  border-gray-700">
-            <li className="mb-10 ms-6">
-                <div className="absolute flex items-center justify-center w-7 h-7  rounded-full -start-3 bg-white">
+  return (
+    <section>
+      <Slide delay={0.18}>
+        <div className="grid grid-cols-1 gap-x-12 gap-y-10">
+          {JOBS.map((data) => (
+            <div
+              key={data.id}
+              className="flex items-start lg:gap-x-6 gap-x-4 max-w-2xl relative before:absolute before:bottom-0 before:top-[4rem] before:left-9 before:w-[1px] before:h-[calc(100%-70px)] before:bg-zinc-700"
+            >
+            <a
+                href={data.url}
+                rel="hello"
+                target="_blank"
+                className="grid place-items-center border border-zinc-800 min-h-[65px] min-w-[65px] p-2 rounded-md overflow-clip relative bg-primary-900"
+            >
                 <Image
-                src="/KD.svg"
-                width="10"
-                height="10"
-                alt="kyndyl"
+                    src={data.logo}
+                    className="object-cover duration-300"
+                    alt={`${data.name} logo`}
+                    width={20}
+                    height={20}
                 />
-                </div>
-                <h3 className="flex items-center mb-1 text-lg font-semibold text-white">Intern - Kyndryl</h3>
-                <time className="block text-sm font-normal text-gray-500">May 2024 - Currently</time>
-                <p className="mb-4 text-base font-normal text-gray-400">I am working as a Project Trainee at Kyndryl.</p>
-            </li>
-        </ol>
-
-
-    )
+            </a>
+              <div className="flex flex-col items-start">
+                <h3 className="text-xl font-semibold">{data.name}</h3>
+                <p>{data.jobTitle}</p>
+                <time className="text-sm text-zinc-500 mt-2 tracking-widest uppercase">
+                  {formatDate(data.startDate)} -{" "}
+                  {data.endDate ? (
+                    formatDate(data.endDate)
+                  ) : (
+                    <span className="text-cyan-500">
+                      Present
+                    </span>
+                  )}
+                </time>
+                <p className="tracking-tight text-zinc-400  my-4">
+                  {data.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Slide>
+    </section>
+  );
 }
