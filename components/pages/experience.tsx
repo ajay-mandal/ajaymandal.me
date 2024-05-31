@@ -18,7 +18,7 @@ export default function Job() {
                 href={data.url}
                 rel="hello"
                 target="_blank"
-                className="grid place-items-center border border-zinc-800 min-h-[65px] min-w-[65px] p-2 rounded-md overflow-clip relative bg-primary-900"
+                className="grid place-items-center border border-zinc-800 min-h-[65px] min-w-[65px] p-2 rounded-md overflow-clip relative bg-white"
             >
                 <Image
                     src={data.logo}

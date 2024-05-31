@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div>
         <div className="max-w-7xl mx-auto md:px-16 px-6 lg:mt-32 mt-20">
-        <section className="flex xl:flex-row flex-col xl:items-center items-start xl:justify-center justify-between gap-x-12">
+        <section className="flex xl:flex-row flex-col items-center justify-center gap-x-12">
         <div className="max-w-3xl">
             <Slide delay={0.1}>
             <h1 className="font-incognito font-semibold tracking-tight text-3xl sm:text-5xl mb-6 lg:leading-[3.7rem] leading-tight lg:min-w-[700px] min-w-full">
@@ -25,7 +25,9 @@ export default function Home() {
             </Slide>
         </div>
         <Slide delay={0.1}>
+          <div className="w-60 md:w-72 lg:w-96">
             <HeroSvg />
+          </div>
           </Slide>
         </section>
         </div>

@@ -5,7 +5,7 @@ export default function Social({ type }: { type: string }) {
     <>
     <section className=" py-10 font-incognito">
       <div className="relative mx-auto max-w-6xl">
-        <div className="mt-2 flex flex-wrap justify-center gap-4 text-xl text-zinc-200 px-5">
+        <div className="mt-2 flex flex-wrap justify-left gap-4 text-xl text-zinc-200">
       {socialLinks
         .filter((item) => item.status === type)
         .map((value) => (
