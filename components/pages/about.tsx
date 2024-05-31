@@ -21,7 +21,7 @@ export default  function AboutPage() {
                   </h1>
                   <div className="text-gray-200/80">I am a full stack developer from Nepal currently residing in Bengaluru, India. I started my journey
                   in full-stack from December 2023. Before this, I was busy solving HackTheBox and PortSwigger Challenges. I like riding bike and watching anime.
-                  I am a foodie and love to try new dishes. I am not a book person, rather a traveller who love to read a place and its story of civilization.
+                  I am a foodie and love to try new dishes. I am not a book person, rather a traveller who love to read a place.
                    <br/><br/>
                     <WobbleCard
                       containerClassName="col-span-1 lg:col-span-2 h-full bg-cyan-800/90 min-h-fit lg:min-h-full"
@@ -35,7 +35,7 @@ export default  function AboutPage() {
                     </WobbleCard>
                     </div>
                 </Slide>
-                <Slide delay={0.14}>
+              <Slide delay={0.14}>
                   <h1 className="font-incognito font-semibold tracking-tight sm:text-3xl text-xl lg:leading-tight basis-1/2 mb-4">
                     Experience
                   </h1>

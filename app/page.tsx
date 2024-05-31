@@ -29,9 +29,9 @@ export default function Home() {
           </Slide>
         </section>
         </div>
-      <div className="flex justify-center text-center">
-        <Skills />
-      </div>
+        <div className="flex justify-center text-center">
+          <Skills />
+        </div>
     </div>
   )
 }

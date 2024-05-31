@@ -4,7 +4,6 @@ import "./globals.css";
 import { incognito, gitlabmono } from "@/components/fonts/fonts";
 import Navbar from "@/components/global/Navbar";
 import Footer from "@/components/global/Footer";
-import { Slide } from "@/components/animations/Slide";
 
 const inter = Inter({
   subsets: ["latin"],
