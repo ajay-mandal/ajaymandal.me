@@ -25,10 +25,10 @@ export default function Skills() {
     <>
       <section className=" py-10 font-incognito">
         <div className="relative mx-auto max-w-6xl">
+        <Slide delay={0.14} >
           <h1 className=" md:text-6xl text-center font-incognito font-semibold tracking-tight sm:text-5xl text-4xl lg:leading-tight basis-1/2 mb-8">
             Technical Skills
           </h1>
-          <Slide delay={0.1} >
           <div className="mt-5">
             <p className="font-semibold text-2xl mx-auto text-center">
               Languages

@@ -2,7 +2,6 @@
 import Image from "next/image";
 import {BiLinkExternal} from "react-icons/bi";
 import { Slide } from "@/components/animations/Slide";
-import { Badge } from "../ui/badge";
 import Education from "./education-flow";
 import Experience from "./experience";
 import { WobbleCard } from "../animations/wobble-card";

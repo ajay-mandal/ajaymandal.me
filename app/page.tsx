@@ -24,7 +24,7 @@ export default function Home() {
             <Social type="social"/>
             </Slide>
         </div>
-        <Slide delay={0.1}>
+        <Slide delay={0.12}>
           <div className="w-60 md:w-72 lg:w-96">
             <HeroSvg />
           </div>
