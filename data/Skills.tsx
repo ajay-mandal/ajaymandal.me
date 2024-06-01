@@ -19,7 +19,8 @@ import {
     AwsIcon,
     GcpIcon,
     JenkinsIcon,
-    ZodIcon
+    ZodIcon,
+    CFIcon
 } from '@/components/icons';
 
 import { JSX } from 'react';
@@ -141,6 +142,11 @@ export const DEVOPS: SkillProps[] = [
         name: 'GCP',
         icon: <GcpIcon />,
         link: 'https://cloud.google.com/'
+    },
+    {
+        name: 'Cloudflare',
+        icon: <CFIcon />,
+        link: 'https://www.cloudflare.com/'
     },
     {
         name: 'Jenkis',
