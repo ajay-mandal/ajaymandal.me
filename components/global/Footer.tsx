@@ -18,7 +18,7 @@ export default function Footer() {
           <li>
             <a
               href="https://nextjs.org"
-              rel="noreferrer noopener"
+              rel="Next.js"
               target="_blank"
               className="flex items-center gap-x-2 text-white  hover:underline"
             >
@@ -27,14 +27,14 @@ export default function Footer() {
                 width={20}
                 height={20}
                 alt="nextjs logo"
-              />{" "}
+              />
               Next.js
             </a>
           </li>
           <li>
             <a
               href="https://www.framer.com/"
-              rel="noreferrer noopener"
+              rel="Framer Motion"
               target="_blank"
               className="flex items-center gap-x-2 text-white  hover:underline"
             >
@@ -43,25 +43,24 @@ export default function Footer() {
                 width={15}
                 height={20}
                 alt="Fmotion logo"
-              />{" "}
+              />
               Framer Motion
             </a>
           </li>
           <li>
             <a
-              href="https://vercel.com"
-              rel="noreferrer noopener"
+              href="https://notion.so"
+              rel="Notion"
               target="_blank"
-              className="flex items-center gap-x-2 text-white  hover:underline"
+              className="flex items-center gap-x-2 text-white bg-transparent hover:underline"
             >
               <Image
-                src="/vercel.svg"
+                src="/notion1.png"
                 width={20}
                 height={20}
                 alt="vercel logo"
-                className="fill-white"
-              />{" "}
-              Vercel
+              />
+              Notion
             </a>
           </li>
         </ul>
