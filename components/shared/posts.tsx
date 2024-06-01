@@ -1,7 +1,9 @@
+"use client";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { BiLinkExternal, BiLogoGithub } from "react-icons/bi";
+import Giscus from "@giscus/react"
 
 interface PostProps {
   title: string;
@@ -49,6 +51,21 @@ export function Post(props: PostProps) {
         >
 
         </div>
-</article>
+        <h1 className="text-xl sm:text-2xl md:text-4xl font-bold text-white mb-2 sm:mb-0">Comments</h1>
+                <Giscus
+                    repo="ajay-mandal/portfolio-discussion"
+                    repoId={process.env.NEXT_PUBLIC_REPOID!}
+                    category="General"
+                    categoryId={process.env.NEXT_PUBLIC_CATEGORYID!}
+                    mapping="pathname"
+                    strict="0"
+                    reactionsEnabled="1"
+                    emitMetadata="0"
+                    inputPosition="bottom"
+                    theme="preferred_color_scheme"
+                    lang="en"
+                    loading="lazy"
+                    />
+    </article>
   );
 }
