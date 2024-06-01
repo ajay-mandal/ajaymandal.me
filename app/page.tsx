@@ -11,7 +11,7 @@ export default function Home() {
         <div className="max-w-3xl">
             <Slide delay={0.1}>
             <h1 className="font-incognito font-semibold tracking-tight text-3xl sm:text-5xl mb-6 lg:leading-[3.7rem] leading-tight lg:min-w-[700px] min-w-full">
-              Software Engineer, Developer, and a passionate learner.
+              Software Engineer, Developer, and a content creator.
             </h1>
             </Slide>
             <Slide delay={0.12}>

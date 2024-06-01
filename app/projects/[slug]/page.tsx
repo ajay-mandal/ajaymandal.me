@@ -1,23 +1,36 @@
-import { getPostBySlug } from '@/lib/mdx'
+import { getPageContent, getPageBySlug, notionClient } from "@/lib/notion";
+import { NotionRenderer } from "@notion-render/client";
+import { notFound } from "next/navigation";
 
-const getPageContent = async (slug:any) => {
-  const { meta, content } = await getPostBySlug(slug)
-  return { meta, content }
-}
+//Plugins
+import hljsPlugin from "@notion-render/hljs-plugin";
+import bookmarkPlugin from "@notion-render/bookmark-plugin";
+import { Post } from "@/components/shared/posts";
 
-const Page = async ({ params }: { params: any }) => {
-  const { content } = await getPageContent(params.slug)
+export default async function Page({ params }: { params: { slug: string } }) {
+  const post = await getPageBySlug(params.slug);
+
+  if (!post) notFound();
+
+  const content = await getPageContent(post.id);
+
+  const notionRenderer = new NotionRenderer({
+    client: notionClient,
+  });
+
+  notionRenderer.use(hljsPlugin({}));
+  notionRenderer.use(bookmarkPlugin(undefined));
+  const html = await notionRenderer.render(...content);
+
+  console.log("Post: ", post);
 
   return (
-    <section className=''>
-      <div className='container font-incognito
-      prose prose-sm sm:prose-base lg:prose-lg
-      xl:prose-xl 2xl:prose-2xl prose-invert
-      mx-auto
-      '
-      >{content}</div>
-    </section>
-  )
+    <Post
+      title={(post.properties.Title as any).title[0].plain_text}
+      projectUrl={(post.properties.ProjectUrl as any).url}
+      githubUrl={(post.properties.GithubUrl as any).url}
+      content={html}
+      slug={params.slug}
+    />
+  );
 }
-
-export default Page
