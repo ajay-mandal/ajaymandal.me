@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Slide } from "../animations/Slide";
 import { JOBS } from "@/data/job";
 import { formatDate } from "@/lib/date";
-import { LinkPreview } from "../animations/link-priview";
+import { LinkPreview } from "../animations/link-preview";
 
 export default function Job() {
 

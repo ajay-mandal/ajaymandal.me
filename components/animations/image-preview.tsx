@@ -90,6 +90,7 @@ export const ImagePreview = ({
                     layout={layout}
                     priority={true}
                     alt="image"
+                    unoptimized={true}
                   />
               </motion.div>
             )}

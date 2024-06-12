@@ -1,5 +1,5 @@
 import { Slide } from "@/components/animations/Slide";
-import { LinkPreview } from "../animations/link-priview";
+import { LinkPreview } from "../animations/link-preview";
 import { ImagePreview } from "../animations/image-preview";
 
 type HeadingType = {

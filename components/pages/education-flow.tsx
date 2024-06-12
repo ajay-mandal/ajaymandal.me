@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Slide } from "../animations/Slide";
 import { EDUCATIONS } from "@/data/education";
 import { Badge } from "../ui/badge";
-import { LinkPreview } from "../animations/link-priview";
+import { LinkPreview } from "../animations/link-preview";
 
 export default function Job() {
 

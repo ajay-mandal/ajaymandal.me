@@ -8,8 +8,12 @@ const nextConfig = {
     mdxRs: true,
   },
   images: {
-    domains: [
-      "api.microlink.io",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "api.microlink.io",
+        port: ''
+      }
     ],
   },
 }

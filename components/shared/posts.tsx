@@ -3,7 +3,7 @@ import { Button } from "../ui/button";
 import Image from "next/image";
 import { BiLinkExternal, BiLogoGithub } from "react-icons/bi";
 import Giscus from "@giscus/react"
-import { LinkPreview } from "../animations/link-priview";
+import { LinkPreview } from "../animations/link-preview";
 
 interface PostProps {
   title: string;
