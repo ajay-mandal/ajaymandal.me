@@ -3,7 +3,6 @@ import HeroSvg from "@/components/animations/Welcome";
 import Skills from "@/components/pages/Skills";
 import Social from "@/components/shared/Social";
 import { ImagePreview } from "@/components/animations/image-preview";
-import { RoughNotation, RoughNotationGroup } from "react-rough-notation";
 
 
 export default function Home() {
@@ -24,14 +23,12 @@ export default function Home() {
             </h1>
             </Slide>
             <Slide delay={0.12}>
-            <RoughNotationGroup show={true}>
             <p className="text-base text-zinc-400 leading-relaxed">
-            I&apos;m a&nbsp; <RoughNotation type="box" color="#F03C2D">Software Engineer</RoughNotation> skilled in building functional user interfaces,
+            I&apos;m a&nbsp;Software Engineer skilled in building functional user interfaces,
             robust backends and develop & deploy them scalably. I enjoy working on projects
             that utilize both front-end and back-end technologies to create seamless user experiences.
               I excel at designing solutions that are both effective and suited to your individual situation.
             </p>
-            </RoughNotationGroup>
             <Social type="social"/>
             </Slide>
         </div>
