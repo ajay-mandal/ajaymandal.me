@@ -129,7 +129,7 @@ export const DEVOPS: SkillProps[] = [
         link: 'https://www.docker.com/'
     },
     {
-        name: 'git',
+        name: 'Git',
         icon: <GitIcon />,
         link: 'https://git-scm.com/'
     },
@@ -149,7 +149,7 @@ export const DEVOPS: SkillProps[] = [
         link: 'https://www.cloudflare.com/'
     },
     {
-        name: 'Jenkis',
+        name: 'Jenkins',
         icon: <JenkinsIcon />,
         link: 'https://www.jenkins.io/'
     }
