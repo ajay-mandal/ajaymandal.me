@@ -1,9 +1,9 @@
 "use client";
 import { Button } from "../ui/button";
-import Link from "next/link";
 import Image from "next/image";
 import { BiLinkExternal, BiLogoGithub } from "react-icons/bi";
 import Giscus from "@giscus/react"
+import { LinkPreview } from "../animations/link-priview";
 
 interface PostProps {
   title: string;
@@ -22,18 +22,18 @@ export function Post(props: PostProps) {
             <div className="flex items-center justify-between mb-6">
                 <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-2 sm:mb-0">{title}</h1>
                 <div className="flex flex-row gap-x-4">
-                    <Link href={projectUrl} target='_blank'>
+                    <LinkPreview url={projectUrl}>
                         <Button className="border border-gray-100 hover:bg-gray-200 hover:text-black gap-x-2 flex">
                             Live
                             <BiLinkExternal className="text-base " />
                         </Button>
-                    </Link>
-                    <Link href={githubUrl} target='_blank'>
+                    </LinkPreview>
+                    <LinkPreview url={githubUrl}>
                         <Button className="border border-gray-100 hover:bg-gray-200 hover:text-black flex gap-x-2">
                             Github
                             <BiLogoGithub className="text-lg " />
                         </Button>
-                    </Link>
+                    </LinkPreview>
                 </div>
             </div>
             <div>

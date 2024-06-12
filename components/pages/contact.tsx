@@ -13,6 +13,7 @@ import { Slide } from "../animations/Slide";
 import { FormError } from "../form-error";
 import { FormSuccess } from "../form-success";
 import emailjs from "@emailjs/browser"
+import { ImagePreview } from "../animations/image-preview";
 
 export default function ContactForm() {
     const [isPending, startTransition ] = useTransition();
@@ -55,7 +56,11 @@ export default function ContactForm() {
     return (
         <Card className="w-full shadow-md bg-transparent text-white rounded-sm border border-transparent font-incognito">
             <CardHeader>
-                <CardTitle className="text-5xl">Contact Me</CardTitle>
+                <CardTitle className="text-5xl">
+                <ImagePreview image="/contact.gif">
+                    Contact Me
+                </ImagePreview>
+                </CardTitle>
                 <p className="text-gray-200/80 text-base">Feel free me message me on any queries or for any collaboration</p>
             </CardHeader>
             <Slide delay={0.1}>
@@ -121,7 +126,13 @@ export default function ContactForm() {
                         </FormItem>
                         )}
                     />
-                    <Button type="submit" variant="secondary" className="w-full">Let&apos;s Talk</Button>
+                    <div>
+                    <ImagePreview image="/send.gif">
+                        <Button type="submit" variant="secondary" className="w-full">
+                            Let&apos;s Talk
+                        </Button>
+                    </ImagePreview>
+                    </div>
                     <FormError message={error} />
                     <FormSuccess message={success} />
                     </div>

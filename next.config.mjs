@@ -6,8 +6,12 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   experimental: {
     mdxRs: true,
-  }
-  // Optionally, add any other Next.js config below
+  },
+  images: {
+    domains: [
+      "api.microlink.io",
+    ],
+  },
 }
 
 const withMDX = createMDX({

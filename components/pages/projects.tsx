@@ -14,6 +14,7 @@ export default async function Project() {
       <PageHeading
         title="Projects"
         description="I've worked on these few projects over the years. All of them are open-source, so if you see something that piques your interest, check out the code and contribute if you have ideas on how it can be improved."
+        image="/project.gif"
       />
 
       <Slide delay={0.1}>

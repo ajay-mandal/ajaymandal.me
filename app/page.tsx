@@ -2,6 +2,9 @@ import { Slide } from "@/components/animations/Slide";
 import HeroSvg from "@/components/animations/Welcome";
 import Skills from "@/components/pages/Skills";
 import Social from "@/components/shared/Social";
+import { ImagePreview } from "@/components/animations/image-preview";
+import { RoughNotation, RoughNotationGroup } from "react-rough-notation";
+
 
 export default function Home() {
   return (
@@ -11,16 +14,24 @@ export default function Home() {
         <div className="max-w-3xl">
             <Slide delay={0.1}>
             <h1 className="font-incognito font-semibold tracking-tight text-3xl sm:text-5xl mb-6 lg:leading-[3.7rem] leading-tight lg:min-w-[700px] min-w-full">
-              Software Engineer, Developer, and a content creator.
+              <ImagePreview image="/sad.gif">
+                Software Engineer
+              </ImagePreview>
+              <ImagePreview image="/dance.gif">
+                , Developer
+              </ImagePreview>
+               , and a content creator.
             </h1>
             </Slide>
             <Slide delay={0.12}>
+            <RoughNotationGroup show={true}>
             <p className="text-base text-zinc-400 leading-relaxed">
-            I&apos;m a Software Engineer skilled in building functional user interfaces,
+            I&apos;m a&nbsp; <RoughNotation type="box" color="#F03C2D">Software Engineer</RoughNotation> skilled in building functional user interfaces,
             robust backends and develop & deploy them scalably. I enjoy working on projects
             that utilize both front-end and back-end technologies to create seamless user experiences.
               I excel at designing solutions that are both effective and suited to your individual situation.
             </p>
+            </RoughNotationGroup>
             <Social type="social"/>
             </Slide>
         </div>
