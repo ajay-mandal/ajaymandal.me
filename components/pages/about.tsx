@@ -68,7 +68,7 @@ export default  function AboutPage() {
                     <div className="flex flex-col text-center gap-y-4">
                       <div className="flex items-center gap-x-3">
                         <a
-                          href="https://docs.google.com/viewer?url=https://docs.google.com/document/d/1TkZU1olTYvyrHsF1_k1NsyofJxYkNvys_bFGxTiMHu8/export?format=pdf"
+                          href="https://docs.google.com/viewer?url=https://docs.google.com/document/d/1AZZ6HqxOj6x1mePaErwJcT49ZZ70r2GU4xhn_hrWEXY/export?format=pdf"
                           rel="ajay"
                           target="_blank"
                           className="flex items-center justify-center text-center gap-x-2 basis-[90%] bg-gray-800/40 border border-transparent hover:border-zinc-400  rounded-md py-2 text-lg font-incognito font-semibold"
@@ -76,7 +76,7 @@ export default  function AboutPage() {
                           View Resume <BiLinkExternal className="text-base " />
                         </a>
                         <a
-                          href="https://docs.google.com/document/d/1TkZU1olTYvyrHsF1_k1NsyofJxYkNvys_bFGxTiMHu8/export?format=pdf"
+                          href="https://docs.google.com/document/d/1AZZ6HqxOj6x1mePaErwJcT49ZZ70r2GU4xhn_hrWEXY/export?format=pdf"
                           className="flex items-center justify-center text-center  hover:underline bg-gray-800/40  border border-transparent hover:border-zinc-400 rounded-md py-3 text-lg w-1/4"
                           title="Download Resume"
                         >
