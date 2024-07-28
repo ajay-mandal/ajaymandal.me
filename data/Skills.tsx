@@ -18,9 +18,10 @@ import {
     AuthIcon,
     AwsIcon,
     GcpIcon,
-    JenkinsIcon,
+    KafkaIcon,
     ZodIcon,
-    CFIcon
+    CFIcon,
+    K8sIcon
 } from '@/components/icons';
 
 import { JSX } from 'react';
@@ -149,8 +150,13 @@ export const DEVOPS: SkillProps[] = [
         link: 'https://www.cloudflare.com/'
     },
     {
-        name: 'Jenkins',
-        icon: <JenkinsIcon />,
-        link: 'https://www.jenkins.io/'
+        name: 'Kafka',
+        icon: <KafkaIcon />,
+        link: 'https://kafka.apache.org/'
+    },
+    {
+        name: 'Kubernetes',
+        icon: <K8sIcon />,
+        link: 'https://kubernetes.io/'
     }
 ]
