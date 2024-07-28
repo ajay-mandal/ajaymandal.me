@@ -57,9 +57,7 @@ export default function ContactForm() {
         <Card className="w-full shadow-md bg-transparent text-white rounded-sm border border-transparent font-incognito">
             <CardHeader>
                 <CardTitle className="text-5xl">
-                <ImagePreview image="/contact.gif">
                     Contact Me
-                </ImagePreview>
                 </CardTitle>
                 <p className="text-gray-200/80 text-base">Feel free me message me on any queries or for any collaboration</p>
             </CardHeader>
