@@ -17,11 +17,7 @@ export default function Navbar() {
     {
       title: "Projects",
       href: "/projects",
-    },
-    {
-      title: "Contact Me",
-      href: "/contact",
-    },
+    }
   ];
 
   return (

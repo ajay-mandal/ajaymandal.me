@@ -46,14 +46,14 @@ export const LANGUAGES: SkillProps[] = [
         link: 'https://www.typescriptlang.org/',
     },
     {
-        name: 'Bash',
-        icon: <BashIcon />,
-        link: 'https://www.gnu.org/software/bash/',
-    },
-    {
         name: 'Python',
         icon: <PythonIcon />,
         link: 'https://www.python.org/',
+    },
+    {
+        name: 'Bash',
+        icon: <BashIcon />,
+        link: 'https://www.gnu.org/software/bash/',
     }
 ]
 
@@ -69,9 +69,9 @@ export const FRAMEWORKS: SkillProps[] = [
         link: 'https://nextjs.org/'
     },
     {
-        name: 'Auth.js',
-        icon: <AuthIcon />,
-        link: 'https://authjs.dev/'
+        name: 'Tailwindcss',
+        icon: <TailwindIcon />,
+        link: 'https://tailwindcss.com/'
     },
     {
         name: 'Zod',
@@ -87,11 +87,6 @@ export const FRAMEWORKS: SkillProps[] = [
         name: 'Hono',
         icon: <HonoIcon />,
         link: 'https://hono.dev/'
-    },
-    {
-        name: 'Tailwindcss',
-        icon: <TailwindIcon />,
-        link: 'https://tailwindcss.com/'
     }
 ]
 
@@ -105,11 +100,6 @@ export const DATABASES: SkillProps[] = [
         name: 'Postgres',
         icon: <PostgresIcon />,
         link: 'https://www.postgresql.org/'
-    },
-    {
-        name: 'Redis',
-        icon: <RedisIcon />,
-        link: 'https://redis.io/'
     },
     {
         name: 'Firebase',
@@ -130,6 +120,11 @@ export const DEVOPS: SkillProps[] = [
         link: 'https://www.docker.com/'
     },
     {
+        name: 'Kubernetes',
+        icon: <K8sIcon />,
+        link: 'https://kubernetes.io/'
+    },
+    {
         name: 'Git',
         icon: <GitIcon />,
         link: 'https://git-scm.com/'
@@ -148,15 +143,5 @@ export const DEVOPS: SkillProps[] = [
         name: 'Cloudflare',
         icon: <CFIcon />,
         link: 'https://www.cloudflare.com/'
-    },
-    {
-        name: 'Kafka',
-        icon: <KafkaIcon />,
-        link: 'https://kafka.apache.org/'
-    },
-    {
-        name: 'Kubernetes',
-        icon: <K8sIcon />,
-        link: 'https://kubernetes.io/'
     }
 ]

@@ -30,11 +30,6 @@ export default function MobileMenu() {
       href: "/projects",
       icon: LiaBattleNet,
     },
-    {
-      title: "Contact Me",
-      href: "/contact",
-      icon: GrTechnology,
-    },
   ];
 
   const onToggleNav = () => {

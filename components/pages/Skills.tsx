@@ -24,9 +24,9 @@ export default function Skills() {
   return (
     <>
       <section className=" py-10 font-incognito">
-        <div className="relative mx-auto max-w-6xl">
+        <div className="relative mx-auto max-w-7xl">
         <Slide delay={0.14} >
-          <h1 className=" md:text-6xl text-center font-incognito font-semibold tracking-tight sm:text-5xl text-4xl lg:leading-tight basis-1/2 mb-8">
+          <h1 className="md:text-5xl text-center font-incognito font-semibold tracking-tight sm:text-5xl text-4xl lg:leading-tight basis-1/2 mb-8">
             Technical Skills
           </h1>
           <div className="mt-5">
@@ -35,9 +35,8 @@ export default function Skills() {
             </p>
             <div className="mt-2 flex flex-wrap justify-center gap-4 text-xl text-zinc-200">
               {LANGUAGES.map(({ icon, name, link }, i) => (
-                <Link href={link} key={i} target='_blank'>
                 <SkillPill icon={icon} name={name} key={i} link={link} />
-                </Link>
+                
               ))}
             </div>
           </div>
@@ -47,9 +46,9 @@ export default function Skills() {
             </p>
             <div className="mt-2 flex flex-wrap gap-4 text-xl justify-center text-zinc-200">
               {FRAMEWORKS.map(({ icon, name, link }, index) => (
-                <Link href={link} key={index} target='_blank'>
+                
                 <SkillPill icon={icon} name={name} key={index} link={link}/>
-                </Link>
+                
               ))}
             </div>
           </div>
@@ -59,9 +58,9 @@ export default function Skills() {
             </p>
             <div className="mt-2 flex flex-wrap gap-4 justify-center text-zinc-200">
               {DATABASES.map(({ icon, name, link }, index) => (
-                <Link href={link} key={index} target='_blank'>
+                
                     <SkillPill icon={icon} name={name} key={index} link={link} />
-                </Link>
+                
               ))}
             </div>
           </div>
@@ -71,9 +70,9 @@ export default function Skills() {
             </p>
             <div className="mt-2 flex flex-wrap gap-4 justify-center text-zinc-200">
               {DEVOPS.map(({ icon, name, link }, index) => (
-                <Link href={link} key={index} target='_blank'>
+                
                 <SkillPill icon={icon} name={name} key={index} link={link}/>
-                </Link>
+                
               ))}
             </div>
           </div>

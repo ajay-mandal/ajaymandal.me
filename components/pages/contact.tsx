@@ -3,7 +3,6 @@ import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "../ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
@@ -54,15 +53,15 @@ export default function ContactForm() {
 
     }
     return (
-        <Card className="w-full shadow-md bg-transparent text-white rounded-sm border border-transparent font-incognito">
-            <CardHeader>
-                <CardTitle className="text-5xl">
-                    Contact Me
-                </CardTitle>
-                <p className="text-gray-200/80 text-base">Feel free me message me on any queries or for any collaboration</p>
-            </CardHeader>
+        <div className="w-full shadow-md bg-transparent text-white rounded-sm border border-transparent font-incognito">
+            <h1 className="md:text-4xl text-center font-incognito font-semibold sm:text-4xl text-3xl py-2">
+            Hire Me or Collab ? Let&apos;s discuss.
+            </h1>
+            <p className="w-full text-base text-zinc-400 leading-relaxed text-center flex justify-center py-2">
+            Drop your message and let&apos;s discuss about your project.
+            </p>
             <Slide delay={0.1}>
-            <CardContent>
+                <div className="relative mx-auto max-w-3xl">
                 <Form {...form}>
                 <form
                 className="space-y-6"
@@ -136,11 +135,12 @@ export default function ContactForm() {
                     </div>
                 </form>
                 </Form>
-            </CardContent>
-            <CardFooter className="py-4">
+                <div className="py-4">
                 <p className="text-gray-200/80 text-base">In case of <span className="text-amber-500/80">error</span> feel free to drop mail on <span className="text-cyan-500/90">ajayrox48@gmail.com</span> </p>
-            </CardFooter>
+                </div>
+                </div>
+
             </Slide>
-        </Card>
+        </div>
     )
 }
