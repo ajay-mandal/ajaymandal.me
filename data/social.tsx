@@ -1,6 +1,5 @@
 import {
     BiLogoGithub,
-    BiLogoInstagram,
     BiLogoLinkedinSquare,
     BiLogoYoutube,
     BiLogoDocker
@@ -27,13 +26,6 @@ import {
       name: "Linkedin",
       url: "https://linkedin.com/in/ajay-mandal",
       icon: BiLogoLinkedinSquare,
-      status: "social",
-    },
-    {
-      id: 3,
-      name: "Instagram",
-      url: "https://instagram.com/ajay_ith",
-      icon: BiLogoInstagram,
       status: "social",
     },
     {

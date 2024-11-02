@@ -4,6 +4,7 @@ import { Slide } from "../animations/Slide";
 import EmptyState from "../animations/EmptyState";
 import { PROJECT } from "@/data/Projects";
 import { ProjectWobble } from "../animations/project-wobbler";
+import { Button } from "../ui/button";
 
 
 export default async function Project() {
@@ -20,28 +21,35 @@ export default async function Project() {
         {PROJECT.length > 0 ? (
           <section className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mb-12">
             {PROJECT.map((project) => (
-              <ProjectWobble
-                key={project.slug}
-                >
-              <Link
-                href={`/projects/${project.slug}`}
-                key={project.slug}
-                className="flex items-center gap-x-4 bg-primary-bg border border-transparent p-4"
-              >
-                <Image
-                  src={project.logo}
-                  width={50}
-                  height={50}
-                  alt={project.name}
-                  className="bg-zinc-800 rounded-md p-2"
-                />
-                <div>
-                  <h2 className="text-lg tracking-wide mb-1">{project.name}</h2>
-                  <div className="text-sm text-zinc-400">
-                    {project.tagline}
-                  </div>
+              <ProjectWobble key={project.name}>
+              <div className="flex items-center gap-x-4 bg-primary-bg border border-transparent p-4 flex-col rounded-xl">
+                <div className="flex items-center gap-x-4 p-4">
+                    <Image
+                      src={project.logo}
+                      width={50}
+                      height={50}
+                      alt={project.name}
+                      className="bg-zinc-800 rounded-md p-2"
+                    />
+                    <div>
+                      <h2 className="text-lg tracking-wide mb-1">{project.name}</h2>
+                      <div className="text-sm text-zinc-400">
+                        {project.tagline}
+                      </div>
+                    </div>
                 </div>
-              </Link>
+                <div className="flex justify-between flex-row gap-x-6 ">
+                  <Link href={project.blogLink} target="_blank">
+                  <Button variant="link" className="text-gray-400 hover:text-blue-500">Blog</Button>
+                  </Link>
+                  <Link href={project.github} target="_blank">
+                  <Button className="text-gray-400 hover:text-blue-500 bg-[#37373b] border-none hover:bg-[#37373b]">Code</Button>
+                  </Link>
+                  <Link href={project.live} target="_blank">
+                  <Button variant="link" className="text-gray-400  hover:text-blue-500">Live</Button>
+                  </Link>
+                </div>
+              </div>
               </ProjectWobble>
             ))}
           </section>
