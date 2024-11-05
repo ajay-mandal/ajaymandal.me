@@ -1,5 +1,4 @@
 import { LANGUAGES, FRAMEWORKS, DATABASES, DEVOPS} from '@/data/Skills';
-import Link from 'next/link';
 import { JSX } from 'react';
 import { Slide } from '../animations/Slide';
 

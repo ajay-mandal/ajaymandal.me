@@ -8,8 +8,6 @@ import { HiHome } from "react-icons/hi2";
 
 import { GiNinjaHead } from "react-icons/gi";
 import { LiaBattleNet } from "react-icons/lia";
-import { GrTechnology } from "react-icons/gr";
-import { DiCodeigniter } from "react-icons/di";
 
 
 export default function MobileMenu() {

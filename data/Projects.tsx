@@ -44,7 +44,7 @@ export const PROJECT: ProjectProps[] = [
     {
         name: 'CMS E-Commerce',
         logo: '/icons/store.svg',
-        tagline: 'UI Interface for luggage tracking system, utilizing auth.js for authentication and Next.js for frontend',
+        tagline: 'E-Commerce platform to view products and make purchases using Stripe',
         blogLink: 'https://blogs.ajaymandal.me/',
         github: 'https://github.com/ajay-mandal/cms_ecommerce_store',
         live: 'https://cms-ecommerce-store.vercel.app/'
@@ -52,7 +52,7 @@ export const PROJECT: ProjectProps[] = [
     {
         name: 'CMS Admin',
         logo: '/icons/cms-admin.svg',
-        tagline: 'UI Interface for luggage tracking system, utilizing auth.js for authentication and Next.js for frontend',
+        tagline: 'CMS admin panel to manage different stores at single place and track orders',
         blogLink: 'https://blogs.ajaymandal.me/',
         github: 'https://github.com/ajay-mandal/cms_admin',
         live: 'https://cms-admin-weld.vercel.app/'

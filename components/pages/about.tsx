@@ -6,12 +6,12 @@ import Education from "./education-flow";
 import Experience from "./experience";
 import { WobbleCard } from "../animations/wobble-card";
 import { ImageWobble } from "../animations/image-wobbler";
+import Publications from "./papers";
 
 export default  function AboutPage() {
 
   return (
     <main className="relative lg:max-w-7xl mx-auto max-w-3xl md:px-16 px-6">
-          <div>
             <section className="relative grid lg:grid-cols-custom grid-cols-1 gap-x-6 justify-items-center">
               <div className="order-1 lg:order-none grid gap-y-20">
                 <Slide delay={0.1}>
@@ -24,7 +24,6 @@ export default  function AboutPage() {
                    <br/><br/>
                     <WobbleCard
                       containerClassName="col-span-1 lg:col-span-2 h-full bg-cyan-800/90 min-h-fit lg:min-h-full"
-                      className=""
                     >
                       <div className="w-full flex items-center justify-center ">
                       If you ever spot me in the wild, don&apos;t hesitate to say hello!
@@ -34,7 +33,7 @@ export default  function AboutPage() {
                     </WobbleCard>
                     </div>
                 </Slide>
-              <Slide delay={0.14}>
+                <Slide delay={0.14}>
                   <h1 className="font-incognito font-semibold tracking-tight sm:text-3xl text-xl lg:leading-tight basis-1/2 mb-4">
                     Experience
                   </h1>
@@ -50,8 +49,15 @@ export default  function AboutPage() {
                     <Education />
                   </div>
                 </Slide>
+                <Slide delay={0.20}>
+                  <h1 className="font-incognito font-semibold tracking-tight sm:text-3xl text-xl lg:leading-tight basis-1/2 mb-4">
+                    Publications
+                  </h1>
+                  <div className="px-4">
+                    <Publications />
+                  </div>
+                </Slide>
               </div>
-
               <aside className="flex flex-col lg:justify-self-center justify-self-start gap-y-8 lg:order-1 order-none mb-12">
                 <Slide delay={0.1}>
                   <div className="sticky top-10">
@@ -97,11 +103,20 @@ export default  function AboutPage() {
                         </a>
                       </div>
                     </div>
+                    <div className="flex items-center py-4">
+                        <a
+                          href="https://blogs.ajaymandal.me/"
+                          rel="ajay"
+                          target="_blank"
+                          className="flex items-center justify-center text-center gap-x-2 basis-[100%] bg-gray-800/40 border border-transparent hover:border-zinc-400  rounded-md py-2 text-lg font-incognito font-semibold"
+                        >
+                          Ajay&apos;s Space <BiLinkExternal className="text-base " />
+                        </a>
+                      </div>
                   </div>
                 </Slide>
               </aside>
             </section>
-          </div>
     </main>
   );
 }

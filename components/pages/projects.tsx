@@ -7,7 +7,7 @@ import { ProjectWobble } from "../animations/project-wobbler";
 import { Button } from "../ui/button";
 
 
-export default async function Project() {
+export default function Project() {
 
   return (
     <main className="max-w-7xl mx-auto md:px-16 px-6">
