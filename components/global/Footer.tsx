@@ -1,10 +1,3 @@
-import Link from "next/link"
-import { FaXTwitter } from "react-icons/fa6";
-import { BsLinkedin } from "react-icons/bs";
-import { FaYoutube, FaGithub } from "react-icons/fa";
-import { SiInstagram } from "react-icons/si";
-
-
 import Image from "next/image";
 
 
@@ -45,22 +38,6 @@ export default function Footer() {
                 alt="Fmotion logo"
               />
               Framer Motion
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://notion.so"
-              rel="Notion"
-              target="_blank"
-              className="flex items-center gap-x-2 text-white bg-transparent hover:underline"
-            >
-              <Image
-                src="/notion1.png"
-                width={20}
-                height={20}
-                alt="vercel logo"
-              />
-              Notion
             </a>
           </li>
         </ul>
