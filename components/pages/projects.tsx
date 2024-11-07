@@ -39,9 +39,11 @@ export default function Project() {
                     </div>
                 </div>
                 <div className="flex justify-between flex-row gap-x-6 ">
-                  <Link href={project.blogLink} target="_blank">
-                  <Button variant="link" className="text-gray-400 hover:text-blue-500">Blog</Button>
-                  </Link>
+                  { project.blogLink && (
+                    <Link href={project.blogLink} target="_blank">
+                    <Button variant="link" className="text-gray-400 hover:text-blue-500">Blog</Button>
+                    </Link>
+                  )}
                   <Link href={project.github} target="_blank">
                   <Button className="text-gray-400 hover:text-blue-500 bg-[#37373b] border-none hover:bg-[#37373b]">Code</Button>
                   </Link>
