@@ -33,11 +33,12 @@ export const PROJECT: ProjectProps[] = [
         live: 'https://summarease-ai.netlify.app/'
     },
     {
-        name: 'TraxPack',
-        logo: '/icons/traxpack.png',
-        tagline: 'UI Interface for luggage tracking system, utilizing auth.js for auth and Next.js for frontend',
-        github: 'https://github.com/ajay-mandal/AWS-Serverless-Luggage-Tracking-System',
-        live: 'https://traxpack.ajaymandal.me/'
+        name: 'Auth v5',
+        logo: '/icons/authjs.png',
+        tagline: 'In-house authentication solution for my any next.js project built using Auth.js with route protection.',
+        github: 'https://github.com/ajay-mandal/Auth_toolkit',
+        live: 'https://auth5.ajaymandal.me/',
+        blogLink: 'https://blogs.ajaymandal.me/',
     },
     {
         name: 'CMS E-Commerce',
