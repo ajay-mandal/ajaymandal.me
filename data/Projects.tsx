@@ -38,7 +38,7 @@ export const PROJECT: ProjectProps[] = [
         tagline: 'In-house authentication solution for my any next.js project built using Auth.js with route protection.',
         github: 'https://github.com/ajay-mandal/Auth_toolkit',
         live: 'https://auth5.ajaymandal.me/',
-        blogLink: 'https://blogs.ajaymandal.me/',
+        blogLink: 'https://blogs.ajaymandal.me/posts/inhouse-authentication-using-authjs/',
     },
     {
         name: 'CMS E-Commerce',
