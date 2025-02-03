@@ -136,7 +136,7 @@ export default function ContactForm() {
                 </form>
                 </Form>
                 <div className="py-4">
-                <p className="text-gray-200/80 text-base">In case of <span className="text-amber-500/80">error</span> feel free to drop mail on <span className="text-cyan-500/90">ajayrox48@gmail.com</span> </p>
+                <p className="text-gray-200/80 text-base">In case of <span className="text-amber-500/80">error</span> feel free to drop mail on <span className="text-cyan-500/90">ajaymandal.work07@gmail.com</span> </p>
                 </div>
                 </div>
 

@@ -16,13 +16,12 @@ export default function Home() {
             <div className="max-w-3xl">
                 <Slide delay={0.1}>
                 <h1 className="font-incognito font-semibold tracking-tight text-3xl sm:text-5xl mb-6 lg:leading-[3.7rem] leading-tight ">
-                  <ImagePreview image="/sad.gif">
+                    <ImagePreview image="/sad.gif">
                     Software Engineer
-                  </ImagePreview>
-                  <ImagePreview image="/dance.gif">
-                    , Developer
-                  </ImagePreview>
-                  , and a content creator.
+                    </ImagePreview>
+                    <ImagePreview image="/dance.gif">
+                    &nbsp;and a  Dev
+                    </ImagePreview>
                 </h1>
                 </Slide>
                 <p className="text-base text-zinc-400 leading-relaxed">
