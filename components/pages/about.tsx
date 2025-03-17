@@ -105,8 +105,7 @@ export default  function AboutPage() {
                     </div>
                     <div className="flex items-center py-4">
                         <a
-                          href="https://blogs.ajaymandal.me/"
-                          rel="ajay"
+                          href="https://blogs-ajaymandal.netlify.app/"
                           target="_blank"
                           className="flex items-center justify-center text-center gap-x-2 basis-[100%] bg-gray-800/40 border border-transparent hover:border-zinc-400  rounded-md py-2 text-lg font-incognito font-semibold"
                         >

@@ -15,7 +15,7 @@ export const PROJECT: ProjectProps[] = [
         tagline: 'A blog posting app built using Next.js, Hono, Cloudflare Workers, Edge runtime',
         blogLink: 'https://blogs.ajaymandal.me/posts/noteme-app/',
         github: 'https://github.com/ajay-mandal/NoteMe-App',
-        live: 'https://noteme.ajaymandal.me/'
+        live: 'https://noteme-app-ajaymandal.vercel.app/'
     },
     {
         name: 'Youtube Clone',
@@ -23,7 +23,7 @@ export const PROJECT: ProjectProps[] = [
         tagline: 'Youtube-clone using Next.js, FIrebase and Google Cloud, heavily focused on Video upload Feature',
         blogLink: 'https://blogs.ajaymandal.me/posts/youtube-clone-backend/',
         github: 'https://github.com/ajay-mandal/youtube-clone',
-        live: 'https://youtube-clone.ajaymandal.me/'
+        live: 'https://youtube-ajaymandal.vercel.app/'
     },
     {
         name: 'Summarease AI',
@@ -37,7 +37,7 @@ export const PROJECT: ProjectProps[] = [
         logo: '/icons/authjs.png',
         tagline: 'In-house authentication solution for my any next.js project built using Auth.js with route protection.',
         github: 'https://github.com/ajay-mandal/Auth_toolkit',
-        live: 'https://auth5.ajaymandal.me/',
+        live: 'https://auth5-ajaymandal.vercel.app/',
         blogLink: 'https://blogs.ajaymandal.me/posts/inhouse-authentication-using-authjs/',
     },
     {
