@@ -13,7 +13,7 @@ export const PROJECT: ProjectProps[] = [
         name: 'NoteMe App',
         logo: '/icons/noteme.png',
         tagline: 'A blog posting app built using Next.js, Hono, Cloudflare Workers, Edge runtime',
-        blogLink: 'https://blogs.ajaymandal.me/posts/noteme-app/',
+        blogLink: 'https://blogs-ajaymandal.netlify.app/posts/noteme-app/',
         github: 'https://github.com/ajay-mandal/NoteMe-App',
         live: 'https://noteme-app-ajaymandal.vercel.app/'
     },
@@ -21,7 +21,7 @@ export const PROJECT: ProjectProps[] = [
         name: 'Youtube Clone',
         logo: '/icons/yt.svg',
         tagline: 'Youtube-clone using Next.js, FIrebase and Google Cloud, heavily focused on Video upload Feature',
-        blogLink: 'https://blogs.ajaymandal.me/posts/youtube-clone-backend/',
+        blogLink: 'https://blogs-ajaymandal.netlify.app/posts/youtube-clone-backend/',
         github: 'https://github.com/ajay-mandal/youtube-clone',
         live: 'https://youtube-ajaymandal.vercel.app/'
     },
@@ -38,7 +38,7 @@ export const PROJECT: ProjectProps[] = [
         tagline: 'In-house authentication solution for my any next.js project built using Auth.js with route protection.',
         github: 'https://github.com/ajay-mandal/Auth_toolkit',
         live: 'https://auth5-ajaymandal.vercel.app/',
-        blogLink: 'https://blogs.ajaymandal.me/posts/inhouse-authentication-using-authjs/',
+        blogLink: 'https://blogs-ajaymandal.netlify.app/posts/inhouse-authentication-using-authjs/',
     },
     {
         name: 'CMS E-Commerce',
@@ -51,7 +51,7 @@ export const PROJECT: ProjectProps[] = [
         name: 'CMS Admin',
         logo: '/icons/cms-admin.svg',
         tagline: 'CMS admin panel to manage different stores at single place and track orders',
-        blogLink: 'https://blogs.ajaymandal.me/',
+        blogLink: 'https://blogs-ajaymandal.netlify.app/',
         github: 'https://github.com/ajay-mandal/cms_admin',
         live: 'https://cms-admin-weld.vercel.app/'
     }
