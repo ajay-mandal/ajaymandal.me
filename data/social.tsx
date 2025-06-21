@@ -50,7 +50,7 @@ export const socialLinks = [
   {
     id: 6,
     name: "My Blogs",
-    url: "https://blogs.ajaymandal.me/",
+    url: "https://blogs-ajaymandal.netlify.app",
     icon: CustomLogo,
     status: "social",
   },

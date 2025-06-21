@@ -16,13 +16,14 @@ export default function Job() {
               className="flex items-start lg:gap-x-6 gap-x-4 max-w-2xl relative before:absolute before:bottom-0 before:top-[4rem] before:left-9 before:w-[1px] before:h-[calc(100%-70px)] before:bg-zinc-700"
             >
               <LinkPreview url={data.url}>
-                  <div className="grid place-items-center border border-zinc-800 min-h-[65px] min-w-[65px] p-2 rounded-md overflow-clip relative bg-white">
+                  <div className="grid place-items-center border border-zinc-800 min-h-[65px] min-w-[65px] p-2 rounded-md overflow-clip relative bg-gray-800">
                     <Image
                         src={data.logo}
-                        className="object-cover duration-300"
+                        className="duration-300"
                         alt={`${data.name} logo`}
                         width={20}
                         height={20}
+
                     />
                   </div>
               </LinkPreview>

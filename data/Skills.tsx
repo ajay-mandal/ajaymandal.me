@@ -97,7 +97,7 @@ export const DATABASES: SkillProps[] = [
         link: 'https://www.mongodb.com/'
     },
     {
-        name: 'Postgres',
+        name: 'PostgresSQL',
         icon: <PostgresIcon />,
         link: 'https://www.postgresql.org/'
     },

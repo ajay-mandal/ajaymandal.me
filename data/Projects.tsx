@@ -4,7 +4,7 @@ export type ProjectProps = {
   tagline: string;
   blogLink?: string;
   github: string;
-  live: string;
+  live?: string;
 };
 
 
@@ -23,7 +23,6 @@ export const PROJECT: ProjectProps[] = [
         tagline: 'Youtube-clone using Next.js, FIrebase and Google Cloud, heavily focused on Video upload Feature',
         blogLink: 'https://blogs-ajaymandal.netlify.app/posts/youtube-clone-backend/',
         github: 'https://github.com/ajay-mandal/youtube-clone',
-        live: 'https://youtube-ajaymandal.vercel.app/'
     },
     {
         name: 'Summarease AI',

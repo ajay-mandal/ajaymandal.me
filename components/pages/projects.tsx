@@ -47,9 +47,11 @@ export default function Project() {
                   <Link href={project.github} target="_blank">
                   <Button className="text-gray-400 hover:text-blue-500 bg-[#37373b] border-none hover:bg-[#37373b]">Code</Button>
                   </Link>
+                  { project.live && (
                   <Link href={project.live} target="_blank">
                   <Button variant="link" className="text-gray-400  hover:text-blue-500">Live</Button>
                   </Link>
+                  )}       
                 </div>
               </div>
               </ProjectWobble>
