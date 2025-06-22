@@ -19,7 +19,7 @@ export const EDUCATIONS: EducationProps[] = [
         startDate: "Oct 2020",
         endDate: "May 2024",
         description: "I completed my Bachelor of Technology (B.Tech) in Computer Science and Engineering at Jain (Deemed-to-be University), Bengaluru",
-        CGPA: "CGPA 8.8"
+        CGPA: "CGPA 8.8 / 10.0"
     },
     {
         id: "KTM",
@@ -29,7 +29,7 @@ export const EDUCATIONS: EducationProps[] = [
         startDate: "Mar 2018",
         endDate: "Apr 2020",
         description: "I completed my Higher Studies in Mathematics and Computer Science at Kathmandu Model College, Bag bazar, Nepal",
-        CGPA: "GPA 3.39"
+        CGPA: "GPA 3.39 / 4.0"
     },
     {
         id: "MTPS",
@@ -39,7 +39,7 @@ export const EDUCATIONS: EducationProps[] = [
         startDate: "2009",
         endDate: "2018",
         description: "I completed my Primary Education at Mother Teresa Public School, Janakpur, Nepal",
-        CGPA: "GPA 3.70"
+        CGPA: "GPA 3.70 / 4.0"
     },
 
 ]
