@@ -22,7 +22,7 @@ export const socialLinks = [
   {
     id: 2,
     name: "X",
-    url: "https://twitter.com/lord_zexa",
+    url: "https://x.com/ajaymandal01",
     icon: FaSquareXTwitter,
     status: "social",
   },
