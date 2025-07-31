@@ -19,10 +19,10 @@ export default function Job() {
               <div className="grid place-items-center bg-white border border-zinc-800 min-h-[65px] min-w-[65px] p-2 rounded-md overflow-clip relative">
                 <Image
                   src={data.logo}
-                  className="object-cover duration-300"
+                  className="object-contain transition-all duration-300 group-hover:scale-110 filter brightness-110"
                   alt={`${data.name} logo`}
-                  width={60}
-                  height={60}
+                        width={32}
+                        height={32}
                 />
               </div>
               </LinkPreview>

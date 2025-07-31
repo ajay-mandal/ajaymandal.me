@@ -23,6 +23,7 @@ import {
     CFIcon,
     K8sIcon
 } from '@/components/icons';
+import { NestJSIcon } from '@/components/icons/nestjs';
 
 import { JSX } from 'react';
 
@@ -87,6 +88,11 @@ export const FRAMEWORKS: SkillProps[] = [
         name: 'Hono',
         icon: <HonoIcon />,
         link: 'https://hono.dev/'
+    },
+        {
+        name: 'NestJS',
+        icon: <NestJSIcon />,
+        link: 'https://nestjs.com/'
     }
 ]
 

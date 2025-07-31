@@ -24,7 +24,7 @@ export const JOBS: JobProps[] = [
         Kept projects on track by supporting project managers with progress reports, docs, and more.
         Used analytic tools such as Aternity and Jamf to monitor and manage devices and resolve issues.`,
     },
-        {
+    {
         id: "klyra",
         name: "Klyra Innovations",
         url: "https://klyra.co.in/",
@@ -35,6 +35,19 @@ export const JOBS: JobProps[] = [
         description: `Developed the MVP mobile design using React.js and Tailwind CSS, integrating user authentication and email verification with Clerk.
         Engineered a scalable FastAPI backend to handle high-concurrency user requests efficiently.
         Built the organization’s SEO-optimized website using Next.js, React, and TypeScript in collaboration with senior developers.`,
+    },
+        {
+        id: "juteq",
+        name: "JUTEQ Inc",
+        url: "https://juteq.ca/",
+        logo: "/juteq.jpeg",
+        jobTitle: "Backend Engineer",
+        startDate: "2025-06-24",
+        endDate: "",
+        description: `Developing AI Platforms for automotive dealership customer engagement system using NestJS and Prisma ORM. 
+        Building scalable backend APIs for orchestrating specialized AI agents. Implementing multi-channel communication systems for
+        email/SMS customer interactions and real-time lead management. Working with Google Cloud infrastructure including Cloud Run,
+        Vertex AI, and BullMQ for automated automotive sales workflows.`,
     }
 
 ]

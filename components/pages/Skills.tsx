@@ -35,7 +35,6 @@ export default function Skills() {
             <div className="mt-2 flex flex-wrap justify-center gap-4 text-xl text-zinc-200">
               {LANGUAGES.map(({ icon, name, link }, i) => (
                 <SkillPill icon={icon} name={name} key={i} link={link} />
-                
               ))}
             </div>
           </div>
@@ -45,9 +44,7 @@ export default function Skills() {
             </p>
             <div className="mt-2 flex flex-wrap gap-4 text-xl justify-center text-zinc-200">
               {FRAMEWORKS.map(({ icon, name, link }, index) => (
-                
                 <SkillPill icon={icon} name={name} key={index} link={link}/>
-                
               ))}
             </div>
           </div>
@@ -57,9 +54,7 @@ export default function Skills() {
             </p>
             <div className="mt-2 flex flex-wrap gap-4 justify-center text-zinc-200">
               {DATABASES.map(({ icon, name, link }, index) => (
-                
                     <SkillPill icon={icon} name={name} key={index} link={link} />
-                
               ))}
             </div>
           </div>
@@ -69,9 +64,7 @@ export default function Skills() {
             </p>
             <div className="mt-2 flex flex-wrap gap-4 justify-center text-zinc-200">
               {DEVOPS.map(({ icon, name, link }, index) => (
-                
                 <SkillPill icon={icon} name={name} key={index} link={link}/>
-                
               ))}
             </div>
           </div>
