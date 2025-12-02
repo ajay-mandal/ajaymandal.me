@@ -25,13 +25,6 @@ export const PROJECT: ProjectProps[] = [
         github: 'https://github.com/ajay-mandal/youtube-clone',
     },
     {
-        name: 'Summarease AI',
-        logo: '/icons/summ.ico',
-        tagline: 'App that use RapidAPI based on GPT-4 to summarize the url provide and output a descriptive summary',
-        github: 'https://github.com/ajay-mandal/Summarizer_AI_ReactApp',
-        live: 'https://summarease-ai.netlify.app/'
-    },
-    {
         name: 'Auth v5',
         logo: '/icons/authjs.png',
         tagline: 'In-house authentication solution for my any next.js project built using Auth.js with route protection.',

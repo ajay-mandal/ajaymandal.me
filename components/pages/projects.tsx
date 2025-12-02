@@ -19,7 +19,7 @@ export default function Project() {
         </p>
       <Slide delay={0.1}>
         {PROJECT.length > 0 ? (
-          <section className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mb-12">
+          <section className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mb-12 justify-items-center">
             {PROJECT.map((project) => (
               <ProjectWobble key={project.name}>
               <div className="flex items-center gap-x-4 bg-primary-bg border border-transparent p-4 flex-col rounded-xl">

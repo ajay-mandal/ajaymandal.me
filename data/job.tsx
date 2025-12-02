@@ -31,7 +31,7 @@ export const JOBS: JobProps[] = [
         logo: "/klyra_1.png",
         jobTitle: "Full-Stack Engineer",
         startDate: "2025-01",
-        endDate: "2025-02",
+        endDate: "2025-04",
         description: `Developed the MVP mobile design using React.js and Tailwind CSS, integrating user authentication and email verification with Clerk.
         Engineered a scalable FastAPI backend to handle high-concurrency user requests efficiently.
         Built the organization’s SEO-optimized website using Next.js, React, and TypeScript in collaboration with senior developers.`,
