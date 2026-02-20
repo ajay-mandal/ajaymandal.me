@@ -1,56 +1,147 @@
-import Image from "next/image";
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import MobileMenu from "./Mobile";
 
+const navLinks = [
+  { title: "About", href: "/about" },
+  { title: "Projects", href: "/#projects" },
+  { title: "Blog", href: "/blog" },
+  { title: "Terminal", href: "/#terminal" },
+  { title: "Contact", href: "/#contact" },
+];
 
 export default function Navbar() {
-
-  const data = [
-    {
-      title: "Home",
-      href: "/",
-    },
-    {
-      title: "About",
-      href: "/about",
-    },
-    {
-      title: "Projects",
-      href: "/projects",
-    }
-  ];
+  const pathname = usePathname();
 
   return (
-    <>
-      <header className="text-sm py-6 md:px-16 px-6 border-b border-zinc-800  z-30 md:mb-28 mb-10">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex flex-row gap-x-4">
-            <Image src="/logo-dark.png" width={35} height={35} alt="logo" />
-            <div className="py-1">
-            <h1 className="font-incognito font-semibold text-xl">Portfolio</h1>
-            </div>
-          </Link>
+    <header
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 500,
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "1.1rem 3rem",
+        background: "rgba(240,242,245,0.92)",
+        backdropFilter: "blur(24px) saturate(180%)",
+        borderBottom: "3px solid #0D0F14",
+        animation: "navIn .8s cubic-bezier(.16,1,.3,1) both",
+      }}
+    >
+      {/* Logo */}
+      <Link
+        href="/"
+        style={{
+          fontFamily: "var(--oxanium)",
+          fontWeight: 800,
+          fontSize: "1.4rem",
+          letterSpacing: ".14em",
+          color: "#E8192C",
+          border: "3px solid #E8192C",
+          padding: ".28rem .85rem",
+          background: "#fff",
+          position: "relative",
+          textDecoration: "none",
+          display: "inline-block",
+          transition: "all .25s",
+          cursor: "crosshair",
+        }}
+        className="logo-am hover:bg-[#E8192C] hover:text-white"
+      >
+        AM
+      </Link>
 
-          <nav className="sm:block hidden">
-            <ul className="flex items-center gap-x-8">
-              {data.map((link, id) => (
-                <li key={id}>
-                  <Link
-                    href={link.href}
-                    className="font-incognito text-white  hover:text-cyan-600  duration-300 text-base"
-                  >
-                    {link.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+      {/* Desktop Nav */}
+      <nav className="hidden sm:block">
+        <ul className="flex items-center gap-x-8">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                style={{
+                  fontFamily: "var(--space-mono)",
+                  fontSize: ".62rem",
+                  letterSpacing: ".2em",
+                  textTransform: "uppercase",
+                  textDecoration: "none",
+                  color: pathname === link.href ? "#E8192C" : "#4A5068",
+                  position: "relative",
+                  transition: "color .2s",
+                }}
+                className="nav-link hover:text-[#E8192C]"
+              >
+                {link.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
-          <div className="sm:hidden flex items-center gap-x-4">
-            <MobileMenu />
-          </div>
-        </div>
-      </header>
-    </>
+      {/* Status pill */}
+      <div
+        className="hidden sm:flex"
+        style={{
+          alignItems: "center",
+          gap: ".6rem",
+          fontFamily: "var(--space-mono)",
+          fontSize: ".58rem",
+          letterSpacing: ".15em",
+          textTransform: "uppercase",
+          color: "#8892AA",
+          border: "2px solid #E4E7ED",
+          padding: ".5rem 1rem",
+        }}
+      >
+        <span
+          style={{
+            width: 7,
+            height: 7,
+            borderRadius: "50%",
+            background: "#22C55E",
+            flexShrink: 0,
+            animation: "livePulse 2s ease-in-out infinite",
+          }}
+        />
+        Available · Remote
+      </div>
+
+      {/* Mobile */}
+      <div className="sm:hidden">
+        <MobileMenu />
+      </div>
+
+      <style>{`
+        @keyframes navIn {
+          from { transform: translateY(-100%); opacity: 0; }
+          to   { transform: translateY(0);     opacity: 1; }
+        }
+        @keyframes livePulse {
+          0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,.5); }
+          50%      { box-shadow: 0 0 0 5px rgba(34,197,94,0); }
+        }
+        .logo-am::before {
+          content: '';
+          position: absolute;
+          inset: 4px;
+          border: 2.5px dotted rgba(232,25,44,0.45);
+          pointer-events: none;
+          transition: border-color .25s;
+        }
+        .logo-am:hover::before { border-color: rgba(255,255,255,0.35); }
+        .nav-link::after {
+          content: '';
+          position: absolute;
+          bottom: -4px; left: 0;
+          width: 0; height: 2px;
+          background: #E8192C;
+          transition: width .3s;
+        }
+        .nav-link:hover::after { width: 100%; }
+      `}</style>
+    </header>
   );
 }

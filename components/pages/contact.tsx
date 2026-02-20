@@ -1,146 +1,197 @@
 "use client";
-import * as z from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "../ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
-import { ContactSchema } from "@/schema";
-import { useState, useTransition } from "react";
-import { Slide } from "../animations/Slide";
-import { FormError } from "../form-error";
-import { FormSuccess } from "../form-success";
-import emailjs from "@emailjs/browser"
-import { ImagePreview } from "../animations/image-preview";
+import { Slide } from "@/components/animations/Slide";
+
+// Replace with your Google Calendar appointment scheduling link
+const GCAL_URL =
+  "https://calendar.google.com/calendar/appointments/schedules/YOUR_SCHEDULE_ID";
 
 export default function ContactForm() {
-    const [isPending, startTransition ] = useTransition();
-    const [error, setError ] = useState<string | undefined>();
-    const [success, setSuccess ] = useState<string | undefined>();
+  return (
+    <section
+      id="contact"
+      style={{
+        padding: "5.5rem 3.5rem",
+        borderBottom: "3px solid #0D0F14",
+        background: "#FFFFFF",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      {/* Decorative bg rect */}
+      <div
+        style={{
+          position: "absolute",
+          right: "-4%",
+          bottom: "-8%",
+          width: "42%",
+          height: "88%",
+          border: "3px dotted rgba(232,25,44,.2)",
+          pointerEvents: "none",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 16,
+            border: "2px dotted rgba(232,25,44,.12)",
+          }}
+        />
+      </div>
 
-    const form = useForm<z.infer<typeof ContactSchema>>({
-        resolver: zodResolver(ContactSchema),
-        defaultValues: {
-            name: '',
-            email: '',
-            message: ''
-        }
-    })
+      {/* Section header */}
+      <Slide delay={0.05}>
+      <div style={{ display: "flex", alignItems: "baseline", gap: "1rem", marginBottom: "3rem" }}>
+        <span
+          style={{
+            fontFamily: "var(--oxanium)",
+            fontWeight: 800,
+            fontSize: "4rem",
+            color: "rgba(232,25,44,0.07)",
+            lineHeight: 1,
+          }}
+        >
+          05
+        </span>
+        <h2
+          style={{
+            fontFamily: "var(--oxanium)",
+            fontWeight: 800,
+            fontSize: "clamp(2rem,3.8vw,3.2rem)",
+            lineHeight: 1,
+            color: "#1A1D24",
+          }}
+        >
+          Let&apos;s <span style={{ color: "#E8192C" }}>Build</span>
+        </h2>
+      </div>
+      </Slide>
 
-    const onSubmit = (values: z.infer<typeof ContactSchema>) => {
-        const templateParams = {
-            from_name: values.name,
-            from_email: values.email,
-            message: values.message
-        };
-        emailjs.send(
-            process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-            process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-            templateParams,
-            process.env.NEXT_PUBLIC_EMAILJS_USER_ID!
-        )
-        .then((res)=>{
-                setError("")
-                setSuccess("Your message has been sent successfully. I will get back to you soon.")
-            }
-        )
-        .catch((error) =>{
-                setError("Some error occurred. Please send me a direct mail using below mail address")
-                setSuccess("")
-            }
-        )
+      {/* Email */}
+      <Slide delay={0.12}>
+      <a
+        href="mailto:ajaymandal.work07@gmail.com"
+        style={{
+          fontFamily: "var(--oxanium)",
+          fontWeight: 800,
+          fontSize: "clamp(1.2rem,2.8vw,2.2rem)",
+          textDecoration: "none",
+          display: "inline-block",
+          borderBottomWidth: "3px",
+          borderBottomStyle: "solid",
+          paddingBottom: ".3rem",
+          marginBottom: "0.6rem",
+          transition: "color .25s, border-color .25s, transform .2s",
+          position: "relative",
+          zIndex: 1,
+        }}
+        className="text-[#1A1D24] border-[#0D0F14] hover:text-[#E8192C] hover:border-[#E8192C] hover:scale-[1.03]"
+      >
+        ajaymandal.work07@gmail.com
+      </a>
 
-    }
-    return (
-        <div className="w-full shadow-md bg-transparent text-white rounded-sm border border-transparent font-incognito">
-            <h1 className="md:text-4xl text-center font-incognito font-semibold sm:text-4xl text-3xl py-2">
-            Hire Me or Collab ? Let&apos;s discuss.
-            </h1>
-            <p className="w-full text-base text-zinc-400 leading-relaxed text-center flex justify-center py-2">
-            Drop your message and let&apos;s discuss about your project.
-            </p>
-            <Slide delay={0.1}>
-                <div className="relative mx-auto max-w-3xl">
-                <Form {...form}>
-                <form
-                className="space-y-6"
-                onSubmit={form.handleSubmit(onSubmit)}>
-                    <div className="space-y-10">
-                        <div className="grid sm:grid-cols-2 gap-6 grid-cols-1">
-                            <FormField
-                            control={form.control}
-                            name="name"
-                            render={({ field }) =>  (
-                                <FormItem>
-                                    <FormLabel className="text-lg">Name</FormLabel>
-                                    <FormControl className="">
-                                        <Input
-                                        {...field}
-                                        placeholder="Name"
-                                        disabled={isPending}
-                                        className="bg-transparent text-white border border-gray-500 focus:border-cyan-400"
-                                        />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                                )}
-                            />
-                            <FormField
-                            control={form.control}
-                            name="email"
-                            render={({ field }) =>  (
-                                <FormItem>
-                                    <FormLabel className="text-lg">Email</FormLabel>
-                                    <FormControl>
-                                        <Input
-                                        {...field}
-                                        placeholder="Email"
-                                        disabled={isPending}
-                                        className="bg-transparent text-white border border-gray-500 focus:border-cyan-400"
-                                        />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                                )}
-                            />
-                        </div>
-                    <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) =>  (
-                        <FormItem>
-                            <FormLabel className="text-lg">Message</FormLabel>
-                            <FormControl>
-                                <Textarea
-                                {...field}
-                                placeholder="Type your message here"
-                                disabled={isPending}
-                                className="bg-transparent text-white border border-gray-500 focus:border-cyan-500 h-32 resize-none"
-                                />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                        )}
-                    />
-                    <div>
-                    <ImagePreview image="/send.gif">
-                        <Button type="submit" variant="secondary" className="w-full">
-                            Let&apos;s Talk
-                        </Button>
-                    </ImagePreview>
-                    </div>
-                    <FormError message={error} />
-                    <FormSuccess message={success} />
-                    </div>
-                </form>
-                </Form>
-                <div className="py-4">
-                <p className="text-gray-200/80 text-base">In case of <span className="text-amber-500/80">error</span> feel free to drop mail on <span className="text-cyan-500/90">ajaymandal.work07@gmail.com</span> </p>
-                </div>
-                </div>
+      {/* Subline */}
+      <p
+        style={{
+          fontFamily: "var(--space-mono)",
+          fontSize: ".72rem",
+          letterSpacing: "0.04em",
+          marginBottom: "2.8rem",
+          position: "relative",
+          zIndex: 1,
+          transition: "color .25s",
+        }}
+        className="text-[#4A5068]  cursor-default"
+      >
+        → Response within 24 hours · Open to full-time &amp; freelance
+      </p>
+      </Slide>
 
-            </Slide>
+      <Slide delay={0.22}>
+      <div style={{ maxWidth: 560, position: "relative", zIndex: 1 }}>
+        <p
+          style={{
+            fontFamily: "var(--space-mono)",
+            fontSize: ".65rem",
+            lineHeight: 2,
+            color: "#4A5068",
+            marginBottom: "2.2rem",
+          }}
+        >
+          Got a project, role, or idea worth talking about?
+          <br />
+          Pick a time and let&apos;s connect.
+        </p>
+
+        {/* Book button */}
+        <a
+          href={GCAL_URL}
+          target="_blank"
+          rel="noreferrer"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: ".55rem",
+            background: "#E8192C",
+            color: "#FFFFFF",
+            border: "3px solid #0D0F14",
+            padding: ".75rem 1.7rem",
+            fontFamily: "var(--space-mono)",
+            fontSize: ".6rem",
+            letterSpacing: ".14em",
+            textTransform: "uppercase",
+            textDecoration: "none",
+            cursor: "crosshair",
+            transition: "background .3s, transform .2s",
+            marginBottom: "1.6rem",
+          }}
+          className="hover:bg-[#0D0F14] hover:scale-[1.04]"
+        >
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+          </svg>
+          Book a slot →
+        </a>
+
+        {/* Availability hint */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: ".45rem",
+            fontFamily: "var(--space-mono)",
+            fontSize: ".54rem",
+            letterSpacing: ".1em",
+            color: "#8892AA",
+            textTransform: "uppercase",
+          }}
+        >
+          <span
+            style={{
+              width: 6,
+              height: 6,
+              borderRadius: "50%",
+              background: "#22C55E",
+              display: "inline-block",
+              flexShrink: 0,
+            }}
+          />
+          Available · Remote
         </div>
-    )
+      </div>
+      </Slide>
+    </section>
+  );
 }
+

@@ -39,19 +39,5 @@ export const socialLinks = [
     url: "https://youtube.com/@zexa_yt",
     icon: BiLogoYoutube,
     status: "social",
-  },
-  {
-    id: 5,
-    name: "Docker",
-    url: "https://hub.docker.com/u/lordzexa",
-    icon: BiLogoDocker,
-    status: "social",
-  },
-  {
-    id: 6,
-    name: "My Blogs",
-    url: "https://blogs-ajaymandal.netlify.app",
-    icon: CustomLogo,
-    status: "social",
-  },
+  }
 ];

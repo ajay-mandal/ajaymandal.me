@@ -1,17 +1,16 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
 
   prefix: "",
   theme: {
-
     container: {
       center: true,
       padding: "2rem",
@@ -21,15 +20,28 @@ const config = {
     },
     extend: {
       fontFamily: {
+        oxanium: ["var(--oxanium)"],
+        mono: ["var(--space-mono)", "ui-monospace", "monospace"],
         incognito: ["var(--incognito)"],
         inter: ["var(--inter)"],
       },
       colors: {
-        "primary-color": "#FB576F",
+        brand: "#E8192C",
+        "brand-l": "rgba(232,25,44,0.07)",
+        "brand-m": "rgba(232,25,44,0.14)",
+        "site-bg": "#F0F2F5",
+        "site-bg2": "#E4E7ED",
+        surface: "#FFFFFF",
+        ink: "#1A1D24",
+        ink2: "#4A5068",
+        ink3: "#8892AA",
+        "site-black": "#0D0F14",
+        /* legacy */
+        "primary-color": "#E8192C",
         "secondary-color": "#0CCE6B",
         "tertiary-color": "#16a34a",
-        "primary-bg": "rgba(39, 39, 43, 0.4)",
-        "secondary-bg": "rgba(250, 250, 250, 0.4)",
+        "primary-bg": "rgba(240,242,245,0.6)",
+        "secondary-bg": "rgba(255,255,255,0.6)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -95,7 +107,7 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require('@tailwindcss/typography')],
-} satisfies Config
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+} satisfies Config;
 
-export default config
+export default config;

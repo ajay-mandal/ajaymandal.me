@@ -4,10 +4,12 @@ import Image from "next/image";
 import { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { HiOutlineX } from "react-icons/hi";
-import { HiHome } from "react-icons/hi2";
+import { HiHome } from "react-icons/hi";
 
 import { GiNinjaHead } from "react-icons/gi";
 import { LiaBattleNet } from "react-icons/lia";
+import { BsTerminal } from "react-icons/bs";
+import { HiOutlineMail } from "react-icons/hi";
 
 
 export default function MobileMenu() {
@@ -25,8 +27,18 @@ export default function MobileMenu() {
     },
     {
       title: "Projects",
-      href: "/projects",
+      href: "/#projects",
       icon: LiaBattleNet,
+    },
+    {
+      title: "Terminal",
+      href: "/#terminal",
+      icon: BsTerminal,
+    },
+    {
+      title: "Contact",
+      href: "/#contact",
+      icon: HiOutlineMail,
     },
   ];
 

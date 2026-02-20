@@ -1,76 +1,247 @@
-import { LANGUAGES, FRAMEWORKS, DATABASES, DEVOPS} from '@/data/Skills';
-import { JSX } from 'react';
-import { Slide } from '../animations/Slide';
+import { Slide } from "@/components/animations/Slide";
 
-export type SkillProps = {
+// Keyframes injected once at module level via <style> in render
+
+type SkillCard = {
+  icon: string;
   name: string;
-  icon: JSX.Element;
-  link: string;
+  description: string;
+  level: string;
+  pct: number;
 };
 
-function SkillPill(props: SkillProps) {
-  const { name, icon } = props;
-
-  return (
-    <div className="flex w-max items-center gap-2 overflow-hidden rounded-md border border-cyan-900/90 hover:border-cyan-300 px-4 py-2 text-sm bg-zinc-800/70 sm:text-base md:px-6 md:py-3 md:text-lg">
-      {icon}
-      <span className="font-medium">{name}</span>
-    </div>
-  );
-}
+const SKILL_CARDS: SkillCard[] = [
+  {
+    icon: "⬡",
+    name: "Backend Engineering",
+    description: "NestJS, Node.js, Express, Hono. REST. API gateways, rate limiting, versioning, and event-driven architectures.",
+    level: "Expert",
+    pct: 95,
+  },
+  {
+    icon: "◈",
+    name: "AI & LLM Systems",
+    description: "OpenAI, Anthropic, OpenRouter. RAG pipelines, vector search, MCP servers, agent-to-agent workflows, and production LLM integration.",
+    level: "Advanced",
+    pct: 88,
+  },
+  {
+    icon: "◉",
+    name: "Databases & Storage",
+    description: "PostgreSQL, Redis, MongoDB, Supabase. Query optimisation, vector DBs, indexing strategies, and ORM design.",
+    level: "Expert",
+    pct: 92,
+  },
+  {
+    icon: "▦",
+    name: "Cloud & DevOps",
+    description: "GCP, AWS, Docker, Kubernetes. CI/CD pipelines, observability stacks, serverless functions, and infra-as-code.",
+    level: "Advanced",
+    pct: 84,
+  },
+  {
+    icon: "⬕",
+    name: "Distributed Systems",
+    description: "BullMQ, pub/sub messaging. Job queues, retry logic, exactly-once semantics, and fault-tolerant service design.",
+    level: "Advanced",
+    pct: 86,
+  },
+  {
+    icon: "◫",
+    name: "Security & Auth",
+    description: "OAuth 2.0, JWT, Auth.js, Zod. Input validation, secrets management, RBAC, and zero-trust architecture patterns.",
+    level: "Advanced",
+    pct: 82,
+  },
+];
 
 export default function Skills() {
   return (
-    <>
-      <section className=" py-10 font-incognito">
-        <div className="relative mx-auto max-w-7xl">
-        <Slide delay={0.14} >
-          <h1 className="md:text-5xl text-center font-incognito font-semibold tracking-tight sm:text-5xl text-4xl lg:leading-tight basis-1/2 mb-8">
-            Technical Skills
-          </h1>
-          <div className="mt-5">
-            <p className="font-semibold text-2xl mx-auto text-center">
-              Languages
-            </p>
-            <div className="mt-2 flex flex-wrap justify-center gap-4 text-xl text-zinc-200">
-              {LANGUAGES.map(({ icon, name, link }, i) => (
-                <SkillPill icon={icon} name={name} key={i} link={link} />
-              ))}
+    <section
+      style={{
+        padding: "5.5rem 3.5rem",
+        borderBottom: "3px solid #0D0F14",
+        background: "#F0F2F5",
+      }}
+    >
+      <style>{`
+        .sk-card {
+          position: relative;
+          overflow: hidden;
+          cursor: crosshair;
+        }
+        .sk-card::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: #E8192C;
+          transform: scaleY(0);
+          transform-origin: bottom;
+          transition: transform .4s cubic-bezier(.16,1,.3,1);
+          z-index: 0;
+        }
+        .sk-card:hover::after { transform: scaleY(1); }
+        .sk-card > * { position: relative; z-index: 1; }
+        .sk-card:hover .sk-dot { border-color: rgba(255,255,255,.28) !important; }
+        @keyframes barFill { from { width: 0; } }
+        .sk-bar-fill { animation: barFill 1.2s cubic-bezier(.16,1,.3,1) both; }
+      `}</style>
+      {/* Section header */}
+      <Slide delay={0.05}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "baseline",
+          gap: "1rem",
+          marginBottom: "3.5rem",
+        }}
+      >
+        <span
+          style={{
+            fontFamily: "var(--oxanium)",
+            fontWeight: 800,
+            fontSize: "4rem",
+            color: "rgba(232,25,44,0.07)",
+            lineHeight: 1,
+          }}
+        >
+          01
+        </span>
+        <h2
+          style={{
+            fontFamily: "var(--oxanium)",
+            fontWeight: 800,
+            fontSize: "clamp(2rem,3.8vw,3.2rem)",
+            lineHeight: 1,
+            color: "#1A1D24",
+          }}
+        >
+          Core <span style={{ color: "#E8192C" }}>Stack</span>
+        </h2>
+      </div>
+      </Slide>
+
+      {/* Grid */}
+      <Slide delay={0.15}>
+      <div
+        style={{
+          border: "3px solid #0D0F14",
+          background: "#FFFFFF",
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+        }}
+        className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+      >
+        {SKILL_CARDS.map((card, i) => (
+          <div
+            key={i}
+            style={{
+              padding: "2.2rem",
+              borderRight: (i + 1) % 3 !== 0 ? "3px solid #0D0F14" : undefined,
+              borderBottom: i < 3 ? "3px solid #0D0F14" : undefined,
+              position: "relative",
+              overflow: "hidden",
+              cursor: "crosshair",
+              transition: "background .35s",
+            }}
+            className="sk-card group"
+          >
+            {/* Dotted border */}
+            <div
+              style={{
+                position: "absolute",
+                inset: 7,
+                border: "2px dotted rgba(232,25,44,.18)",
+                pointerEvents: "none",
+                zIndex: 2,
+                transition: "border-color .35s",
+              }}
+              className="sk-dot"
+            />
+            <div style={{ position: "relative", zIndex: 1 }}>
+              <span
+                style={{ fontSize: "1.4rem", marginBottom: "1rem", display: "block" }}
+                className="group-hover:text-white"
+              >
+                {card.icon}
+              </span>
+              <div
+                style={{
+                  fontFamily: "var(--oxanium)",
+                  fontWeight: 700,
+                  fontSize: ".95rem",
+                  marginBottom: ".4rem",
+                  color: "#1A1D24",
+                  transition: "color .35s",
+                }}
+                className="group-hover:!text-white"
+              >
+                {card.name}
+              </div>
+              <p
+                style={{
+                  fontFamily: "var(--space-mono)",
+                  fontSize: ".6rem",
+                  lineHeight: 1.8,
+                  color: "#4A5068",
+                  marginBottom: "1.3rem",
+                  transition: "color .35s",
+                }}
+                className="group-hover:!text-[rgba(255,255,255,.8)]"
+              >
+                {card.description}
+              </p>
+              {/* Bar */}
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  marginBottom: ".4rem",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--space-mono)",
+                    fontSize: ".52rem",
+                    letterSpacing: ".1em",
+                    textTransform: "uppercase",
+                    color: "#8892AA",
+                    transition: "color .35s",
+                  }}
+                  className="group-hover:!text-[rgba(255,255,255,.7)]"
+                >
+                  {card.level}
+                </span>
+                <span
+                  style={{
+                    fontFamily: "var(--space-mono)",
+                    fontSize: ".52rem",
+                    color: "#8892AA",
+                    transition: "color .35s",
+                  }}
+                  className="group-hover:!text-[rgba(255,255,255,.7)]"
+                >
+                  {card.pct}%
+                </span>
+              </div>
+              <div
+                style={{
+                  height: 3,
+                  background: "#E4E7ED",
+                  transition: "background .35s",
+                }}
+                className="group-hover:!bg-[rgba(255,255,255,.25)]"
+              >
+                <div
+                style={{ height: "100%", width: `${card.pct}%`, background: "#E8192C", transition: "background .35s" }}
+                  className="sk-bar-fill group-hover:!bg-[rgba(255,255,255,.8)]"
+                />
+              </div>
             </div>
           </div>
-          <div className="mt-5">
-            <p className="font-semibold text-2xl mx-auto text-center">
-              Libraries and Frameworks
-            </p>
-            <div className="mt-2 flex flex-wrap gap-4 text-xl justify-center text-zinc-200">
-              {FRAMEWORKS.map(({ icon, name, link }, index) => (
-                <SkillPill icon={icon} name={name} key={index} link={link}/>
-              ))}
-            </div>
-          </div>
-          <div className="mt-5">
-            <p className="font-semibold text-2xl mx-auto text-center">
-              Databases and ORM
-            </p>
-            <div className="mt-2 flex flex-wrap gap-4 justify-center text-zinc-200">
-              {DATABASES.map(({ icon, name, link }, index) => (
-                    <SkillPill icon={icon} name={name} key={index} link={link} />
-              ))}
-            </div>
-          </div>
-          <div className="mt-5">
-            <p className="text-2xl font-semibold mx-auto text-center">
-              Devops and Tools
-            </p>
-            <div className="mt-2 flex flex-wrap gap-4 justify-center text-zinc-200">
-              {DEVOPS.map(({ icon, name, link }, index) => (
-                <SkillPill icon={icon} name={name} key={index} link={link}/>
-              ))}
-            </div>
-          </div>
-          </Slide>
-        </div>
-      </section>
-    </>
+        ))}
+      </div>
+      </Slide>
+    </section>
   );
 }
