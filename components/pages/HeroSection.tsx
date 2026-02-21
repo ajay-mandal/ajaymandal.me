@@ -40,7 +40,7 @@ export default function HeroSection() {
     <section
       style={{
         minHeight: "100vh",
-        paddingTop: "72px",
+        paddingTop: "calc(72px + 3rem)",
         borderBottom: "3px solid #0D0F14",
         background: "#FFFFFF",
         position: "relative",
@@ -173,7 +173,7 @@ export default function HeroSection() {
           width: "100%",
           maxWidth: 1400,
           margin: "0 auto",
-          padding: "3rem 3.5rem",
+          padding: "5rem 3.5rem",
           display: "grid",
           gridTemplateColumns: "1fr 480px",
           gap: "4rem",
@@ -329,7 +329,6 @@ export default function HeroSection() {
             style={{
               border: "3px solid #0D0F14",
               background: "#1A1D24",
-              maxWidth: 520,
               animation: "fadeUp .7s 1.2s both",
             }}
           >
