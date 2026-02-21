@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import MobileMenu from "./Mobile";
 
 const navLinks = [
+  { title: "Home", href: "/" },
   { title: "About", href: "/about" },
   { title: "Projects", href: "/#projects" },
   { title: "Blog", href: "/blog" },
@@ -68,11 +69,11 @@ export default function Navbar() {
                   letterSpacing: ".2em",
                   textTransform: "uppercase",
                   textDecoration: "none",
-                  color: pathname === link.href ? "#E8192C" : "#4A5068",
+                  color: "#4A5068",
                   position: "relative",
                   transition: "color .2s",
                 }}
-                className="nav-link hover:text-[#E8192C]"
+                className="nav-link hover:!text-[#E8192C]"
               >
                 {link.title}
               </Link>
