@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
+import AMLogo from "./AMLogo";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { HiOutlineX } from "react-icons/hi";
 import { HiHome } from "react-icons/hi";
@@ -68,11 +68,22 @@ export default function MobileMenu() {
         }`}
       >
         <div className="flex items-center justify-between mt-6 px-8">
-          <Link href="/" onClick={onToggleNav} className="flex flex-row gap-x-4">
-            <Image src="/logo-dark.png" width={35} height={35} alt="logo" />
-            <div className="py-1">
-            <h1 className="font-incognito font-semibold text-xl">Portfolio</h1>
-            </div>
+          <Link
+            href="/"
+            onClick={onToggleNav}
+            style={{
+              color: "#E8192C",
+              border: "3px solid #E8192C",
+              padding: ".22rem .5rem",
+              background: "#1A1D24",
+              textDecoration: "none",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              position: "relative",
+            }}
+          >
+            <AMLogo size={30} />
           </Link>
 
           <button

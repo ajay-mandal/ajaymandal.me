@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { socialLinks } from "@/data/social";
 
 const HERO_LINES = [
   { type: "cmd",    text: "./status.sh",                             delay: 500  },
@@ -40,7 +39,7 @@ export default function HeroSection() {
     <section
       style={{
         minHeight: "100vh",
-        paddingTop: "calc(72px + 3rem)",
+        paddingTop: "calc(20px + 3rem)",
         borderBottom: "3px solid #0D0F14",
         background: "#FFFFFF",
         position: "relative",
@@ -68,7 +67,6 @@ export default function HeroSection() {
           color: #E8192C;
           display: block;
           position: relative;
-          cursor: crosshair;
         }
         .name-red::before, .name-red::after {
           content: attr(data-t);
@@ -202,9 +200,9 @@ export default function HeroSection() {
           <h1
             style={{
               fontFamily: "var(--oxanium)",
-              fontWeight: 800,
-              fontSize: "clamp(3rem,6vw,6rem)",
-              lineHeight: 0.93,
+              fontWeight: 900,
+              fontSize: "clamp(6rem,6vw,6rem)",
+              lineHeight: 0.98,
               letterSpacing: "-.01em",
               marginBottom: ".5rem",
               color: "#1A1D24",
@@ -244,12 +242,8 @@ export default function HeroSection() {
               animation: "fadeUp .7s .8s both",
             }}
           >
-            Building scalable backend systems that power real products — from AI-driven automotive
-            platforms to cloud-native APIs. Currently working remotely at {" "}
-            <a href="https://juteq.ca" target="_blank" rel="noreferrer" style={{ color: "#E8192C" }}>
-              JUTEQ Inc
-            </a>
-            , shipping production backends, designing system architectures, and optimizing performance for high-traffic applications.
+            Architecting high-performance distributed systems, microservices, 
+            and APIs that scale to millions. Obsessed with reliability, latency, and elegant code.
           </p>
 
           {/* Actions */}
@@ -266,7 +260,7 @@ export default function HeroSection() {
                 letterSpacing: ".16em",
                 textTransform: "uppercase",
                 textDecoration: "none",
-                cursor: "crosshair",
+                cursor: "pointer",
                 display: "inline-block",
               }}
               className="btn-red"
@@ -285,43 +279,13 @@ export default function HeroSection() {
                 letterSpacing: ".16em",
                 textTransform: "uppercase",
                 textDecoration: "none",
-                cursor: "crosshair",
+                cursor: "pointer",
                 display: "inline-block",
               }}
               className="btn-ghost"
             >
               Get In Touch
             </a>
-          </div>
-
-          {/* Social links */}
-          <div style={{ display: "flex", gap: ".75rem", marginBottom: "2.5rem", flexWrap: "wrap" }}>
-            {socialLinks.map((s) => (
-              <a
-                key={s.id}
-                href={s.url}
-                target="_blank"
-                rel="noreferrer"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: ".4rem",
-                  fontFamily: "var(--space-mono)",
-                  fontSize: ".55rem",
-                  letterSpacing: ".12em",
-                  textTransform: "uppercase",
-                  color: "#4A5068",
-                  border: "2px solid #E4E7ED",
-                  padding: ".4rem .9rem",
-                  textDecoration: "none",
-                  transition: "all .2s",
-                }}
-                className="hover:border-[#E8192C] hover:text-[#E8192C]"
-              >
-                <s.icon size={14} />
-                {s.name}
-              </a>
-            ))}
           </div>
 
           {/* Hero terminal */}
@@ -403,7 +367,7 @@ export default function HeroSection() {
               <div className="rect-main-inner" />
               {/* Photo */}
               <Image
-                src="/new-1.jpeg"
+                src="/pp3.png"
                 alt="Ajay Mandal"
                 fill
                 style={{ objectFit: "cover", objectPosition: "center top" }}
@@ -415,7 +379,7 @@ export default function HeroSection() {
                   inset: 0,
                   zIndex: 2,
                   pointerEvents: "none",
-                  background: "linear-gradient(180deg,rgba(232,25,44,0.12) 0%,transparent 35%,rgba(13,15,20,0.4) 100%)",
+                  // background: "linear-gradient(180deg,rgba(232,25,44,0.12) 0%,transparent 35%,rgba(13,15,20,0.4) 100%)",
                 }}
               />
             </div>
@@ -473,7 +437,7 @@ export default function HeroSection() {
                 boxShadow: "5px 5px 0 #0D0F14",
               }}
             >
-              <div style={{ fontFamily: "var(--oxanium)", fontWeight: 800, fontSize: "1.6rem", color: "#fff", lineHeight: 1 }}>1+</div>
+              <div style={{ fontFamily: "var(--oxanium)", fontWeight: 800, fontSize: "1.6rem", color: "#fff", lineHeight: 1 }}>2+</div>
               <div style={{ fontFamily: "var(--space-mono)", fontSize: ".46rem", letterSpacing: ".12em", textTransform: "uppercase", color: "rgba(255,255,255,.75)" }}>Years Eng.</div>
             </div>
 

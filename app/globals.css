@@ -48,7 +48,6 @@ html {
 body {
   background: var(--bg);
   color: var(--ink);
-  cursor: crosshair;
   overflow-x: hidden;
 }
 

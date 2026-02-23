@@ -7,11 +7,16 @@ const PJ_STYLE = `
     from { transform: translateX(-14px); opacity: .7; }
     to   { transform: translateX(0);     opacity: 1;  }
   }
-  .pj-row-inner { transition: none; }
-  .group:hover .pj-row-inner {
-    animation: slideFromLeft .4s cubic-bezier(.16,1,.3,1) both;
+  .pj-card {
+    position: relative;
+    overflow: hidden;
+    background: #FFFFFF;
+    padding: 2.5rem 2.8rem;
+    cursor: default;
+    transition: background .35s;
   }
-  .pj-red-overlay {
+  .pj-card::before {
+    content: '';
     position: absolute;
     inset: 0;
     background: #E8192C;
@@ -20,8 +25,14 @@ const PJ_STYLE = `
     transition: transform .4s cubic-bezier(.16,1,.3,1);
     z-index: 0;
   }
-  .group:hover .pj-red-overlay {
-    transform: scaleX(1);
+  .pj-card:hover::before { transform: scaleX(1); }
+  .pj-card-inner {
+    position: relative;
+    z-index: 1;
+    transition: none;
+  }
+  .pj-card:hover .pj-card-inner {
+    animation: slideFromLeft .4s cubic-bezier(.16,1,.3,1) both;
   }
 `;
 
@@ -80,7 +91,7 @@ export default function Project() {
             alignItems: "center",
             position: "relative",
             overflow: "hidden",
-            cursor: "crosshair",
+            cursor: "default",
           }}
         >
           {/* dotted inset border */}
@@ -292,208 +303,161 @@ export default function Project() {
         </div>
         </Slide>
 
-        {/* ── NORMAL PROJECT ROWS ── */}
-        {rest.map((project, idx) => (
-          <Slide key={project.name} delay={0.1 + idx * 0.1}>
-          <div
-            style={{
-              background: "#FFFFFF",
-              padding: "3rem",
-              borderBottom: idx < rest.length - 1 ? "3px solid #0D0F14" : undefined,
-              position: "relative",
-              overflow: "hidden",
-              cursor: "crosshair",
-            }}
-            className="group"
-          >
-            {/* red fill from left */}
-            <div className="pj-red-overlay" />
+        {/* ── REST: 2-column card grid ── */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            borderTop: "3px solid #0D0F14",
+          }}
+        >
+          {rest.map((project, idx) => {
+            const isLast = idx === rest.length - 1;
+            const oddCount = rest.length % 2 !== 0;
+            const spanFull = isLast && oddCount;
+            const showRightBorder = !spanFull && idx % 2 === 0;
+            const showBottomBorder = idx < rest.length - 1;
 
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "220px 1fr auto",
-                gap: "2rem",
-                alignItems: "start",
-                position: "relative",
-                zIndex: 1,
-              }}
-              className="pj-row-inner"
-            >
-              {/* Left col: category + name */}
-              <div>
-                <div style={{ display: "flex", alignItems: "center", gap: ".6rem", marginBottom: ".6rem" }}>
-                  <span
-                    style={{
-                      width: 6,
-                      height: 6,
-                      borderRadius: "50%",
-                      background: "#E8192C",
-                      display: "inline-block",
-                      flexShrink: 0,
-                      transition: "background .3s",
-                    }}
-                    className="group-hover:!bg-white"
-                  />
-                  <span
-                    style={{
-                      fontFamily: "var(--space-mono)",
-                      fontSize: ".5rem",
-                      letterSpacing: ".2em",
-                      textTransform: "uppercase",
-                      color: "#E8192C",
-                      transition: "color .3s",
-                    }}
-                    className="group-hover:!text-white"
-                  >
-                    {project.category} · {project.year}
-                  </span>
-                </div>
-                <h3
-                  style={{
-                    fontFamily: "var(--oxanium)",
-                    fontWeight: 800,
-                    fontSize: "clamp(1.3rem,2vw,1.85rem)",
-                    lineHeight: 1.15,
-                    color: "#1A1D24",
-                    transition: "color .3s",
-                  }}
-                  className="group-hover:!text-white"
-                >
-                  {project.name}
-                </h3>
-              </div>
+            return (
+              <div
+                key={project.name}
+                style={{
+                  gridColumn: spanFull ? "1 / -1" : undefined,
+                  borderRight: showRightBorder ? "3px solid #0D0F14" : undefined,
+                  borderBottom: showBottomBorder ? "3px solid #0D0F14" : undefined,
+                }}
+              >
+                <Slide delay={0.1 + idx * 0.08} className="h-full">
+                  <div className="pj-card group h-full">
+                    <div className="pj-card-inner">
+                    {/* Category + year */}
+                    <div style={{ display: "flex", alignItems: "center", gap: ".6rem", marginBottom: ".9rem" }}>
+                      <span
+                        style={{
+                          width: 6, height: 6, borderRadius: "50%",
+                          background: "#E8192C", display: "inline-block", flexShrink: 0,
+                          transition: "background .3s",
+                        }}
+                        className="group-hover:!bg-white"
+                      />
+                      <span
+                        style={{
+                          fontFamily: "var(--space-mono)", fontSize: ".5rem",
+                          letterSpacing: ".2em", textTransform: "uppercase",
+                          color: "#E8192C", transition: "color .3s",
+                        }}
+                        className="group-hover:!text-white"
+                      >
+                        {project.category} · {project.year}
+                      </span>
+                      <span
+                        style={{
+                          fontFamily: "var(--oxanium)", fontWeight: 800,
+                          fontSize: "3.2rem", color: "rgba(13,15,20,.04)",
+                          lineHeight: 1, userSelect: "none",
+                          marginLeft: "auto", transition: "color .3s",
+                        }}
+                        className="group-hover:!text-[rgba(255,255,255,.07)]"
+                      >
+                        0{idx + 2}
+                      </span>
+                    </div>
 
-              {/* Middle col: tagline + pills */}
-              <div>
-                <p
-                  style={{
-                    fontFamily: "var(--space-mono)",
-                    fontSize: ".61rem",
-                    lineHeight: 1.9,
-                    color: "#4A5068",
-                    marginBottom: "1.2rem",
-                    transition: "color .3s",
-                  }}
-                  className="group-hover:!text-[rgba(255,255,255,.8)]"
-                >
-                  {project.tagline}
-                </p>
-                <div style={{ display: "flex", gap: ".4rem", flexWrap: "wrap" }}>
-                  {project.stack.map((tech) => (
-                    <span
-                      key={tech}
+                    {/* Name */}
+                    <h3
                       style={{
-                        fontFamily: "var(--space-mono)",
-                        fontSize: ".48rem",
-                        letterSpacing: ".1em",
-                        textTransform: "uppercase",
-                        border: "2px solid rgba(13,15,20,.18)",
-                        color: "#4A5068",
-                        padding: ".28rem .7rem",
-                        transition: "border-color .3s, color .3s",
+                        fontFamily: "var(--oxanium)", fontWeight: 800,
+                        fontSize: "clamp(1.4rem,2.2vw,2rem)", lineHeight: 1.1,
+                        color: "#1A1D24", marginBottom: ".9rem", transition: "color .3s",
                       }}
-                      className="group-hover:!border-[rgba(255,255,255,.35)] group-hover:!text-[rgba(255,255,255,.8)]"
+                      className="group-hover:!text-white"
                     >
-                      {tech}
-                    </span>
-                  ))}
+                      {project.name}
+                    </h3>
+
+                    {/* Tagline */}
+                    <p
+                      style={{
+                        fontFamily: "var(--space-mono)", fontSize: ".6rem",
+                        lineHeight: 1.9, color: "#4A5068",
+                        marginBottom: "1.2rem", transition: "color .3s",
+                      }}
+                      className="group-hover:!text-[rgba(255,255,255,.75)]"
+                    >
+                      {project.tagline}
+                    </p>
+
+                    {/* Tech pills */}
+                    <div style={{ display: "flex", gap: ".4rem", flexWrap: "wrap", marginBottom: "1.4rem" }}>
+                      {project.stack.map((tech) => (
+                        <span
+                          key={tech}
+                          style={{
+                            fontFamily: "var(--space-mono)", fontSize: ".48rem",
+                            letterSpacing: ".1em", textTransform: "uppercase",
+                            border: "2px solid rgba(13,15,20,.18)", color: "#4A5068",
+                            padding: ".28rem .7rem", transition: "border-color .3s, color .3s",
+                          }}
+                          className="group-hover:!border-[rgba(255,255,255,.3)] group-hover:!text-[rgba(255,255,255,.75)]"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Links */}
+                    <div style={{ display: "flex", gap: ".75rem", flexWrap: "wrap" }}>
+                      <Link
+                        href={project.github} target="_blank"
+                        style={{
+                          fontFamily: "var(--space-mono)", fontSize: ".55rem",
+                          letterSpacing: ".14em", textTransform: "uppercase",
+                          color: "#8892AA", textDecoration: "none",
+                          borderBottom: "1px solid rgba(13,15,20,.15)", paddingBottom: 2,
+                          transition: "color .3s, border-color .3s",
+                        }}
+                        className="group-hover:!text-white group-hover:!border-[rgba(255,255,255,.35)]"
+                      >
+                        GitHub →
+                      </Link>
+                      {project.live && (
+                        <Link
+                          href={project.live} target="_blank"
+                          style={{
+                            fontFamily: "var(--space-mono)", fontSize: ".55rem",
+                            letterSpacing: ".14em", textTransform: "uppercase",
+                            color: "#8892AA", textDecoration: "none",
+                            borderBottom: "1px solid rgba(13,15,20,.15)", paddingBottom: 2,
+                            transition: "color .3s, border-color .3s",
+                          }}
+                          className="group-hover:!text-white group-hover:!border-[rgba(255,255,255,.35)]"
+                        >
+                          Live →
+                        </Link>
+                      )}
+                      {project.blogLink && (
+                        <Link
+                          href={project.blogLink} target="_blank"
+                          style={{
+                            fontFamily: "var(--space-mono)", fontSize: ".55rem",
+                            letterSpacing: ".14em", textTransform: "uppercase",
+                            color: "#8892AA", textDecoration: "none",
+                            borderBottom: "1px solid rgba(13,15,20,.15)", paddingBottom: 2,
+                            transition: "color .3s, border-color .3s",
+                          }}
+                          className="group-hover:!text-white group-hover:!border-[rgba(255,255,255,.35)]"
+                        >
+                          Blog →
+                        </Link>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              </div>
-
-              {/* Right col: faded number */}
-              <span
-                style={{
-                  fontFamily: "var(--oxanium)",
-                  fontWeight: 800,
-                  fontSize: "4.5rem",
-                  color: "rgba(13,15,20,.04)",
-                  lineHeight: 1,
-                  transition: "color .3s",
-                  userSelect: "none",
-                  textAlign: "right",
-                }}
-                className="group-hover:!text-[rgba(255,255,255,.06)]"
-              >
-                0{idx + 2}
-              </span>
+              </Slide>
             </div>
-
-            {/* Links — below the row grid, matching HTML layout */}
-            <div
-              style={{
-                display: "flex",
-                gap: ".75rem",
-                marginTop: "1.5rem",
-                position: "relative",
-                zIndex: 1,
-              }}
-            >
-              <Link
-                href={project.github}
-                target="_blank"
-                style={{
-                  fontFamily: "var(--space-mono)",
-                  fontSize: ".55rem",
-                  letterSpacing: ".14em",
-                  textTransform: "uppercase",
-                  color: "#8892AA",
-                  textDecoration: "none",
-                  borderBottom: "1px solid rgba(13,15,20,.15)",
-                  paddingBottom: 2,
-                  transition: "color .3s, border-color .3s",
-                  display: "inline-flex",
-                }}
-                className="group-hover:!text-white group-hover:!border-[rgba(255,255,255,.3)]"
-              >
-                GitHub →
-              </Link>
-              {project.live && (
-                <Link
-                  href={project.live}
-                  target="_blank"
-                  style={{
-                    fontFamily: "var(--space-mono)",
-                    fontSize: ".55rem",
-                    letterSpacing: ".14em",
-                    textTransform: "uppercase",
-                    color: "#8892AA",
-                    textDecoration: "none",
-                    borderBottom: "1px solid rgba(13,15,20,.15)",
-                    paddingBottom: 2,
-                    transition: "color .3s, border-color .3s",
-                    display: "inline-flex",
-                  }}
-                  className="group-hover:!text-white group-hover:!border-[rgba(255,255,255,.3)]"
-                >
-                  Live →
-                </Link>
-              )}
-              {project.blogLink && (
-                <Link
-                  href={project.blogLink}
-                  target="_blank"
-                  style={{
-                    fontFamily: "var(--space-mono)",
-                    fontSize: ".55rem",
-                    letterSpacing: ".14em",
-                    textTransform: "uppercase",
-                    color: "#8892AA",
-                    textDecoration: "none",
-                    borderBottom: "1px solid rgba(13,15,20,.15)",
-                    paddingBottom: 2,
-                    transition: "color .3s, border-color .3s",
-                    display: "inline-flex",
-                  }}
-                  className="group-hover:!text-white group-hover:!border-[rgba(255,255,255,.3)]"
-                >
-                  Blog →
-                </Link>
-              )}
-            </div>
-          </div>
-          </Slide>
-        ))}
+            );
+          })}
+        </div>
       </div>
     </section>
   );

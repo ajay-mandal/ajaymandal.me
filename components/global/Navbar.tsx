@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import MobileMenu from "./Mobile";
+import AMLogo from "./AMLogo";
 
 const navLinks = [
   { title: "Home", href: "/" },
@@ -37,23 +38,21 @@ export default function Navbar() {
       <Link
         href="/"
         style={{
-          fontFamily: "var(--oxanium)",
-          fontWeight: 800,
-          fontSize: "1.4rem",
-          letterSpacing: ".14em",
           color: "#E8192C",
           border: "3px solid #E8192C",
-          padding: ".28rem .85rem",
+          padding: ".28rem .55rem",
           background: "#fff",
           position: "relative",
           textDecoration: "none",
-          display: "inline-block",
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center",
           transition: "all .25s",
-          cursor: "crosshair",
+          cursor: "pointer",
         }}
         className="logo-am hover:bg-[#E8192C] hover:text-white"
       >
-        AM
+        <AMLogo size={24} />
       </Link>
 
       {/* Desktop Nav */}
