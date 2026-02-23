@@ -3,9 +3,9 @@ import { PROJECT } from "@/data/Projects";
 import { Slide } from "@/components/animations/Slide";
 
 const PJ_STYLE = `
-  @keyframes slideFromLeft {
-    from { transform: translateX(-14px); opacity: .7; }
-    to   { transform: translateX(0);     opacity: 1;  }
+  @keyframes slideFromBottom {
+    from { transform: translateY(20px); opacity: .7; }
+    to   { transform: translateY(0);    opacity: 1;  }
   }
   .pj-card {
     position: relative;
@@ -20,19 +20,19 @@ const PJ_STYLE = `
     position: absolute;
     inset: 0;
     background: #E8192C;
-    transform: scaleX(0);
-    transform-origin: left;
+    transform: scaleY(0);
+    transform-origin: bottom;
     transition: transform .4s cubic-bezier(.16,1,.3,1);
     z-index: 0;
   }
-  .pj-card:hover::before { transform: scaleX(1); }
+  .pj-card:hover::before { transform: scaleY(1); }
   .pj-card-inner {
     position: relative;
     z-index: 1;
     transition: none;
   }
   .pj-card:hover .pj-card-inner {
-    animation: slideFromLeft .4s cubic-bezier(.16,1,.3,1) both;
+    animation: slideFromBottom .4s cubic-bezier(.16,1,.3,1) both;
   }
 `;
 

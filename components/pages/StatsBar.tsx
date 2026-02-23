@@ -1,5 +1,5 @@
 const STATS = [
-  { value: "1+",      label: "Years Engineering", abbr: "YR"  },
+  { value: "2+",      label: "Years Engineering", abbr: "YR"  },
   { value: "5+",     label: "Projects Shipped",  abbr: "SYS" },
   { value: "94.7%",   label: "Uptime Record",     abbr: "UP"  },
   { value: "3",       label: "Countries Served",  abbr: "GEO" },

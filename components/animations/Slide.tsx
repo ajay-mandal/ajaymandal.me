@@ -23,8 +23,8 @@ export const Slide = ({ children, className, delay }: props) => {
     <motion.div
       ref={ref}
       variants={{
-        start: { opacity: 0, translateY: 28 },
-        stop: { opacity: 1, translateY: 0 },
+        start: { opacity: 0, y: 50 },
+        stop: { opacity: 1, y: 0 },
       }}
       transition={{
         ease: [0.16, 1, 0.3, 1],

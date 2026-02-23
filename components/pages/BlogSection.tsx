@@ -35,7 +35,7 @@ export default async function BlogSection() {
           inset: 0;
           background: #0D0F14;
           transform: scaleY(0);
-          transform-origin: top;
+          transform-origin: bottom;
           transition: transform .4s cubic-bezier(.16,1,.3,1);
           z-index: 0;
         }
