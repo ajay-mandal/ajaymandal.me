@@ -8,24 +8,12 @@ export const metadata = {
 export default function BlogPage() {
   return (
     <main
-      style={{
-        minHeight: "100vh",
-        background: "#F0F2F5",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "2rem",
-        paddingTop: "80px",
-      }}
+      className="flex min-h-screen items-center justify-center bg-[var(--bg)] px-5 pb-10 pt-24 sm:px-8"
     >
       <div
+        className="relative w-full max-w-xl bg-white px-6 py-10 sm:px-12 sm:py-14"
         style={{
           border: "3px solid #0D0F14",
-          background: "#fff",
-          padding: "4rem 3.5rem",
-          maxWidth: 600,
-          width: "100%",
-          position: "relative",
         }}
       >
         <div

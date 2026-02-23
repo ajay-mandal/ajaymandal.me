@@ -34,6 +34,29 @@ const PJ_STYLE = `
   .pj-card:hover .pj-card-inner {
     animation: slideFromBottom .4s cubic-bezier(.16,1,.3,1) both;
   }
+  .pj-featured {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 3rem;
+    padding: 3rem;
+  }
+  .pj-rest-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 900px) {
+    .pj-featured {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .pj-rest-grid {
+      grid-template-columns: 1fr;
+    }
+    .pj-card-wrap {
+      border-right: none !important;
+    }
+  }
 `;
 
 export default function Project() {
@@ -41,8 +64,8 @@ export default function Project() {
 
   return (
     <section
+      className="px-5 py-16 sm:px-8 sm:py-20 lg:px-14"
       style={{
-        padding: "5.5rem 3.5rem",
         borderBottom: "3px solid #0D0F14",
         background: "#F0F2F5",
       }}
@@ -81,13 +104,10 @@ export default function Project() {
         {/* ── FEATURED PROJECT ── */}
         <Slide delay={0.15}>
         <div
+          className="pj-featured"
           style={{
             background: "#1A1D24",
-            padding: "3rem",
             borderBottom: "3px solid #0D0F14",
-            display: "grid",
-            gridTemplateColumns: "1.1fr 1fr",
-            gap: "3rem",
             alignItems: "center",
             position: "relative",
             overflow: "hidden",
@@ -305,9 +325,8 @@ export default function Project() {
 
         {/* ── REST: 2-column card grid ── */}
         <div
+          className="pj-rest-grid"
           style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
             borderTop: "3px solid #0D0F14",
           }}
         >
@@ -321,6 +340,7 @@ export default function Project() {
             return (
               <div
                 key={project.name}
+                className="pj-card-wrap"
                 style={{
                   gridColumn: spanFull ? "1 / -1" : undefined,
                   borderRight: showRightBorder ? "3px solid #0D0F14" : undefined,

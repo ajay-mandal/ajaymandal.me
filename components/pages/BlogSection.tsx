@@ -13,8 +13,8 @@ export default async function BlogSection() {
 
   return (
     <section
+      className="px-5 py-16 sm:px-8 sm:py-20 lg:px-14"
       style={{
-        padding: "5.5rem 3.5rem",
         borderBottom: "3px solid #0D0F14",
         background: "#FFFFFF",
       }}
@@ -42,6 +42,20 @@ export default async function BlogSection() {
         .blog-card-item:hover::after { transform: scaleY(1); }
         .blog-card-item > * { position: relative; z-index: 1; }
         .blog-card-item:hover .bc-dotted { border-color: rgba(255,255,255,.08) !important; }
+        .blog-grid {
+          display: grid;
+        }
+        .blog-card-item {
+          border-right: none;
+        }
+        @media (min-width: 768px) {
+          .blog-card-item {
+            border-right: 3px solid #0D0F14;
+          }
+          .blog-card-item:nth-child(3n) {
+            border-right: none;
+          }
+        }
       `}</style>
       {/* Section header */}
       <Slide delay={0.05}>
@@ -123,12 +137,10 @@ export default async function BlogSection() {
       ) : (
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
             border: "3px solid #0D0F14",
             background: "#FFFFFF",
           }}
-          className="md:grid-cols-3 grid-cols-1"
+          className="blog-grid grid-cols-1 md:grid-cols-3"
         >
           {posts.map((post, i) => (
             <Link
@@ -136,7 +148,6 @@ export default async function BlogSection() {
               href={`/blog/${post.slug}`}
               style={{
                 padding: "2.5rem",
-                borderRight: i < posts.length - 1 ? "3px solid #0D0F14" : undefined,
               }}
               className="blog-card-item group"
             >

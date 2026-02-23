@@ -1,2 +1,2 @@
-export * from './pages/Skills';
-export * from './pages/projects';
+export * from "./pages/Skills";
+export * from "./pages/projects";

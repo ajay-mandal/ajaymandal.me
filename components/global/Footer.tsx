@@ -1,19 +1,14 @@
 export default function Footer() {
   return (
     <footer
+      className="flex flex-col gap-2 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:px-8 lg:px-14"
       style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: "1.2rem 3.5rem",
         borderTop: "3px solid #0D0F14",
         fontSize: ".56rem",
         letterSpacing: ".14em",
         textTransform: "uppercase" as const,
         color: "#8892AA",
         background: "#FFFFFF",
-        flexWrap: "wrap" as const,
-        gap: "1rem",
         fontFamily: "var(--space-mono)",
       }}
     >

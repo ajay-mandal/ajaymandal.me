@@ -47,11 +47,8 @@ export default async function PostPage({
     <>
       {/* Hero */}
       <div
+        className="px-5 pb-12 pt-24 sm:px-8 sm:pt-28 lg:px-14"
         style={{
-          paddingTop: "calc(72px + 3rem)",
-          paddingBottom: "3rem",
-          paddingLeft: "3.5rem",
-          paddingRight: "3.5rem",
           borderBottom: "3px solid #0D0F14",
           background: "#FFFFFF",
           position: "relative",
@@ -152,8 +149,8 @@ export default async function PostPage({
 
       {/* Content */}
       <div
+        className="px-5 py-16 sm:px-8 lg:px-14"
         style={{
-          padding: "4rem 3.5rem",
           background: "#F0F2F5",
           borderBottom: "3px solid #0D0F14",
         }}
@@ -179,15 +176,10 @@ export default async function PostPage({
 
       {/* Footer nav */}
       <div
+        className="flex flex-wrap items-center justify-between gap-4 px-5 py-12 sm:px-8 lg:px-14"
         style={{
-          padding: "3rem 3.5rem",
           borderBottom: "3px solid #0D0F14",
           background: "#FFFFFF",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          flexWrap: "wrap",
-          gap: "1rem",
         }}
       >
         <Link

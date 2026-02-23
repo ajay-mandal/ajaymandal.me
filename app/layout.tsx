@@ -50,7 +50,9 @@ export default function RootLayout({
       >
         <CursorGlow />
         <Navbar />
-        {children}
+        <main className="pb-0">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

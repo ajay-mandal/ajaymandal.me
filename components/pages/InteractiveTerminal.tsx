@@ -190,8 +190,8 @@ export default function InteractiveTerminal() {
   return (
     <section
       id="terminal"
+      className="px-5 py-16 sm:px-8 sm:py-20 lg:px-14"
       style={{
-        padding: "5.5rem 3.5rem",
         borderBottom: "3px solid #0D0F14",
         background: "#1A1D24",
       }}
@@ -245,10 +245,10 @@ export default function InteractiveTerminal() {
 
       {/* Terminal window */}
       <div
+        className="terminal-shell"
         style={{
           background: "#13151C",
           border: "2px solid rgba(255,255,255,.07)",
-          maxWidth: 800,
         }}
       >
         {/* Title bar */}
@@ -265,7 +265,7 @@ export default function InteractiveTerminal() {
           <span style={{ width: 9, height: 9, borderRadius: "50%", background: "#FF5F57", display: "inline-block" }} />
           <span style={{ width: 9, height: 9, borderRadius: "50%", background: "#FEBC2E", display: "inline-block" }} />
           <span style={{ width: 9, height: 9, borderRadius: "50%", background: "#28C840", display: "inline-block" }} />
-          <span
+          <div
             style={{
               fontFamily: "var(--space-mono)",
               fontSize: ".56rem",
@@ -275,9 +275,15 @@ export default function InteractiveTerminal() {
             }}
           >
             ajay@portfolio:~ — bash
-          </span>
+          </div>
         </div>
 
+        <style>{`
+          .terminal-shell {
+            width: 100%;
+            max-width: 800px;
+          }
+        `}</style>
         {/* Output body */}
         <div
           ref={bodyRef}

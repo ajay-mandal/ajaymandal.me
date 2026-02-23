@@ -27,22 +27,45 @@ export default function StatsBar() {
         .stat-item:hover { background: rgba(232,25,44,0.07); }
         .stat-item:hover::before { border-color: rgba(232,25,44,.3); }
         .stat-item > * { position: relative; z-index: 2; }
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .stats-grid > .stat-item {
+          border-right: 3px solid #0D0F14;
+          border-bottom: 3px solid #0D0F14;
+        }
+        .stats-grid > .stat-item:nth-child(2n) {
+          border-right: none;
+        }
+        .stats-grid > .stat-item:nth-last-child(-n + 2) {
+          border-bottom: none;
+        }
+        @media (min-width: 768px) {
+          .stats-grid {
+            grid-template-columns: repeat(4, 1fr);
+          }
+          .stats-grid > .stat-item {
+            border-right: 3px solid #0D0F14;
+            border-bottom: none;
+          }
+          .stats-grid > .stat-item:nth-child(4n) {
+            border-right: none;
+          }
+        }
       `}</style>
       <div
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
           background: "#FFFFFF",
           borderBottom: "3px solid #0D0F14",
         }}
-        className="md:grid-cols-4 grid-cols-2"
+        className="stats-grid"
       >
         {STATS.map((s, i) => (
           <div
             key={i}
             style={{
-              padding: "2.8rem 2rem",
-              borderRight: i < STATS.length - 1 ? "3px solid #0D0F14" : undefined,
+              padding: "2.4rem 1.5rem",
             }}
             className="stat-item"
           >
