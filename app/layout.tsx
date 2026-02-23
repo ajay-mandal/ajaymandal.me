@@ -29,19 +29,13 @@ const spaceMono = Space_Mono({
 export const metadata: Metadata = {
   title: "Ajay Mandal",
   description: "My Portfolio Website",
-  icons:{
-    icon:[
+  icons: {
+    icon: [
       {
-        media: "(prefers-color-scheme: light)",
-        url: "/logo-light.png",
-        href: "/logo-light.png"
+        url: "/logo.svg",
+        type: "image/svg+xml",
       },
-      {
-        media: "(prefers-color-scheme: dark)",
-        url: "/logo-dark.png",
-        href: "/logo-dark.png"
-      }
-    ]
+    ],
   }
 };
 

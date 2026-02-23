@@ -12,7 +12,7 @@ export default function StatsBar() {
         .stat-item {
           position: relative;
           overflow: hidden;
-          cursor: crosshair;
+          cursor: default;
           transition: background .3s;
         }
         .stat-item::before {

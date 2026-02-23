@@ -68,7 +68,7 @@ export default function Skills() {
         .sk-card {
           position: relative;
           overflow: hidden;
-          cursor: crosshair;
+          cursor: default;
         }
         .sk-card::after {
           content: '';
@@ -141,7 +141,7 @@ export default function Skills() {
               borderBottom: i < 3 ? "3px solid #0D0F14" : undefined,
               position: "relative",
               overflow: "hidden",
-              cursor: "crosshair",
+              cursor: "default",
               transition: "background .35s",
             }}
             className="sk-card group"

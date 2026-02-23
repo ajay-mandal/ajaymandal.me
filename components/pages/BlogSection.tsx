@@ -23,7 +23,7 @@ export default async function BlogSection() {
         .blog-card-item {
           position: relative;
           overflow: hidden;
-          cursor: crosshair;
+          cursor: pointer;
           display: flex;
           flex-direction: column;
           text-decoration: none;
