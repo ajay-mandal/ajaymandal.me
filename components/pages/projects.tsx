@@ -19,7 +19,7 @@ const PJ_STYLE = `
     content: '';
     position: absolute;
     inset: 0;
-    background: #E8192C;
+    background: #0D0F14;
     transform: scaleY(0);
     transform-origin: bottom;
     transition: transform .4s cubic-bezier(.16,1,.3,1);
@@ -44,17 +44,42 @@ const PJ_STYLE = `
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+  .pj-featured-dotted {
+    position: absolute;
+    inset: 14px;
+    border: 2px dotted rgba(255,255,255,0.08);
+    pointer-events: none;
+  }
+  .pj-featured-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
   @media (max-width: 900px) {
     .pj-featured {
       grid-template-columns: 1fr;
       gap: 2rem;
-      padding: 2rem;
+      padding: 2rem 1.5rem;
+    }
+    .pj-featured-dotted {
+      inset: 10px;
     }
     .pj-rest-grid {
       grid-template-columns: 1fr;
     }
     .pj-card-wrap {
       border-right: none !important;
+    }
+    .pj-card {
+      padding: 2rem 1.8rem;
+    }
+  }
+  @media (max-width: 640px) {
+    .pj-featured {
+      gap: 1.5rem;
+      padding: 1.5rem 1rem;
+    }
+    .pj-featured-dotted {
+      inset: 8px;
     }
   }
 `;
@@ -115,14 +140,7 @@ export default function Project() {
           }}
         >
           {/* dotted inset border */}
-          <div
-            style={{
-              position: "absolute",
-              inset: 14,
-              border: "2px dotted rgba(255,255,255,0.08)",
-              pointerEvents: "none",
-            }}
-          />
+          <div className="pj-featured-dotted" />
 
           {/* Left: info */}
           <div style={{ position: "relative", zIndex: 1 }}>
@@ -140,7 +158,7 @@ export default function Project() {
               <span
                 style={{
                   fontFamily: "var(--space-mono)",
-                  fontSize: ".52rem",
+                  fontSize: "clamp(.48rem, 1.2vw, .52rem)",
                   letterSpacing: ".22em",
                   textTransform: "uppercase",
                   color: "rgba(255,255,255,.4)",
@@ -154,7 +172,7 @@ export default function Project() {
               style={{
                 fontFamily: "var(--oxanium)",
                 fontWeight: 800,
-                fontSize: "clamp(1.6rem,3vw,2.6rem)",
+                fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
                 lineHeight: 1.1,
                 color: "#FFFFFF",
                 marginBottom: "1rem",
@@ -166,10 +184,10 @@ export default function Project() {
             <p
               style={{
                 fontFamily: "var(--space-mono)",
-                fontSize: ".62rem",
-                lineHeight: 1.9,
+                fontSize: "clamp(.58rem, 1.4vw, .62rem)",
+                lineHeight: 1.8,
                 color: "rgba(255,255,255,.5)",
-                marginBottom: "1.5rem",
+                marginBottom: "clamp(1.2rem, 3vw, 1.5rem)",
                 maxWidth: 460,
               }}
             >
@@ -177,13 +195,13 @@ export default function Project() {
             </p>
 
             {/* Tech pills */}
-            <div style={{ display: "flex", gap: ".4rem", flexWrap: "wrap", marginBottom: "1.8rem" }}>
+            <div style={{ display: "flex", gap: ".4rem", flexWrap: "wrap", marginBottom: "clamp(1.5rem, 3.5vw, 1.8rem)" }}>
               {featured.stack.map((tech) => (
                 <span
                   key={tech}
                   style={{
                     fontFamily: "var(--space-mono)",
-                    fontSize: ".48rem",
+                    fontSize: "clamp(.45rem, 1.1vw, .48rem)",
                     letterSpacing: ".1em",
                     textTransform: "uppercase",
                     border: "2px solid rgba(255,255,255,.14)",
@@ -197,14 +215,14 @@ export default function Project() {
             </div>
 
             {/* Links */}
-            <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", gap: "clamp(.8rem, 2vw, 1.5rem)", flexWrap: "wrap" }}>
               {featured.blogLink && (
                 <Link
                   href={featured.blogLink}
                   target="_blank"
                   style={{
                     fontFamily: "var(--space-mono)",
-                    fontSize: ".56rem",
+                    fontSize: "clamp(.52rem, 1.3vw, .56rem)",
                     letterSpacing: ".14em",
                     textTransform: "uppercase",
                     color: "rgba(255,255,255,.4)",
@@ -223,7 +241,7 @@ export default function Project() {
                 target="_blank"
                 style={{
                   fontFamily: "var(--space-mono)",
-                  fontSize: ".56rem",
+                  fontSize: "clamp(.52rem, 1.3vw, .56rem)",
                   letterSpacing: ".14em",
                   textTransform: "uppercase",
                   color: "rgba(255,255,255,.4)",
@@ -242,7 +260,7 @@ export default function Project() {
                   target="_blank"
                   style={{
                     fontFamily: "var(--space-mono)",
-                    fontSize: ".56rem",
+                    fontSize: "clamp(.52rem, 1.3vw, .56rem)",
                     letterSpacing: ".14em",
                     textTransform: "uppercase",
                     color: "rgba(255,255,255,.4)",
@@ -265,7 +283,7 @@ export default function Project() {
               style={{
                 display: "grid",
                 gridTemplateColumns: "1fr 1fr",
-                border: "2px solid rgba(255,255,255,.06)",
+                border: "1.5px solid rgba(255,255,255,.06)",
                 position: "relative",
                 zIndex: 1,
               }}
@@ -274,7 +292,7 @@ export default function Project() {
                 <div
                   key={m.label}
                   style={{
-                    padding: "1.3rem 1.5rem",
+                    padding: "clamp(1.1rem, 2.8vw, 1.3rem) clamp(1rem, 2.8vw, 1.5rem)",
                     position: "relative",
                     borderRight: i % 2 === 0 ? "2px solid rgba(255,255,255,.06)" : undefined,
                     borderBottom: i < 2 ? "2px solid rgba(255,255,255,.06)" : undefined,
@@ -293,10 +311,10 @@ export default function Project() {
                     style={{
                       fontFamily: "var(--oxanium)",
                       fontWeight: 800,
-                      fontSize: "1.9rem",
+                      fontSize: "clamp(1.2rem, 3vw, 1.4rem)",
                       color: "#E8192C",
                       lineHeight: 1,
-                      marginBottom: ".25rem",
+                      marginBottom: ".3rem",
                       position: "relative",
                       zIndex: 1,
                     }}
@@ -306,12 +324,13 @@ export default function Project() {
                   <div
                     style={{
                       fontFamily: "var(--space-mono)",
-                      fontSize: ".48rem",
-                      letterSpacing: ".1em",
+                      fontSize: "clamp(.46rem, 1.15vw, .48rem)",
+                      letterSpacing: ".08em",
                       textTransform: "uppercase",
                       color: "rgba(255,255,255,.3)",
                       position: "relative",
                       zIndex: 1,
+                      lineHeight: 1.3,
                     }}
                   >
                     {m.label}
@@ -358,7 +377,6 @@ export default function Project() {
                           background: "#E8192C", display: "inline-block", flexShrink: 0,
                           transition: "background .3s",
                         }}
-                        className="group-hover:!bg-white"
                       />
                       <span
                         style={{
@@ -366,7 +384,6 @@ export default function Project() {
                           letterSpacing: ".2em", textTransform: "uppercase",
                           color: "#E8192C", transition: "color .3s",
                         }}
-                        className="group-hover:!text-white"
                       >
                         {project.category} · {project.year}
                       </span>

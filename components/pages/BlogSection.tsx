@@ -23,10 +23,9 @@ export default async function BlogSection() {
         .blog-card-item {
           position: relative;
           overflow: hidden;
-          cursor: pointer;
+          cursor: default;
           display: flex;
           flex-direction: column;
-          text-decoration: none;
           transition: color .35s;
         }
         .blog-card-item::after {
@@ -143,9 +142,8 @@ export default async function BlogSection() {
           className="blog-grid grid-cols-1 md:grid-cols-3"
         >
           {posts.map((post, i) => (
-            <Link
+            <div
               key={post.id}
-              href={`/blog/${post.slug}`}
               style={{
                 padding: "2.5rem",
               }}
@@ -237,7 +235,8 @@ export default async function BlogSection() {
                 {post.excerpt}
               </p>
 
-              <span
+              <Link
+                href={`/blog/${post.slug}`}
                 style={{
                   fontFamily: "var(--space-mono)",
                   fontSize: ".55rem",
@@ -248,12 +247,13 @@ export default async function BlogSection() {
                   position: "relative",
                   zIndex: 1,
                   transition: "color .35s",
+                  textDecoration: "none",
                 }}
                 className="group-hover:!text-[#E8192C]"
               >
                 Read Article →
-              </span>
-            </Link>
+              </Link>
+            </div>
           ))}
         </div>
       )}

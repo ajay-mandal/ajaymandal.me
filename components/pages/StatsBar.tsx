@@ -49,6 +49,9 @@ export default function StatsBar() {
             border-right: 3px solid #0D0F14;
             border-bottom: none;
           }
+          .stats-grid > .stat-item:nth-child(2n) {
+            border-right: 3px solid #0D0F14;
+          }
           .stats-grid > .stat-item:nth-child(4n) {
             border-right: none;
           }
