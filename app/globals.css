@@ -2,6 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Blog post animations */
+@keyframes gridSlide {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(80px, 80px);
+  }
+}
+
+/* Shiki syntax highlighting styles */
+pre.shiki {
+  background: #fafafa !important;
+  padding: 1.5rem !important;
+  overflow-x: auto !important;
+}
+
+pre.shiki code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace !important;
+  font-size: 0.85rem !important;
+  line-height: 1.6 !important;
+}
+
 :root {
   --bg: #F0F2F5;
   --bg2: #E4E7ED;
@@ -131,3 +154,130 @@ h1, h2, h3, h4 {
       @apply bg-background text-foreground;
     }
   }
+
+/* Code syntax highlighting customization */
+.hljs {
+  border-radius: 4px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.85em;
+  line-height: 1.6;
+  padding: 1.25rem !important;
+  overflow-x: auto;
+  border: 3px solid var(--black);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background: #fafafa !important; /* Very light background */
+}
+
+/* Inline code styling */
+code:not(.hljs) {
+  background: rgba(232, 25, 44, 0.08) !important;
+  color: var(--red) !important;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+/* Pre tag styling */
+pre {
+  margin: 1.5rem 0 !important;
+  border-radius: 4px !important;
+  background: #fafafa !important; /* Force light background */
+}
+
+pre code.hljs {
+  padding: 0 !important;
+  background: transparent !important;
+  font-size: inherit;
+}
+
+/* Override Tailwind prose dark pre styles */
+.prose pre {
+  background-color: #fafafa !important;
+  border: 3px solid #0D0F14 !important;
+}
+
+.prose pre code {
+  background-color: transparent !important;
+}
+
+/* Ensure syntax highlighting colors show */
+.hljs-comment,
+.hljs-quote {
+  color: #6a737d !important;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #d73a49 !important;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #005cc5 !important;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #032f62 !important;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #6f42c1 !important;
+  font-weight: bold;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #6f42c1 !important;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #22863a !important;
+  font-weight: bold;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #032f62 !important;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #005cc5 !important;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #005cc5 !important;
+}
+
+.hljs-meta {
+  color: #6a737d !important;
+}
+
+.hljs-deletion {
+  background: #ffeef0 !important;
+}
+
+.hljs-addition {
+  background: #f0fff4 !important;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}

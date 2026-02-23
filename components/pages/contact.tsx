@@ -1,5 +1,5 @@
 "use client";
-import { Slide } from "@/components/animations/Slide";
+import { Slide } from "@/components/ui/Slide";
 import { socialLinks } from "@/data/social";
 
 const GCAL_URL =
@@ -152,8 +152,8 @@ export default function ContactForm() {
   return (
     <section
       id="contact"
+      className="px-5 py-16 sm:px-8 sm:py-20 lg:px-14"
       style={{
-        padding: "5.5rem 3.5rem",
         borderBottom: "3px solid #0D0F14",
         background: "#FFFFFF",
         position: "relative",
@@ -164,10 +164,8 @@ export default function ContactForm() {
 
       {/* Two-column grid */}
       <div
+        className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_minmax(0,520px)] lg:gap-20"
         style={{
-          display: "grid",
-          gridTemplateColumns: "1fr minmax(0,520px)",
-          gap: "5rem",
           alignItems: "start",
           position: "relative",
           zIndex: 1,
@@ -248,7 +246,7 @@ export default function ContactForm() {
 
         {/* ── RIGHT: Book a Slot card ── */}
         <Slide delay={0.28}>
-          <div style={{ position:"sticky", top:100 }}>
+          <div className="contact-sticky">
             <div
               style={{
                 display:"block",
@@ -354,6 +352,19 @@ export default function ContactForm() {
           </div>
         </Slide>
       </div>
+      <style>{`
+        @media (max-width: 1023px) {
+          .contact-sticky {
+            position: static;
+          }
+        }
+        @media (min-width: 1024px) {
+          .contact-sticky {
+            position: sticky;
+            top: 100px;
+          }
+        }
+      `}</style>
     </section>
   );
 }

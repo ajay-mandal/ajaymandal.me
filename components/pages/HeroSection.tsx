@@ -37,9 +37,9 @@ export default function HeroSection() {
 
   return (
     <section
+      className="pt-24 sm:pt-28"
       style={{
         minHeight: "100vh",
-        paddingTop: "calc(20px + 3rem)",
         borderBottom: "3px solid #0D0F14",
         background: "#FFFFFF",
         position: "relative",
@@ -164,17 +164,15 @@ export default function HeroSection() {
       />
 
       <div
-        className="hero-grid"
+        className="hero-grid gap-10 px-5 py-16 sm:px-8 sm:py-20 lg:px-14 lg:gap-16"
         style={{
           position: "relative",
           zIndex: 1,
           width: "100%",
           maxWidth: 1400,
           margin: "0 auto",
-          padding: "5rem 3.5rem",
           display: "grid",
           gridTemplateColumns: "1fr 480px",
-          gap: "4rem",
           alignItems: "center",
         }}
       >
@@ -201,7 +199,7 @@ export default function HeroSection() {
             style={{
               fontFamily: "var(--oxanium)",
               fontWeight: 900,
-              fontSize: "clamp(6rem,6vw,6rem)",
+              fontSize: "clamp(2.8rem,9vw,6rem)",
               lineHeight: 0.98,
               letterSpacing: "-.01em",
               marginBottom: ".5rem",

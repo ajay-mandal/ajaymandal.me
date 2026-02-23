@@ -1,7 +1,7 @@
 export type JobProps = {
     id: string;
     name: string;
-    url: string;
+    url?: string;
     logo: string;
     jobTitle: string;
     startDate: string;
@@ -19,22 +19,16 @@ export const JOBS: JobProps[] = [
         jobTitle: "Backend Engineer",
         startDate: "2025-06",
         endDate: "",
-        description: `Developing AI Platforms for automotive dealership customer engagement system using NestJS and Prisma ORM. 
-        Building scalable backend APIs for orchestrating specialized AI agents. Implementing multi-channel communication systems for
-        email/SMS customer interactions and real-time lead management. Working with Google Cloud infrastructure including Cloud Run,
-        Vertex AI, and BullMQ for automated automotive sales workflows.`,
+        description: `Architecting AI-powered platforms with focus on multi-agent orchestration systems and RAG (Retrieval-Augmented Generation) pipelines for intelligent context retrieval. Designing scalable backend systems using NestJS with object-oriented programming principles, leveraging Prisma ORM for distributed microservices architecture. Building multi-platform integration systems connecting email, SMS, and CRM channels with event-driven patterns for real-time data processing. Implementing Redis caching layers and session management to optimize performance and scalability. Working with Google Cloud infrastructure including Cloud Run for containerized deployments, GCS buckets for file storage, and Vertex AI for ML operations. Utilizing Docker for consistent development environments and implementing intelligent job queueing with BullMQ for workflow automation and background task processing.`,
     },
     {
-        id: "klyra",
-        name: "Klyra Innovations",
-        url: "https://klyra.co.in/",
-        logo: "/klyra_1.png",
+        id: "stealth",
+        name: "Stealth Startup",
+        logo: "/stealth.png",
         jobTitle: "Full-Stack Engineer",
         startDate: "2025-01",
         endDate: "2025-04",
-        description: `Developed the MVP mobile design using React.js and Tailwind CSS, integrating user authentication and email verification with Clerk.
-        Engineered a scalable FastAPI backend to handle high-concurrency user requests efficiently.
-        Built the organization’s SEO-optimized website using Next.js, React, and TypeScript in collaboration with senior developers.`,
+        description: `Developed the MVP mobile design using React.js and Tailwind CSS, integrating user authentication and email verification with Clerk for seamless auth flows. Engineered a scalable FastAPI backend with optimized concurrency handling through async/await patterns and connection pooling to efficiently manage high-traffic user requests. Implemented agent automation workflows with sophisticated prompt engineering techniques to enhance AI response quality and consistency. Built the organization's SEO-optimized website using Next.js, React, and TypeScript, collaborating with senior developers on architecture decisions and API integration patterns.`,
     },
     {
         id: "kyndryl",
@@ -44,10 +38,7 @@ export const JOBS: JobProps[] = [
         jobTitle: "Project Intern",
         startDate: "2024-04",
         endDate: "2024-07",
-        description: `Proactively assisted seniors to enhance service delivery and improve Python scripts.
-        Worked with Azure and SQL for data accumulation and visualization.
-        Kept projects on track by supporting project managers with progress reports, docs, and more.
-        Used analytic tools such as Aternity and Jamf to monitor and manage devices and resolve issues.`,
+        description: `Proactively assisted seniors to enhance service delivery and improve Python scripts. Worked with Azure and SQL for data accumulation and visualization. Kept projects on track by supporting project managers with progress reports, docs, and more. Used analytic tools such as Aternity and Jamf to monitor and manage devices and resolve issues.`,
     }
 
 ]

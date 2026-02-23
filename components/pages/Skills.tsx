@@ -1,4 +1,4 @@
-import { Slide } from "@/components/animations/Slide";
+import { Slide } from "@/components/ui/Slide";
 
 // Keyframes injected once at module level via <style> in render
 
@@ -58,8 +58,8 @@ const SKILL_CARDS: SkillCard[] = [
 export default function Skills() {
   return (
     <section
+      className="px-5 py-16 sm:px-8 sm:py-20 lg:px-14"
       style={{
-        padding: "5.5rem 3.5rem",
         borderBottom: "3px solid #0D0F14",
         background: "#F0F2F5",
       }}
@@ -85,6 +85,32 @@ export default function Skills() {
         .sk-card:hover .sk-dot { border-color: rgba(255,255,255,.28) !important; }
         @keyframes barFill { from { width: 0; } }
         .sk-bar-fill { animation: barFill 1.2s cubic-bezier(.16,1,.3,1) both; }
+        .sk-grid {
+          display: grid;
+        }
+        .sk-cell {
+          border-right: 3px solid #0D0F14;
+          border-bottom: 3px solid #0D0F14;
+        }
+        .sk-grid .sk-cell:nth-child(1n) {
+          border-right: none;
+        }
+        @media (min-width: 640px) {
+          .sk-grid .sk-cell {
+            border-right: 3px solid #0D0F14;
+          }
+          .sk-grid .sk-cell:nth-child(2n) {
+            border-right: none;
+          }
+        }
+        @media (min-width: 1024px) {
+          .sk-grid .sk-cell:nth-child(2n) {
+            border-right: 3px solid #0D0F14;
+          }
+          .sk-grid .sk-cell:nth-child(3n) {
+            border-right: none;
+          }
+        }
       `}</style>
       {/* Section header */}
       <Slide delay={0.05}>
@@ -127,24 +153,20 @@ export default function Skills() {
         style={{
           border: "3px solid #0D0F14",
           background: "#FFFFFF",
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
         }}
-        className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+        className="sk-grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
       >
         {SKILL_CARDS.map((card, i) => (
           <div
             key={i}
             style={{
               padding: "2.2rem",
-              borderRight: (i + 1) % 3 !== 0 ? "3px solid #0D0F14" : undefined,
-              borderBottom: i < 3 ? "3px solid #0D0F14" : undefined,
               position: "relative",
               overflow: "hidden",
               cursor: "default",
               transition: "background .35s",
             }}
-            className="sk-card group"
+            className="sk-card sk-cell group"
           >
             {/* Dotted border */}
             <div

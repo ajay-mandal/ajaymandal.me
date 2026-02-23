@@ -13,7 +13,6 @@ const COMMANDS: Record<string, () => string | null> = {
 <span style="color:#64FFDA">  about</span>        → Background &amp; bio
 <span style="color:#64FFDA">  skills</span>       → Technical skill set
 <span style="color:#64FFDA">  experience</span>   → Work history
-<span style="color:#64FFDA">  projects</span>     → Featured projects
 <span style="color:#64FFDA">  contact</span>      → How to reach me
 <span style="color:#64FFDA">  social</span>       → Social links
 <span style="color:#64FFDA">  clear</span>        → Clear terminal
@@ -41,37 +40,32 @@ const COMMANDS: Record<string, () => string | null> = {
   skills: () =>
     `<span style="color:#FCD34D">[ Technical Skills ]</span>
 <span style="color:rgba(255,255,255,.28)">───────────────────────────────────────────</span>
-<span style="color:#64FFDA">Languages:</span>    TypeScript, JavaScript, Python, Bash
-<span style="color:#64FFDA">Backend:</span>      Node.js, NestJS, Express, Hono
-<span style="color:#64FFDA">Databases:</span>    PostgreSQL, Redis, MongoDB, Firebase
-<span style="color:#64FFDA">Cloud:</span>        GCP, AWS (EC2, RDS, EKS, Lambda)
-<span style="color:#64FFDA">Containers:</span>   Docker, Kubernetes, Helm
-<span style="color:#64FFDA">Infra:</span>        Terraform, CI/CD pipelines
-<span style="color:#64FFDA">Frontend:</span>     React, Next.js, Tailwind CSS
-<span style="color:#64FFDA">Auth:</span>         OAuth 2.0, JWT, Auth.js, Zod
+<span style="color:#64FFDA">Languages:</span>     TypeScript, JavaScript, Python, Bash
+<span style="color:#64FFDA">Backend:</span>       NestJS, Node.js, Express, Hono
+<span style="color:#64FFDA">AI & LLM:</span>      Prompt Engineering, RAG pipelines, MCP, Agent Workflows
+<span style="color:#64FFDA">Databases:</span>     PostgreSQL, Redis, MongoDB, Supabase
+<span style="color:#64FFDA">Cloud:</span>         GCP, AWS (EC2, S3), Docker, Kubernetes
+<span style="color:#64FFDA">Systems:</span>       BullMQ, Pub/Sub, Event-driven Architecture
+<span style="color:#64FFDA">Security:</span>      OAuth 2.0, JWT, Auth.js, Zod
+<span style="color:#64FFDA">Frontend:</span>      React, Next.js, Tailwind CSS
 
 <span style="color:rgba(255,255,255,.28)">// See full stack at ↑ Core Stack section</span>`,
 
   experience: () =>
     `<span style="color:#FCD34D">[ Work Experience ]</span>
 <span style="color:rgba(255,255,255,.28)">───────────────────────────────────────────</span>
-<span style="color:#C084FC">Backend Engineer</span>   <span style="color:rgba(255,255,255,.28)">· 2023–Present</span>
-<span style="color:#E2E8F0">  Building scalable backend services and APIs</span>
-<span style="color:#E2E8F0">  Distributed systems, event-driven architecture</span>
+<span style="color:#C084FC">Backend Engineer</span>     <span style="color:rgba(255,255,255,.28)">· JUTEQ Inc · Jun 2025–Present</span>
+<span style="color:#E2E8F0">  Scaled backend with NestJS, Node.js, Docker, Redis</span>
+<span style="color:#E2E8F0">  Built AI-driven features, RAG pipelines, Voice AI (Vapi)</span>
+<span style="color:#E2E8F0">  Automated comms (Twilio SMS, email), cut ops effort 70%</span>
 
-<span style="color:#C084FC">Software Engineer</span>  <span style="color:rgba(255,255,255,.28)">· 2021–2023</span>
-<span style="color:#E2E8F0">  Full-stack development, microservices migration</span>
-<span style="color:#E2E8F0">  Kubernetes deployments, zero-downtime releases</span>
+<span style="color:#C084FC">Full Stack Developer</span>  <span style="color:rgba(255,255,255,.28)">· Stealth Startup · Jan–Apr 2025</span>
+<span style="color:#E2E8F0">  Developed MVP with React, FastAPI, Clerk auth</span>
+<span style="color:#E2E8F0">  Built SEO-optimized website with Next.js, TypeScript</span>
 
-<span style="color:#C084FC">Junior Developer</span>   <span style="color:rgba(255,255,255,.28)">· 2019–2021</span>
-<span style="color:#E2E8F0">  Built and shipped production web applications</span>
-<span style="color:#E2E8F0">  Contributed to open-source projects</span>`,
-
-  projects: () =>
-    `<span style="color:#FCD34D">[ Featured Projects ]</span>
-<span style="color:rgba(255,255,255,.28)">───────────────────────────────────────────</span>
-<span style="color:#C084FC">github.com/ajay-mandal</span>
-<span style="color:rgba(255,255,255,.28)">// Scroll up to see full project details</span>`,
+<span style="color:#C084FC">Project Trainee</span>        <span style="color:rgba(255,255,255,.28)">· Kyndryl · Apr–Jul 2024</span>
+<span style="color:#E2E8F0">  Optimized Python scripts for backend functionality</span>
+<span style="color:#E2E8F0">  Integrated Azure and SQL for data management</span>`,
 
   contact: () =>
     `<span style="color:#FCD34D">[ Contact ]</span>
@@ -88,8 +82,7 @@ const COMMANDS: Record<string, () => string | null> = {
 <span style="color:#64FFDA">GitHub:</span>    github.com/ajay-mandal
 <span style="color:#64FFDA">LinkedIn:</span>  linkedin.com/in/ajay-mandal
 <span style="color:#64FFDA">Twitter:</span>   x.com/ajaymandal01
-<span style="color:#64FFDA">YouTube:</span>   youtube.com/@zexa_yt
-<span style="color:#64FFDA">Docker:</span>    hub.docker.com/u/lordzexa`,
+<span style="color:#64FFDA">YouTube:</span>   youtube.com/@zexa_yt`,
 
   clear: () => null,
 };
@@ -99,9 +92,9 @@ const PROMPT_HTML =
 
 const WELCOME_LINES: OutputLine[] = [
   { html: PROMPT_HTML + '<span style="color:#E2E8F0">./welcome.sh</span>' },
-  { html: '<span style="color:#64FFDA">╔══════════════════════════════════════╗</span>' },
-  { html: '<span style="color:#64FFDA">║</span>  <span style="color:#C084FC">Welcome to Ajay Mandal\'s Portfolio</span>  <span style="color:#64FFDA">║</span>' },
-  { html: '<span style="color:#64FFDA">╚══════════════════════════════════════╝</span>' },
+  { html: '<span style="color:#64FFDA">╔════════════════════════════╗</span>' },
+  { html: '<span style="color:#64FFDA">║</span> <span style="color:#C084FC">Welcome to Ajay\'s Portfolio</span> <span style="color:#64FFDA">║</span>' },
+  { html: '<span style="color:#64FFDA">╚════════════════════════════╝</span>' },
   { html: '<span style="color:rgba(255,255,255,.28)">Backend Engineer · Distributed Systems · APIs</span>' },
   { html: '<span style="color:#FCD34D">→</span> Type <span style="color:#C084FC">help</span> to see available commands' },
   { html: PROMPT_HTML },
@@ -190,8 +183,8 @@ export default function InteractiveTerminal() {
   return (
     <section
       id="terminal"
+      className="px-5 py-16 sm:px-8 sm:py-20 lg:px-14"
       style={{
-        padding: "5.5rem 3.5rem",
         borderBottom: "3px solid #0D0F14",
         background: "#1A1D24",
       }}
@@ -202,14 +195,14 @@ export default function InteractiveTerminal() {
           display: "flex",
           alignItems: "baseline",
           gap: "1rem",
-          marginBottom: "1.5rem",
+          marginBottom: "clamp(1.2rem, 2.5vw, 1.5rem)",
         }}
       >
         <span
           style={{
             fontFamily: "var(--oxanium)",
             fontWeight: 800,
-            fontSize: "4rem",
+            fontSize: "clamp(3rem, 7vw, 4rem)",
             color: "rgba(255,255,255,0.06)",
             lineHeight: 1,
           }}
@@ -232,11 +225,11 @@ export default function InteractiveTerminal() {
       <p
         style={{
           fontFamily: "var(--space-mono)",
-          fontSize: ".62rem",
-          letterSpacing: ".15em",
+          fontSize: "clamp(.55rem, 1.4vw, .62rem)",
+          letterSpacing: "clamp(.08em, 0.2vw, .15em)",
           textTransform: "uppercase",
           color: "rgba(255,255,255,.35)",
-          marginBottom: "2rem",
+          marginBottom: "clamp(1.5rem, 3vw, 2rem)",
         }}
       >
         Type a command below to learn more about me — try{" "}
@@ -245,47 +238,77 @@ export default function InteractiveTerminal() {
 
       {/* Terminal window */}
       <div
+        className="terminal-shell"
         style={{
           background: "#13151C",
           border: "2px solid rgba(255,255,255,.07)",
-          maxWidth: 800,
         }}
       >
         {/* Title bar */}
         <div
           style={{
             background: "#0D0F14",
-            padding: ".6rem 1rem",
+            padding: "clamp(.5rem, 1.2vw, .6rem) clamp(.8rem, 2vw, 1rem)",
             display: "flex",
             alignItems: "center",
             gap: ".45rem",
             borderBottom: "1px solid rgba(255,255,255,.05)",
           }}
         >
-          <span style={{ width: 9, height: 9, borderRadius: "50%", background: "#FF5F57", display: "inline-block" }} />
-          <span style={{ width: 9, height: 9, borderRadius: "50%", background: "#FEBC2E", display: "inline-block" }} />
-          <span style={{ width: 9, height: 9, borderRadius: "50%", background: "#28C840", display: "inline-block" }} />
-          <span
+          <span className="terminal-title-dots" style={{ width: 9, height: 9, borderRadius: "50%", background: "#FF5F57", display: "inline-block" }} />
+          <span className="terminal-title-dots" style={{ width: 9, height: 9, borderRadius: "50%", background: "#FEBC2E", display: "inline-block" }} />
+          <span className="terminal-title-dots" style={{ width: 9, height: 9, borderRadius: "50%", background: "#28C840", display: "inline-block" }} />
+          <div
+            className="terminal-title-text"
             style={{
               fontFamily: "var(--space-mono)",
-              fontSize: ".56rem",
+              fontSize: "clamp(.48rem, 1.1vw, .56rem)",
               color: "rgba(255,255,255,.22)",
               letterSpacing: ".1em",
               marginLeft: ".5rem",
             }}
           >
             ajay@portfolio:~ — bash
-          </span>
+          </div>
         </div>
 
+        <style>{`
+          .terminal-shell {
+            width: 100%;
+            max-width: 800px;
+          }
+          @media (max-width: 640px) {
+            .terminal-output {
+              padding: 1rem !important;
+              min-height: 240px !important;
+              max-height: 320px !important;
+              line-height: 1.8 !important;
+            }
+            .terminal-input-row {
+              padding: .6rem 1rem !important;
+              gap: .35rem !important;
+            }
+            .terminal-hint-bar {
+              padding: .4rem 1rem !important;
+              overflow-x: auto;
+              white-space: nowrap;
+              letter-spacing: .08em !important;
+            }
+            .terminal-title-dots {
+              width: 7px !important;
+              height: 7px !important;
+            }
+          }
+        `}</style>
         {/* Output body */}
         <div
           ref={bodyRef}
           onClick={() => inputRef.current?.focus()}
+          className="terminal-output"
           style={{
             padding: "1.5rem",
             fontFamily: "var(--space-mono)",
-            fontSize: ".65rem",
+            fontSize: "clamp(.58rem, 1.3vw, .65rem)",
             lineHeight: 1.9,
             color: "#E2E8F0",
             minHeight: 280,
@@ -305,6 +328,7 @@ export default function InteractiveTerminal() {
 
         {/* Input row */}
         <div
+          className="terminal-input-row"
           style={{
             display: "flex",
             alignItems: "center",
@@ -317,7 +341,7 @@ export default function InteractiveTerminal() {
           <span
             style={{
               fontFamily: "var(--space-mono)",
-              fontSize: ".65rem",
+              fontSize: "clamp(.58rem, 1.3vw, .65rem)",
               color: "#E8192C",
               flexShrink: 0,
             }}
@@ -338,7 +362,7 @@ export default function InteractiveTerminal() {
               outline: "none",
               color: "#E2E8F0",
               fontFamily: "var(--space-mono)",
-              fontSize: ".65rem",
+              fontSize: "clamp(.58rem, 1.3vw, .65rem)",
               flex: 1,
               caretColor: "#E8192C",
             }}
@@ -347,17 +371,18 @@ export default function InteractiveTerminal() {
 
         {/* Hint bar */}
         <div
+          className="terminal-hint-bar"
           style={{
             fontFamily: "var(--space-mono)",
-            fontSize: ".52rem",
+            fontSize: "clamp(.44rem, 1.1vw, .52rem)",
             color: "rgba(255,255,255,.22)",
-            letterSpacing: ".12em",
+            letterSpacing: "clamp(.08em, 0.15vw, .12em)",
             textTransform: "uppercase",
             padding: ".5rem 1.5rem",
             borderTop: "1px solid rgba(255,255,255,.04)",
           }}
         >
-          Commands: help · about · skills · experience · projects · contact · whoami · social · clear
+          Commands: help · about · skills · experience ·  contact · whoami · social · clear
         </div>
       </div>
     </section>

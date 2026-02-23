@@ -1,8 +1,9 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import MobileMenu from "./Mobile";
+
 import AMLogo from "./AMLogo";
+import MobileMenu from "./Mobile";
 
 const navLinks = [
   { title: "Home", href: "/" },
@@ -18,6 +19,7 @@ export default function Navbar() {
 
   return (
     <header
+      className="px-5 sm:px-8 lg:px-12"
       style={{
         position: "fixed",
         top: 0,
@@ -27,7 +29,8 @@ export default function Navbar() {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: "1.1rem 3rem",
+        paddingTop: "calc(0.75rem + env(safe-area-inset-top))",
+        paddingBottom: "0.75rem",
         background: "rgba(240,242,245,0.92)",
         backdropFilter: "blur(24px) saturate(180%)",
         borderBottom: "3px solid #0D0F14",
@@ -109,10 +112,10 @@ export default function Navbar() {
         Available · Remote
       </div>
 
-      {/* Mobile */}
-      <div className="sm:hidden">
-        <MobileMenu />
-      </div>
+        {/* Mobile menu */}
+        <div className="sm:hidden">
+          <MobileMenu />
+        </div>
 
       <style>{`
         @keyframes navIn {
