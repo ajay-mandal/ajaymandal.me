@@ -1,5 +1,5 @@
 "use client";
-import { Slide } from "@/components/animations/Slide";
+import { Slide } from "@/components/ui/Slide";
 import { socialLinks } from "@/data/social";
 
 const GCAL_URL =

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getRecentPosts, formatBlogDate } from "@/lib/blog";
 import type { BlogPost } from "@/lib/supabase";
-import { Slide } from "@/components/animations/Slide";
+import { Slide } from "@/components/ui/Slide";
 
 const CATEGORY_COLORS: Record<BlogPost["category"], string> = {
   project: "#E8192C",

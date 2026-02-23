@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { PROJECT } from "@/data/Projects";
-import { Slide } from "@/components/animations/Slide";
+import { Slide } from "@/components/ui/Slide";
 
 const PJ_STYLE = `
   @keyframes slideFromBottom {

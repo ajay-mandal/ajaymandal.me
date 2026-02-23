@@ -1,4 +1,4 @@
-import { Slide } from "@/components/animations/Slide";
+import { Slide } from "@/components/ui/Slide";
 
 // Keyframes injected once at module level via <style> in render
 

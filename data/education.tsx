@@ -18,8 +18,8 @@ export const EDUCATIONS: EducationProps[] = [
         logo: "/edu/FET-Logo.png",
         startDate: "Oct 2020",
         endDate: "May 2024",
-        description: "I completed my Bachelor of Technology (B.Tech) in Computer Science and Engineering at Jain (Deemed-to-be University), Bengaluru",
-        CGPA: "CGPA 8.8 / 10.0"
+        description: "Bachelor of Engineering in Computer Science and Engineering\n\nRelevant Coursework: Artificial Intelligence, Internet of Things (IoT), Cloud Computing, Data Structures & Algorithms, Database Management Systems (DBMS), Operating Systems, Software Engineering\n\nCapstone Project: AWS Serverless Luggage Tracking System Integrating IoT – Designed a cloud-native solution replacing RFID legacy systems.",
+        CGPA: "GPA 8.74 / 10.0"
     },
     {
         id: "KTM",
@@ -28,8 +28,8 @@ export const EDUCATIONS: EducationProps[] = [
         logo: "/edu/kmc.png",
         startDate: "Mar 2018",
         endDate: "Apr 2020",
-        description: "I completed my Higher Studies in Mathematics and Computer Science at Kathmandu Model College, Bag bazar, Nepal",
-        CGPA: "GPA 3.39 / 4.0"
+        description: "Higher Education in Mathematics and Physics\n\nKey Focus: Specialized in the Physical Sciences track with a concentration in Computer Science, building a foundational understanding of algorithms, logic, and calculus.",
+        CGPA: "GPA 3.41 / 4.0"
     },
     {
         id: "MTPS",
@@ -38,7 +38,7 @@ export const EDUCATIONS: EducationProps[] = [
         logo: "/edu/mtps.jpeg",
         startDate: "2009",
         endDate: "2018",
-        description: "I completed my Primary Education at Mother Teresa Public School, Janakpur, Nepal",
+        description: "Primary Education\n\nCompleted foundational education covering core subjects including mathematics, science, and English with a focus on academic excellence and holistic development.",
         CGPA: "GPA 3.70 / 4.0"
     },
 
