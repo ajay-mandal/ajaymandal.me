@@ -60,7 +60,7 @@ export default function MobileMenu() {
 
       {/* Drawer */}
       <div
-        className={`flex flex-col bg-[#F0F2F5] border-l-[3px] border-[#0D0F14] transform transition-all duration-500 ease-out ${
+        className={`mobile-menu flex flex-col bg-[#F0F2F5] border-l-[3px] border-[#0D0F14] transform transition-all duration-500 ease-out ${
           navShow ? "translate-x-0 scale-100 opacity-100" : "translate-x-full scale-95 opacity-0"
         }`}
         style={{
