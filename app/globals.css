@@ -12,17 +12,411 @@
   }
 }
 
-/* Shiki syntax highlighting styles */
-pre.shiki {
-  background: #fafafa !important;
-  padding: 1.5rem !important;
-  overflow-x: auto !important;
+/* ============================================
+   GLOBAL THEME SYSTEM
+   ============================================ */
+
+/* Default/Light Mode */
+:root,
+[data-theme="light"] {
+  --theme-bg: #FFFFFF;
+  --theme-surface: #FAFAFA;
+  --theme-surface-alt: #F0F2F5;
+  --theme-text: #1A1D24;
+  --theme-text-secondary: #4A5068;
+  --theme-text-tertiary: #8892AA;
+  --theme-border: #0D0F14;
+  --theme-accent: #E8192C;
+  --theme-accent-hover: #c41424;
+  --theme-code-bg: #FFF5F6;
+  --theme-code-border: #FFE0E3;
+  --theme-code-text: #E8192C;
+  --theme-quote-bg: #FFF5F6;
+  --theme-pre-bg: #1A1D24;
+  --theme-shadow: #E8192C;
+  --theme-card-bg: #FFFFFF;
+  --theme-highlight: rgba(232, 25, 44, 0.1);
 }
 
-pre.shiki code {
-  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace !important;
-  font-size: 0.85rem !important;
-  line-height: 1.6 !important;
+/* Navy Mode - Deep ocean blue */
+[data-theme="navy"] {
+  --theme-bg: #0A1628;
+  --theme-surface: #112240;
+  --theme-surface-alt: #172A45;
+  --theme-text: #E6EDF3;
+  --theme-text-secondary: #C3D1E8;
+  --theme-text-tertiary: #99AAC5;
+  --theme-border: #1E3A5F;
+  --theme-accent: #E8192C;
+  --theme-accent-hover: #FF2D47;
+  --theme-code-bg: #1E3A5F;
+  --theme-code-border: #2D4A6F;
+  --theme-code-text: #FFB3C6;
+  --theme-quote-bg: #172A45;
+  --theme-pre-bg: #051229;
+  --theme-shadow: rgba(232, 25, 44, 0.6);
+  --theme-card-bg: #112240;
+  --theme-highlight: rgba(232, 25, 44, 0.15);
+}
+
+/* Sepia Mode - Warm paper-like */
+[data-theme="sepia"] {
+  --theme-bg: #F4ECD8;
+  --theme-surface: #EBE3D0;
+  --theme-surface-alt: #E8DCC5;
+  --theme-text: #3D3021;
+  --theme-text-secondary: #5C4A33;
+  --theme-text-tertiary: #8B7355;
+  --theme-border: #3D3021;
+  --theme-accent: #E8192C;
+  --theme-accent-hover: #c41424;
+  --theme-code-bg: #E8DCC5;
+  --theme-code-border: #D4C4A8;
+  --theme-code-text: #B8573E;
+  --theme-quote-bg: #E8DCC5;
+  --theme-pre-bg: #3D3021;
+  --theme-shadow: rgba(232, 25, 44, 0.5);
+  --theme-card-bg: #F4ECD8;
+  --theme-highlight: rgba(232, 25, 44, 0.1);
+}
+
+/* ============================================
+   APPLY THEME GLOBALLY
+   ============================================ */
+
+/* Header/Navbar theming */
+header {
+  background: var(--theme-surface) !important;
+  border-bottom-color: var(--theme-border) !important;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+header .logo-am {
+  background: var(--theme-bg) !important;
+  border-color: var(--theme-accent) !important;
+  color: var(--theme-accent) !important;
+}
+
+header .nav-link {
+  color: var(--theme-text-secondary) !important;
+}
+
+header .nav-link:hover {
+  color: var(--theme-accent) !important;
+}
+
+/* Footer theming */
+footer {
+  background: var(--theme-bg) !important;
+  border-top-color: var(--theme-border) !important;
+  color: var(--theme-text-tertiary) !important;
+  transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+}
+
+footer strong {
+  color: var(--theme-accent) !important;
+}
+
+/* Status pill */
+header > div:not(.logo-am) {
+  color: var(--theme-text-tertiary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+/* Global text color theming */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--theme-text);
+  transition: color 0.4s ease;
+}
+
+p {
+  color: var(--theme-text);
+  transition: color 0.4s ease;
+}
+
+a {
+  transition: color 0.4s ease;
+}
+
+/* Section backgrounds */
+section {
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+/* Mobile menu theming */
+.mobile-menu {
+  background: var(--theme-surface) !important;
+  border-color: var(--theme-border) !important;
+}
+
+.mobile-menu .bg-white {
+  background: var(--theme-card-bg) !important;
+}
+
+.mobile-menu a {
+  border-color: var(--theme-border) !important;
+  color: var(--theme-text) !important;
+}
+
+.mobile-menu a:not(.bg-\[\#E8192C\]) {
+  background: var(--theme-card-bg) !important;
+}
+
+.mobile-menu a:hover {
+  background: var(--theme-border) !important;
+  color: var(--theme-bg) !important;
+}
+
+.mobile-menu .bg-\[\#E8192C\] {
+  background: #E8192C !important;
+  color: #FFFFFF !important;
+}
+
+.mobile-menu [style*="color: #1A1D24"],
+.mobile-menu [style*="color:#1A1D24"] {
+  color: var(--theme-text) !important;
+}
+
+.mobile-menu .border-\[\#0D0F14\] {
+  border-color: var(--theme-border) !important;
+}
+
+.mobile-menu .h-\[3px\].bg-\[\#0D0F14\] {
+  background: var(--theme-border) !important;
+}
+
+/* Gradient text - keep base colors but adapt to theme */
+.bg-gradient-to-br {
+  background: linear-gradient(to bottom right, var(--theme-text), var(--theme-text-secondary)) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+}
+
+/* Main backgrounds */
+main {
+  transition: background-color 0.4s ease;
+}
+
+main.min-h-screen {
+  background: var(--theme-surface) !important;
+}
+
+/* Ensure all text elements inherit theme colors */
+span:not([class*="gradient"]):not([class*="clip"]) {
+  transition: color 0.4s ease;
+}
+
+/* Blog list page specific */
+.blog-list-header {
+  background: var(--theme-bg) !important;
+  border-color: var(--theme-border) !important;
+}
+
+/* Home page sections */
+#skills,
+#projects,
+#blog,
+#terminal,
+#contact {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ============================================
+   APPLY THEME TO BLOG POST
+   ============================================ */
+
+.blog-post-editorial {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Header backgrounds */
+.blog-post-editorial > header {
+  background: var(--theme-surface) !important;
+  border-bottom-color: var(--theme-border) !important;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+/* Main content backgrounds */
+.blog-post-editorial .relative.bg-white,
+.blog-post-editorial > div.relative.bg-white {
+  background: var(--theme-bg) !important;
+  transition: background-color 0.4s ease;
+}
+
+/* Excerpt box,  cards, and general backgrounds */
+.blog-post-editorial header .bg-white,
+.blog-post-editorial nav a {
+  background: var(--theme-card-bg) !important;
+  border-color: var(--theme-border) !important;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+/* Excerpt text color */
+.blog-post-editorial header .bg-white p {
+  color: var(--theme-text-secondary) !important;
+}
+
+/* Back to blog link */
+.blog-post-editorial header a {
+  transition: color 0.4s ease;
+}
+
+/* Navigation section */
+.blog-post-editorial nav {
+  background: var(--theme-surface) !important;
+  border-color: var(--theme-border) !important;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.blog-post-editorial nav a:hover h3 {
+  color: var(--theme-accent) !important;
+}
+
+/* CTA Section */
+.blog-post-editorial section[class*="bg-"] {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Article content */
+.article-content {
+  color: var(--theme-text) !important;
+  transition: color 0.4s ease;
+}
+
+.article-content p,
+.article-content h1,
+.article-content h2,
+.article-content h3,
+.article-content h4,
+.article-content h5,
+.article-content h6 {
+  color: var(--theme-text) !important;
+}
+
+.article-content h2 {
+  border-bottom-color: var(--theme-accent) !important;
+}
+
+/* Links */
+.article-content a {
+  color: var(--theme-accent) !important;
+  border-bottom-color: var(--theme-accent) !important;
+}
+
+.article-content a:hover {
+  background: var(--theme-accent) !important;
+  color: var(--theme-bg) !important;
+}
+
+/* Inline code */
+.article-content code:not(pre code) {
+  background: var(--theme-code-bg) !important;
+  color: var(--theme-code-text) !important;
+  border-color: var(--theme-code-border) !important;
+}
+
+/* Code blocks */
+.article-content pre {
+  background: #FFF9F5 !important;
+  border-color: #0D0F14 !important;
+  box-shadow: 4px 4px 0 #E8192C !important;
+}
+
+[data-theme="navy"] .article-content pre {
+  background: #0D1117 !important;
+  border-color: #1E3A5F !important;
+}
+
+.article-content pre code {
+  color: #1A1D24 !important;
+}
+
+[data-theme="navy"] .article-content pre code {
+  color: #E6EDF3 !important;
+}
+
+/* Blockquotes */
+.article-content blockquote {
+  background: var(--theme-quote-bg) !important;
+  border-left-color: var(--theme-accent) !important;
+  color: var(--theme-text-secondary) !important;
+}
+
+/* List items */
+.article-content li {
+  color: var(--theme-text) !important;
+}
+
+/* Strong/bold text */
+.article-content strong {
+  color: var(--theme-accent) !important;
+}
+
+/* Images */
+.article-content img {
+  border-color: var(--theme-border) !important;
+  box-shadow: 4px 4px 0 var(--theme-shadow);
+}
+
+/* Sidebar */
+.blog-post-editorial aside > div {
+  background: var(--theme-surface) !important;
+  border-color: var(--theme-border) !important;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.blog-post-editorial aside a {
+  color: var(--theme-text) !important;
+  transition: color 0.4s ease;
+}
+
+.blog-post-editorial aside a:hover,
+.blog-post-editorial aside a:hover h4 {
+  color: var(--theme-accent) !important;
+}
+
+.blog-post-editorial aside time {
+  color: var(--theme-text-tertiary) !important;
+}
+
+/* Meta info text colors */
+.blog-post-editorial header time {
+  color: var(--theme-text-tertiary) !important;
+}
+
+/* Shiki syntax highlighting with multi-theme support */
+pre.shiki,
+pre.shiki-themes {
+  border: 3px solid #0D0F14 !important;
+  padding: 1.5rem !important;
+  overflow-x: auto !important;
+  box-shadow: 4px 4px 0 #E8192C !important;
+  background: #FFF9F5 !important;
+}
+
+[data-theme="navy"] pre.shiki,
+[data-theme="navy"] pre.shiki-themes {
+  border-color: #1E3A5F !important;
+  background: #0D1117 !important;
+}
+
+[data-theme="sepia"] pre.shiki,
+[data-theme="sepia"] pre.shiki-themes {
+  background: #F5EFE0 !important;
+}
+
+/* Theme-based token colors */
+:root .shiki span,
+[data-theme="light"] .shiki span {
+  color: var(--shiki-light) !important;
+}
+
+[data-theme="navy"] .shiki span {
+  color: var(--shiki-navy) !important;
+}
+
+[data-theme="sepia"] .shiki span {
+  color: var(--shiki-sepia) !important;
 }
 
 :root {
@@ -69,9 +463,10 @@ html {
 }
 
 body {
-  background: var(--bg);
-  color: var(--ink);
+  background: var(--theme-bg);
+  color: var(--theme-text);
   overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* Scanline overlay */
@@ -155,132 +550,36 @@ h1, h2, h3, h4 {
     }
   }
 
-/* Code syntax highlighting customization */
-.hljs {
-  border-radius: 4px;
-  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-  font-size: 0.85em;
-  line-height: 1.6;
-  padding: 1.25rem !important;
-  overflow-x: auto;
-  border: 3px solid var(--black);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  background: #fafafa !important; /* Very light background */
-}
-
-/* Inline code styling */
-code:not(.hljs) {
-  background: rgba(232, 25, 44, 0.08) !important;
-  color: var(--red) !important;
+/* Inline code styling (not in code blocks) */
+code:not(pre code) {
+  background: var(--theme-code-bg) !important;
+  color: var(--theme-code-text) !important;
   padding: 0.2em 0.4em;
   border-radius: 3px;
   font-size: 0.9em;
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
 }
 
-/* Pre tag styling */
-pre {
+/* Fallback for pre tags without Shiki */
+pre:not(.shiki):not(.shiki-themes) {
   margin: 1.5rem 0 !important;
   border-radius: 4px !important;
-  background: #fafafa !important; /* Force light background */
+  background: #FFF9F5 !important;
+  border: 3px solid #0D0F14;
+  box-shadow: 4px 4px 0 #E8192C;
+  padding: 1.25rem;
+  overflow-x: auto;
 }
 
-pre code.hljs {
-  padding: 0 !important;
-  background: transparent !important;
-  font-size: inherit;
+[data-theme="navy"] pre:not(.shiki):not(.shiki-themes) {
+  background: #0D1117 !important;
+  border-color: #1E3A5F;
 }
 
-/* Override Tailwind prose dark pre styles */
-.prose pre {
-  background-color: #fafafa !important;
-  border: 3px solid #0D0F14 !important;
+[data-theme="sepia"] pre:not(.shiki):not(.shiki-themes) {
+  background: #F5EFE0 !important;
 }
 
-.prose pre code {
-  background-color: transparent !important;
-}
-
-/* Ensure syntax highlighting colors show */
-.hljs-comment,
-.hljs-quote {
-  color: #6a737d !important;
-  font-style: italic;
-}
-
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-subst {
-  color: #d73a49 !important;
-  font-weight: bold;
-}
-
-.hljs-number,
-.hljs-literal,
-.hljs-variable,
-.hljs-template-variable,
-.hljs-tag .hljs-attr {
-  color: #005cc5 !important;
-}
-
-.hljs-string,
-.hljs-doctag {
-  color: #032f62 !important;
-}
-
-.hljs-title,
-.hljs-section,
-.hljs-selector-id {
-  color: #6f42c1 !important;
-  font-weight: bold;
-}
-
-.hljs-type,
-.hljs-class .hljs-title {
-  color: #6f42c1 !important;
-}
-
-.hljs-tag,
-.hljs-name,
-.hljs-attribute {
-  color: #22863a !important;
-  font-weight: bold;
-}
-
-.hljs-regexp,
-.hljs-link {
-  color: #032f62 !important;
-}
-
-.hljs-symbol,
-.hljs-bullet {
-  color: #005cc5 !important;
-}
-
-.hljs-built_in,
-.hljs-builtin-name {
-  color: #005cc5 !important;
-}
-
-.hljs-meta {
-  color: #6a737d !important;
-}
-
-.hljs-deletion {
-  background: #ffeef0 !important;
-}
-
-.hljs-addition {
-  background: #f0fff4 !important;
-}
-
-.hljs-emphasis {
-  font-style: italic;
-}
-
-.hljs-strong {
-  font-weight: bold;
-}
 /* Article content responsive improvements */
 .article-content {
   word-wrap: break-word;
