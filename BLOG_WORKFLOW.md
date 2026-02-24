@@ -26,9 +26,9 @@ Your blog system works as follows:
 - **Markdown**: For writing content
 - **Gray-Matter**: Parse frontmatter
 - **Marked**: Convert Markdown to HTML
-- **Highlight.js**: Code syntax highlighting
-- **Supabase**: Database storage
-- **Next.js**: Frontend framework
+- **Shiki**: Code syntax highlighting with inline styles
+- **Supabase**: PostgreSQL database storage with RLS
+- **Next.js 15**: App Router with server/client components
 
 ---
 
@@ -73,15 +73,18 @@ Ensure your `.env.local` has:
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY=your_anon_key
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 ```
+
+**Important**: The upload script uses `SUPABASE_SERVICE_ROLE_KEY` to bypass RLS policies and insert posts directly.
 
 ### 3. Install Dependencies
 
 Already installed for you:
 
 ```bash
-npm install marked gray-matter highlight.js @types/marked
+npm install marked gray-matter shiki
 ```
 
 ---
@@ -101,6 +104,7 @@ modDatetime: 2024-12-10T06:29:08.126Z # optional
 slug: your-blog-post-slug
 featured: true
 draft: false
+category: project # or 'findings' - NEW FIELD!
 tags:
   - nextjs
   - typescript
@@ -116,32 +120,39 @@ Write your blog content in Markdown...
 
 ### Field Descriptions
 
-| Field         | Required | Description                                    |
-| ------------- | -------- | ---------------------------------------------- |
-| `title`       | ✅       | Post title (shown in listings and page header) |
-| `author`      | ✅       | Author name                                    |
-| `pubDatetime` | ✅       | Publication date in ISO format                 |
-| `modDatetime` | ❌       | Modified date (if updated later)               |
-| `slug`        | ✅       | URL-friendly identifier (must be unique)       |
-| `featured`    | ✅       | Whether to feature the post                    |
-| `draft`       | ✅       | If `true`, won't be published                  |
-| `tags`        | ✅       | Array of tags for categorization               |
-| `ogImage`     | ❌       | Social media preview image                     |
-| `description` | ✅       | Short description (SEO & preview)              |
+| Field         | Required | Description                                        |
+| ------------- | -------- | -------------------------------------------------- |
+| `title`       | ✅       | Post title (shown in listings and page header)     |
+| `author`      | ✅       | Author name                                        |
+| `pubDatetime` | ✅       | Publication date in ISO format                     |
+| `modDatetime` | ❌       | Modified date (if updated later)                   |
+| `slug`        | ✅       | URL-friendly identifier (must be unique)           |
+| `featured`    | ✅       | Whether to feature the post                        |
+| `draft`       | ✅       | If `true`, won't be published                      |
+| `category`    | ❌       | `project` or `findings` (auto-detected if omitted) |
+| `tags`        | ✅       | Array of tags for categorization                   |
+| `ogImage`     | ❌       | Social media preview image                         |
+| `description` | ✅       | Short description (SEO & preview)                  |
 
-### Category Detection
+### Category System
 
-Categories are automatically determined from tags:
+**New in v2**: You can now explicitly set the category in frontmatter!
 
-- **Project**: Posts with tags like `nextjs`, `reactjs`, `typescript`, `honojs`, `prisma`, `api`
-- **Findings**: All other posts
+```yaml
+category: project # or 'findings'
+```
 
-You can modify the logic in `/lib/markdown.ts`:
+If you don't specify a category, it's automatically determined from tags:
 
-```typescript
-export function determineCategoryFromTags(
-  tags: string[],
-): "project" | "findings" {
+- **Project**: Posts with tags like `nextjs`, `reactjs`, `typescript`, `honojs`, `prisma`, `api`, `nodejs`, `express`, `mongodb`, `docker`
+- **Findings**: All other posts (CSS, JavaScript concepts, performance tips, etc.)
+
+**Upload Priority**: The upload script checks for `category` in frontmatter first, then falls back to auto-detection.
+
+You can modify the auto-detection logic in `/scripts/upload-blogs.js`:
+
+```javascript
+function determineCategoryFromTags(tags) {
   const projectKeywords = [
     "nextjs",
     "reactjs",
@@ -149,6 +160,10 @@ export function determineCategoryFromTags(
     "honojs",
     "prisma",
     "api",
+    "nodejs",
+    "express",
+    "mongodb",
+    "docker",
   ];
   const hasProjectTag = tags.some((tag) =>
     projectKeywords.includes(tag.toLowerCase()),
@@ -169,7 +184,9 @@ export function determineCategoryFromTags(
 ### H3
 ```
 
-✅ **Code Blocks with Syntax Highlighting**
+✅ **Code Blocks with Syntax Highlighting (Shiki)**
+
+Shiki provides beautiful syntax highlighting with inline styles (no external CSS needed):
 
 ````markdown
 ```typescript
@@ -178,6 +195,10 @@ function hello() {
 }
 ```
 ````
+
+Supported languages: JavaScript, TypeScript, Python, Bash, SQL, YAML, JSON, HTML, CSS, and many more.
+
+**Theme**: Uses `github-light` theme with inline `style` attributes for perfect rendering.
 
 ✅ **Links**
 
@@ -248,22 +269,19 @@ cp ~/Desktop/projects/personal-blog-astro/src/content/blog/*.md ./blog-posts/
 npm run upload-blogs
 ```
 
-Or with tsx directly:
-
-```bash
-npx tsx scripts/upload-blogs.ts
-```
+**Note**: The upload script is a JavaScript file (`upload-blogs.js`), not TypeScript.
 
 ### What Happens During Upload
 
-The script:
+The script (`scripts/upload-blogs.js`):
 
 1. ✅ Reads all `.md` files from `blog-posts/`
-2. ✅ Parses frontmatter and content
-3. ✅ Converts Markdown to HTML
-4. ✅ Processes image paths
-5. ✅ Determines category from tags
-6. ✅ Uploads to Supabase (or updates if slug exists)
+2. ✅ Parses frontmatter and content with gray-matter
+3. ✅ Converts Markdown to HTML with marked
+4. ✅ Applies Shiki syntax highlighting to code blocks (inline styles)
+5. ✅ Processes image paths (`@assets/images/` → `/images/blog/`)
+6. ✅ Reads category from frontmatter OR auto-detects from tags
+7. ✅ Uses service role key to upsert to Supabase (insert new or update existing)
 
 ### Upload Output Example
 
@@ -338,6 +356,41 @@ The system will handle the path conversion automatically.
 
 ---
 
+## Blog Features
+
+### Search & Filtering
+
+The blog page includes powerful client-side filtering:
+
+- **Search Bar**: Filter by title, excerpt, or tags
+- **Category Filter**: Show all posts, only projects, or only findings
+- **Tag Filter**: Multi-select tags to filter posts
+- **Clear Filters**: Reset all filters with one click
+
+### Pagination
+
+- **10 posts per page** to keep page load fast
+- **Previous/Next buttons** for navigation
+- **Page numbers** with ellipsis for long lists
+- **Auto-scroll to top** when changing pages
+- **Resets to page 1** when filters change
+
+### Related Posts
+
+Each blog post shows related articles based on:
+
+- **Category match**: +3 points
+- **Shared tags**: +1 point per tag
+- Shows top 3 most relevant posts
+
+### Navigation
+
+- **Previous/Next post buttons** for sequential reading
+- **Sticky sidebar** with related posts and quick links
+- **Breadcrumb navigation** back to blog list
+
+---
+
 ## Workflow Summary
 
 ### Creating a New Blog Post
@@ -358,6 +411,7 @@ The system will handle the path conversion automatically.
    slug: my-awesome-new-post
    featured: false
    draft: false
+   category: project
    tags:
      - nextjs
      - typescript
@@ -401,7 +455,7 @@ draft: true
 
 ### ❌ "Supabase credentials not found"
 
-**Problem**: Environment variables missing
+**Problem**: Environment variables missing or incorrectly named
 
 **Solution**:
 
@@ -411,8 +465,11 @@ cat .env.local
 
 # Should contain:
 NEXT_PUBLIC_SUPABASE_URL=https://xxx.supabase.co
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY=eyJxxx...
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJxxx...
+SUPABASE_SERVICE_ROLE_KEY=eyJxxx...  # Required for uploads!
 ```
+
+**Important**: The `SUPABASE_SERVICE_ROLE_KEY` is needed to bypass Row Level Security and insert posts.
 
 ---
 
@@ -453,15 +510,20 @@ mkdir blog-posts
 
 ### ❌ Code highlighting not working
 
-**Problem**: Missing language specification
+**Problem**: Missing language specification or Shiki not running
 
-**Solution**: Always specify language in code blocks:
+**Solution**:
+
+1. Always specify language in code blocks:
 
 ````markdown
 ```typescript ← Add language here
 const x = 5;
 ```
 ````
+
+2. Ensure the upload script processed correctly - check for "✅ Inserted" message
+3. Shiki generates inline styles, so highlighting should work without external CSS
 
 ---
 
@@ -494,20 +556,46 @@ className="prose prose-sm max-w-none
 
 Modify in `/app/blog/[slug]/page.tsx` to customize appearance.
 
+### Code Block Styling
+
+Shiki generates inline styles for syntax highlighting:
+
+```html
+<pre class="shiki github-light" style="background-color:#ffffff;color:#24292e">
+  <code>
+    <span style="color:#D73A49">const</span>
+    <span style="color:#005CC5"> greeting</span>
+    <!-- ... -->
+  </code>
+</pre>
+```
+
+No external CSS needed! Additional styling in `globals.css`:
+
+```css
+pre.shiki {
+  @apply border-[3px] border-[#0D0F14] overflow-x-auto;
+}
+```
+
 ---
 
 ## NPM Scripts
 
-Add to your `package.json` for easier management:
+Configured in `package.json`:
 
 ```json
 {
   "scripts": {
-    "upload-blogs": "tsx scripts/upload-blogs.ts",
-    "upload-blogs:watch": "tsx watch scripts/upload-blogs.ts"
+    "upload-blogs": "node scripts/upload-blogs.js",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   }
 }
 ```
+
+**Note**: The upload script is plain JavaScript (not TypeScript) to avoid compilation issues.
 
 ---
 
@@ -531,6 +619,41 @@ rm -rf .next
 
 # Restart dev server
 npm run dev
+
+# Check Supabase posts
+# Visit: Supabase Dashboard → Table Editor → posts
+```
+
+---
+
+## File Structure
+
+```
+new-ajaymandal.me/
+├── app/
+│   ├── blog/
+│   │   ├── page.tsx           # Blog listing (server component)
+│   │   └── [slug]/
+│   │       └── page.tsx       # Individual post (server component)
+│   ├── not-found.tsx          # Custom 404 page
+│   ├── error.tsx              # Error boundary
+│   └── global-error.tsx       # Critical error handler
+├── components/
+│   └── pages/
+│       └── BlogList.tsx       # Client component (search/filter)
+├── lib/
+│   ├── blog.ts                # Supabase query functions
+│   ├── markdown.js            # Markdown → HTML (for upload script)
+│   └── supabase.ts            # Supabase client
+├── scripts/
+│   └── upload-blogs.js        # Upload markdown to Supabase
+├── blog-posts/                # Your markdown files
+│   ├── post-one.md
+│   └── post-two.md
+├── public/
+│   └── images/
+│       └── blog/              # Blog post images
+└── .env.local                 # Environment variables
 ```
 
 ---
@@ -543,7 +666,53 @@ For issues or questions:
 2. Review Supabase logs in the dashboard
 3. Check browser console for frontend errors
 4. Verify environment variables are set correctly
+5. Ensure `SUPABASE_SERVICE_ROLE_KEY` is present for uploads
+
+---
+
+## Key Technologies Summary
+
+| Technology            | Purpose                                | Location                         |
+| --------------------- | -------------------------------------- | -------------------------------- |
+| **Shiki**             | Syntax highlighting with inline styles | `/lib/markdown.js`               |
+| **Marked**            | Markdown → HTML conversion             | `/lib/markdown.js`               |
+| **Gray-Matter**       | Parse YAML frontmatter                 | `/scripts/upload-blogs.js`       |
+| **Supabase**          | PostgreSQL database with RLS           | `/lib/supabase.ts`               |
+| **Next.js 15**        | App Router, React Server Components    | `/app/blog/`                     |
+| **Client Components** | Search/filter interactivity            | `/components/pages/BlogList.tsx` |
+
+### Architecture Overview
+
+```
+┌─────────────────┐
+│ Markdown Files  │  Write posts in blog-posts/*.md
+└────────┬────────┘
+         │
+         ↓
+┌─────────────────┐
+│ Upload Script   │  scripts/upload-blogs.js
+│ (Node.js)       │  • Parse frontmatter
+│                 │  • marked + Shiki
+│                 │  • Service role key
+└────────┬────────┘
+         │
+         ↓
+┌─────────────────┐
+│ Supabase DB     │  PostgreSQL with RLS
+│ posts table     │  • Anon key for reads
+└────────┬────────┘
+         │
+         ↓
+┌─────────────────┐
+│ Next.js App     │  App Router
+│                 │  • Server: Fetch data
+│ Server: blog/   │  • Client: Search/filter
+│ Client: List    │  • Pagination: 10/page
+└─────────────────┘
+```
 
 ---
 
 **Happy Blogging! 🚀**
+
+**Last Updated**: February 2026 | **Version**: 2.0
