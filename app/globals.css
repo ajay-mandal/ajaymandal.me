@@ -281,3 +281,96 @@ pre code.hljs {
 .hljs-strong {
   font-weight: bold;
 }
+/* Article content responsive improvements */
+.article-content {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Code block mobile optimization */
+.article-content pre {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #E8192C #0D0F14;
+}
+
+.article-content pre::-webkit-scrollbar {
+  height: 8px;
+}
+
+.article-content pre::-webkit-scrollbar-track {
+  background: #0D0F14;
+  border-radius: 0;
+}
+
+.article-content pre::-webkit-scrollbar-thumb {
+  background: #E8192C;
+  border-radius: 0;
+}
+
+.article-content pre::-webkit-scrollbar-thumb:hover {
+  background: #c41424;
+}
+
+/* Code block padding and mobile spacing */
+.article-content pre code {
+  display: block;
+  min-width: max-content;
+  white-space: pre;
+  line-height: 1.6;
+}
+
+/* Ensure inline code wraps properly */
+.article-content :not(pre) > code {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Table responsiveness */
+.article-content table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Image optimization for mobile */
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Better link wrapping */
+.article-content a {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+/* Line clamp utility for truncating text */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  /* Further mobile optimizations */
+  .article-content pre {
+    margin-left: -1rem;
+    margin-right: -1rem;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0 !important;
+  }
+  
+  .article-content pre code {
+    padding: 1rem !important;
+    font-size: 13px !important;
+  }
+}
