@@ -90,7 +90,6 @@ export default function MobileMenu() {
                     fontFamily: "var(--oxanium)",
                     fontWeight: 800,
                     fontSize: "1rem",
-                    color: "#1A1D24",
                     lineHeight: 1.1,
                   }}
                 >

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getPostBySlug, getAllPosts, formatBlogDate } from "@/lib/blog";
 import type { Metadata } from "next";
 import type { BlogPost } from "@/lib/supabase";
+import { SharePost } from "@/components/global/SharePost";
 
 export const revalidate = 60;
 
@@ -19,9 +20,42 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) return { title: "Post Not Found" };
+  
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ajaymandal.vercel.app";
+  const postUrl = `${siteUrl}/blog/${slug}`;
+  const imageUrl = post.cover_image 
+    ? (post.cover_image.startsWith('http') ? post.cover_image : `${siteUrl}${post.cover_image}`)
+    : `${siteUrl}/og-default.png`;
+  
   return {
     title: `${post.title} — Ajay Mandal`,
     description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      url: postUrl,
+      siteName: "Ajay Mandal",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+      locale: "en_US",
+      type: "article",
+      publishedTime: post.published_at,
+      authors: ["Ajay Mandal"],
+      tags: post.tags,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [imageUrl],
+      creator: "@ajaymandal01",
+    },
   };
 }
 
@@ -86,7 +120,7 @@ export default async function PostPage({
   return (
     <article className="blog-post-editorial">
       {/* HERO SECTION */}
-      <header className="relative bg-[#FAFAFA] pt-24 sm:pt-28 lg:pt-32 pb-10 sm:pb-14 lg:pb-16 overflow-hidden border-b-[3px] sm:border-b-[4px] lg:border-b-[6px] border-[#0D0F14]">
+      <header className="relative bg-[#FAFAFA] pb-10 sm:pb-14 lg:pt-32 lg:pb-16 overflow-hidden border-b-[3px] sm:border-b-[4px] lg:border-b-[6px] border-[#0D0F14]">
         {/* Animated background grid */}
         <div
           className="absolute inset-0 opacity-30"
@@ -182,7 +216,7 @@ export default async function PostPage({
                   prose-p:font-[family-name:var(--space-mono)] prose-p:text-sm sm:prose-p:text-[15px] prose-p:leading-[1.75] prose-p:text-[#1A1D24] prose-p:mb-4 sm:prose-p:mb-5
                   prose-a:text-[#E8192C] prose-a:no-underline prose-a:font-semibold prose-a:border-b-2 prose-a:border-[#E8192C] hover:prose-a:bg-[#E8192C] hover:prose-a:text-white prose-a:transition-all prose-a:px-1 prose-a:break-words
                   prose-code:font-[family-name:var(--space-mono)] prose-code:text-[#E8192C] prose-code:bg-[#FFF5F6] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-sm prose-code:text-[13px] prose-code:border prose-code:border-[#FFE0E3] prose-code:break-words
-                  prose-pre:!bg-[#1A1D24] prose-pre:border-[3px] prose-pre:border-[#0D0F14] prose-pre:rounded-none prose-pre:shadow-[4px_4px_0_#E8192C] prose-pre:my-6 sm:prose-pre:my-8 prose-pre:p-0 prose-pre:overflow-x-auto
+                  prose-pre:!bg-[#1A1D24] prose-pre:border-[3px] prose-pre:border-[#0D0F14] prose-pre:rounded-none prose-pre:shadow-[4px_4px_0_#E8192C] prose-pre:my-6 sm:prose-pre:my-8 prose-pre:p-0 prose-pre:overflow-x-auto prose-pre:mx-0
                   prose-blockquote:border-l-[4px] prose-blockquote:border-[#E8192C] prose-blockquote:bg-[#FFF5F6] prose-blockquote:py-3 sm:prose-blockquote:py-4 prose-blockquote:px-4 sm:prose-blockquote:px-6 prose-blockquote:italic prose-blockquote:text-[#4A5068] prose-blockquote:text-sm sm:prose-blockquote:text-base
                   prose-ul:my-4 sm:prose-ul:my-5 prose-ol:my-4 sm:prose-ol:my-5
                   prose-li:my-1.5 prose-li:font-[family-name:var(--space-mono)] prose-li:text-[#1A1D24] prose-li:text-sm sm:prose-li:text-[15px]
@@ -255,6 +289,12 @@ export default async function PostPage({
         </div>
       </div>
 
+      {/* SHARE POST SECTION */}
+      <SharePost 
+        title={post.title}
+        url={`https://ajaymandal.me/blog/${post.slug}`}
+      />
+
       {/* NAVIGATION */}
       {(previous || next) && (
         <nav className="bg-[#F0F2F5] border-t-[3px] sm:border-t-[4px] border-b-[3px] sm:border-b-[4px] border-[#0D0F14] py-10 sm:py-14 lg:py-16">
@@ -304,7 +344,7 @@ export default async function PostPage({
           <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
             {/* Left - Content */}
             <div className="text-center lg:text-left">
-              <h2 className="font-[family-name:var(--oxanium)] font-black text-3xl sm:text-4xl lg:text-5xl xl:text-6xl mb-5 sm:mb-6 lg:mb-8 leading-[1.1]">
+              <h2 className="font-[family-name:var(--oxanium)] font-black text-3xl sm:text-4xl lg:text-5xl xl:text-6xl mb-5 sm:mb-6 lg:mb-8 leading-[1.1] text-white">
                 Never Miss
                 <br />
                 <span className="text-[#E8192C]">A Post</span>

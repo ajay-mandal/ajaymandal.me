@@ -5,6 +5,7 @@ import { incognito, gitlabmono } from "@/components/fonts/fonts";
 import Navbar from "@/components/global/Navbar";
 import Footer from "@/components/global/Footer";
 import CursorGlow from "@/components/global/CursorGlow";
+import ScrollToTop from "@/components/global/ScrollToTop";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -53,6 +54,7 @@ export default function RootLayout({
         <main className="pb-0">
           {children}
         </main>
+        <ScrollToTop />
         <Footer />
       </body>
     </html>

@@ -37,7 +37,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="pt-24 sm:pt-28"
+      className="lg:pt-28"
       style={{
         minHeight: "100vh",
         borderBottom: "3px solid #0D0F14",

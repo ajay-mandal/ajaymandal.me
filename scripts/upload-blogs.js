@@ -55,12 +55,23 @@ async function uploadBlogPost(filePath) {
     const category =
       frontmatter.category || determineCategoryFromTags(frontmatter.tags || []);
 
+    // Process ogImage path to cover_image URL
+    let coverImage = null;
+    if (frontmatter.ogImage) {
+      // Convert relative path like "../../assets/images/..." to "/images/..."
+      coverImage = frontmatter.ogImage
+        .replace(/^\.\.\/\.\.\/assets\//, '/')
+        .replace(/^\.\.\/assets\//, '/')
+        .replace(/^assets\//, '/');
+    }
+
     // Prepare blog post data
     const blogPost = {
       title: frontmatter.title,
       slug: frontmatter.slug,
       excerpt: frontmatter.description || excerpt,
       content: processedContent,
+      cover_image: coverImage,
       category: category,
       tags: frontmatter.tags || [],
       published: !frontmatter.draft,
