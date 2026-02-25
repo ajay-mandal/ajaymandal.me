@@ -27,14 +27,6 @@ export async function generateMetadata({
     ? (post.cover_image.startsWith('http') ? post.cover_image : `${siteUrl}${post.cover_image}`)
     : `${siteUrl}/og-default.png`;
   
-  // Debug logging
-  console.log('🔍 Metadata Debug:', {
-    slug,
-    cover_image: post.cover_image,
-    siteUrl,
-    imageUrl,
-  });
-  
   return {
     title: `${post.title} — Ajay Mandal`,
     description: post.excerpt,

@@ -46,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <body className={`${incognito.variable} ${inter.className} ${gitlabmono.variable} ${oxanium.variable} ${spaceMono.variable} font-mono text-ink`}
       >
         <CursorGlow />

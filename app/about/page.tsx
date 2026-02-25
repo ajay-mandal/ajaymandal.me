@@ -101,6 +101,7 @@ export default function About() {
                           src={job.logo}
                           alt={job.name}
                           fill
+                          sizes="(max-width: 640px) 48px, (max-width: 768px) 56px, 64px"
                           className="object-contain p-2"
                         />
                       </div>
@@ -181,6 +182,7 @@ export default function About() {
                           src={edu.logo}
                           alt={edu.name}
                           fill
+                          sizes="(max-width: 640px) 48px, (max-width: 768px) 56px, 64px"
                           className="object-cover"
                         />
                       </div>

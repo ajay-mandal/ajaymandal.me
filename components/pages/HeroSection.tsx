@@ -368,6 +368,7 @@ export default function HeroSection() {
                 src="/pp3.png"
                 alt="Ajay Mandal"
                 fill
+                sizes="(max-width: 768px) 200px, 300px"
                 style={{ objectFit: "cover", objectPosition: "center top" }}
               />
               {/* Gradient overlay */}
