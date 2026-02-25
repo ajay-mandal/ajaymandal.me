@@ -244,7 +244,7 @@ _italic text_
 Create a `blog-posts` folder at the root of your project:
 
 ```
-new-ajaymandal.me/
+ajaymandal.me/
 ├── blog-posts/           ← Create this folder
 │   ├── post-one.md
 │   ├── post-two.md
@@ -629,7 +629,7 @@ npm run dev
 ## File Structure
 
 ```
-new-ajaymandal.me/
+ajaymandal.me/
 ├── app/
 │   ├── blog/
 │   │   ├── page.tsx           # Blog listing (server component)

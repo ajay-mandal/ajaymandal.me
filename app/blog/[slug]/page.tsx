@@ -116,6 +116,8 @@ export default async function PostPage({
 
   const relatedPosts = await getRelatedPosts(post);
   const { previous, next } = await getAdjacentPosts(slug);
+  
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ajaymandal.vercel.app";
 
   return (
     <article className="blog-post-editorial">
@@ -292,7 +294,7 @@ export default async function PostPage({
       {/* SHARE POST SECTION */}
       <SharePost 
         title={post.title}
-        url={`https://ajaymandal.me/blog/${post.slug}`}
+        url={`${siteUrl}/blog/${post.slug}`}
       />
 
       {/* NAVIGATION */}
