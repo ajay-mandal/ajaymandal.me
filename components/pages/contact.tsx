@@ -168,7 +168,6 @@ export default function ContactForm() {
         style={{
           alignItems: "start",
           position: "relative",
-          zIndex: 1,
         }}
       >
         {/* ── LEFT ── */}

@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function About() {
   return (
-    <main className="min-h-screen bg-[var(--bg)] px-4 pb-16 pt-20 sm:px-6 md:px-8 md:pt-24">
+    <main className="min-h-screen bg-[var(--bg)] px-4 pb-16 sm:px-6 md:px-8 lg:pt-24">
       <div className="mx-auto max-w-5xl">
         {/* Hero Section */}
         <section className="mb-12 md:mb-20">
@@ -101,6 +101,7 @@ export default function About() {
                           src={job.logo}
                           alt={job.name}
                           fill
+                          sizes="(max-width: 640px) 48px, (max-width: 768px) 56px, 64px"
                           className="object-contain p-2"
                         />
                       </div>
@@ -181,6 +182,7 @@ export default function About() {
                           src={edu.logo}
                           alt={edu.name}
                           fill
+                          sizes="(max-width: 640px) 48px, (max-width: 768px) 56px, 64px"
                           className="object-cover"
                         />
                       </div>

@@ -15,7 +15,7 @@ export default async function BlogPage() {
   return (
     <main className="min-h-screen bg-[#FAFAFA]">
       {/* HERO SECTION */}
-      <header className="relative bg-white pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20 overflow-hidden border-b-[3px] sm:border-b-[4px] lg:border-b-[6px] border-[#0D0F14]">
+      <header className="relative bg-white pb-12 sm:pb-16 lg:pt-32 lg:pb-20 overflow-hidden border-b-[3px] sm:border-b-[4px] lg:border-b-[6px] border-[#0D0F14]">
         {/* Animated background grid */}
         <div
           className="absolute inset-0 opacity-20"

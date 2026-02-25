@@ -329,10 +329,14 @@ span:not([class*="gradient"]):not([class*="clip"]) {
 
 .article-content pre code {
   color: #1A1D24 !important;
+  text-align: left;
+  display: block;
 }
 
 [data-theme="navy"] .article-content pre code {
   color: #E6EDF3 !important;
+  text-align: left;
+  display: block;
 }
 
 /* Blockquotes */
@@ -586,6 +590,16 @@ pre:not(.shiki):not(.shiki-themes) {
   overflow-wrap: break-word;
 }
 
+.article-content p,
+.article-content h1,
+.article-content h2,
+.article-content h3,
+.article-content ul,
+.article-content ol,
+.article-content blockquote {
+  text-align: left;
+}
+
 /* Code block mobile optimization */
 .article-content pre {
   max-width: 100%;
@@ -593,6 +607,15 @@ pre:not(.shiki):not(.shiki-themes) {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: #E8192C #0D0F14;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+@media (min-width: 1024px) {
+  .article-content pre {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
 }
 
 .article-content pre::-webkit-scrollbar {

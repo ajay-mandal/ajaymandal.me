@@ -5,6 +5,7 @@ import { incognito, gitlabmono } from "@/components/fonts/fonts";
 import Navbar from "@/components/global/Navbar";
 import Footer from "@/components/global/Footer";
 import CursorGlow from "@/components/global/CursorGlow";
+import ScrollToTop from "@/components/global/ScrollToTop";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -45,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <body className={`${incognito.variable} ${inter.className} ${gitlabmono.variable} ${oxanium.variable} ${spaceMono.variable} font-mono text-ink`}
       >
         <CursorGlow />
@@ -53,6 +54,7 @@ export default function RootLayout({
         <main className="pb-0">
           {children}
         </main>
+        <ScrollToTop />
         <Footer />
       </body>
     </html>
