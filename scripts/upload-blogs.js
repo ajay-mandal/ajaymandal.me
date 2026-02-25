@@ -58,11 +58,12 @@ async function uploadBlogPost(filePath) {
     // Process ogImage path to cover_image URL
     let coverImage = null;
     if (frontmatter.ogImage) {
-      // Convert relative path like "../../assets/images/..." to "/images/..."
+      // Convert relative path like "../../assets/images/..." to "/images/blog/..."
       coverImage = frontmatter.ogImage
-        .replace(/^\.\.\/\.\.\/assets\//, '/')
-        .replace(/^\.\.\/assets\//, '/')
-        .replace(/^assets\//, '/');
+        .replace(/^\.\.\/\.\.\/assets\/images\//, '/images/blog/')
+        .replace(/^\.\.\/assets\/images\//, '/images/blog/')
+        .replace(/^assets\/images\//, '/images/blog/')
+        .replace(/@assets\/images\//, '/images/blog/');
     }
 
     // Prepare blog post data
