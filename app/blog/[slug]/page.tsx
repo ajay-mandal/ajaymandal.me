@@ -223,7 +223,7 @@ export default async function PostPage({
                   prose-ul:my-4 sm:prose-ul:my-5 prose-ol:my-4 sm:prose-ol:my-5
                   prose-li:my-1.5 prose-li:font-[family-name:var(--space-mono)] prose-li:text-[#1A1D24] prose-li:text-sm sm:prose-li:text-[15px]
                   prose-strong:text-[#E8192C] prose-strong:font-black
-                  prose-img:border-[3px] prose-img:border-[#0D0F14] prose-img:shadow-[4px_4px_0_#E8192C] sm:prose-img:shadow-[6px_6px_0_#E8192C] prose-img:my-6 sm:prose-img:my-8 prose-img:w-full
+                  prose-img:my-6 sm:prose-img:my-8 prose-img:w-full
                   [&_pre]:!p-4 [&_pre]:sm:!p-5
                   [&_pre_code]:!bg-transparent [&_pre_code]:!border-0 [&_pre_code]:!p-0 [&_pre_code]:!text-[13px] [&_pre_code]:sm:!text-sm
                   [&_pre]:scrollbar-thin [&_pre]:scrollbar-track-[#0D0F14] [&_pre]:scrollbar-thumb-[#E8192C]
