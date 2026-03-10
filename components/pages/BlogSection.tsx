@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { unstable_noStore as noStore } from "next/cache";
 import { getRecentPosts, formatBlogDate } from "@/lib/blog";
 import type { BlogPost } from "@/lib/supabase";
 import { Slide } from "@/components/ui/Slide";
@@ -9,6 +10,7 @@ const CATEGORY_COLORS: Record<BlogPost["category"], string> = {
 };
 
 export default async function BlogSection() {
+  noStore();
   const posts = await getRecentPosts(3);
 
   return (
