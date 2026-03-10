@@ -358,8 +358,6 @@ span:not([class*="gradient"]):not([class*="clip"]) {
 
 /* Images */
 .article-content img {
-  border-color: var(--theme-border) !important;
-  box-shadow: 4px 4px 0 var(--theme-shadow);
 }
 
 /* Sidebar */
